@@ -4,6 +4,7 @@ import Profile from "./common/Profile";
 import StudentCard from "./common/StudentCard";
 import AdminCard from "./common/AdminCard";
 import StaffCard from "./common/StaffCard";
+import PrefectCard from "./common/PrefectCard";
 
 import CustomButton from "./common/CustomButton";
 
@@ -23,6 +24,7 @@ export {
   StudentCard,
   AdminCard,
   StaffCard,
+  PrefectCard,
   CustomButton,
   PieChart,
   ChildReferrals,

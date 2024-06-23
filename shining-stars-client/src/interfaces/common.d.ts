@@ -26,6 +26,15 @@ export interface StudentProps {
   creator: string;
 }
 
+export interface PrefectProps {
+  _id: string;
+  name: string;
+  title: string;
+  grade: string;
+  photo: string;
+  creator: string;
+}
+
 export interface StaffProps {
   _id: string;
   name: string;
@@ -45,6 +54,19 @@ export interface StudentFormProps {
   handleImageChange: (file) => void;
   onFinishHandler: (data: FieldValues) => Promise<void> | void;
   studentImage: { name: string; url: string };
+}
+
+export interface PrefectFormProps {
+  type: string;
+  register: any;
+  onFinish: (
+    values: FieldValues,
+  ) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>;
+  formLoading: boolean;
+  handleSubmit: FormEventHandler<HTMLFormElement> | undefined;
+  handleImageChange: (file) => void;
+  onFinishHandler: (data: FieldValues) => Promise<void> | void;
+  prefectImage: { name: string; url: string };
 }
 
 export interface AdminFormProps {
