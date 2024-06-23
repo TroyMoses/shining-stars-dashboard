@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import type { ProfileProps, ChildProps } from "interfaces/common";
-import ChildCard from "./ChildCard";
+import ChildCard from "./StudentCard";
 
 function checkImage(url: any) {
   const img = new Image();

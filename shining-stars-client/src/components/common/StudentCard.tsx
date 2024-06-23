@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 
-import type { ChildCardProps } from "interfaces/child";
+import type { ChildCardProps } from "interfaces/student";
 
 const ChildCard = ({
   id,
