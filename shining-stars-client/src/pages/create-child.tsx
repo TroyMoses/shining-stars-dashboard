@@ -4,7 +4,7 @@ import { useForm } from "@refinedev/react-hook-form";
 
 import type { FieldValues } from "react-hook-form";
 
-import Form from "components/common/Form";
+import Form from "components/common/StudentForm";
 
 const CreateChild = () => {
   const { data: user } = useGetIdentity({

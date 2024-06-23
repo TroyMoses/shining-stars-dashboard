@@ -7,20 +7,19 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 
-import type { ChildCardProps } from "interfaces/student";
+import type { StudentCardProps } from "interfaces/student";
 
-const ChildCard = ({
+const StudentCard = ({
   id,
   name,
   grade,
-  levelOfNeed,
-  donations,
+  paymentCode,
   photo,
-}: ChildCardProps) => {
+}: StudentCardProps) => {
   return (
     <Card
       component={Link}
-      to={`/children/show/${id}`}
+      to={`/students/show/${id}`}
       sx={{
         maxWidth: "330px",
         padding: "10px",
@@ -73,7 +72,7 @@ const ChildCard = ({
           height="fit-content"
         >
           <Typography fontSize={12} fontWeight={600} color="#475be8">
-            {donations}
+            {paymentCode}
           </Typography>
         </Box>
       </CardContent>
@@ -81,4 +80,4 @@ const ChildCard = ({
   );
 };
 
-export default ChildCard;
+export default StudentCard;

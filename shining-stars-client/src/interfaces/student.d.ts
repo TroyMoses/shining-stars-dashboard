@@ -11,7 +11,7 @@ export interface FormValues {
   grade: string;
 }
 
-export interface ChildCardProps {
+export interface StudentCardProps {
   id?: BaseKey | undefined;
   name: string;
   grade: string;
