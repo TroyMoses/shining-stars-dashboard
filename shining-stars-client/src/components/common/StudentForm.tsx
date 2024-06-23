@@ -84,14 +84,14 @@ const StudentForm = ({
               >
                 <MenuItem value="baby-class">Baby-Class</MenuItem>
                 <MenuItem value="middle-class">Middle-Class</MenuItem>
-                <MenuItem value="baby-class">Baby-Class</MenuItem>
-                <MenuItem value="baby-class">Baby-Class</MenuItem>
-                <MenuItem value="baby-class">Baby-Class</MenuItem>
-                <MenuItem value="baby-class">Baby-Class</MenuItem>
-                <MenuItem value="baby-class">Baby-Class</MenuItem>
-                <MenuItem value="baby-class">Baby-Class</MenuItem>
-                <MenuItem value="baby-class">Baby-Class</MenuItem>
-                <MenuItem value="baby-class">Baby-Class</MenuItem>
+                <MenuItem value="top-class">Top-Class</MenuItem>
+                <MenuItem value="primary-one">Primary-One</MenuItem>
+                <MenuItem value="primary-two">Primary-Two</MenuItem>
+                <MenuItem value="primary-three">Primary-Three</MenuItem>
+                <MenuItem value="primary-four">Primary-Four</MenuItem>
+                <MenuItem value="primary-five">Primary-Five</MenuItem>
+                <MenuItem value="primary-six">Primary-Six</MenuItem>
+                <MenuItem value="primary-seven">Primary-Seven</MenuItem>
               </Select>
             </FormControl>
             <FormControl>
@@ -103,40 +103,18 @@ const StudentForm = ({
                   color: "#11142d",
                 }}
               >
-                Enter Student Donations
+                Enter Student Payment Code
               </FormHelperText>
               <TextField
                 fullWidth
                 required
                 id="outlined-basic"
                 color="info"
-                type="number"
                 variant="outlined"
-                {...register("donations", { required: true })}
+                {...register("paymentCode", { required: true })}
               />
             </FormControl>
           </Stack>
-
-          <FormControl>
-            <FormHelperText
-              sx={{
-                fontWeight: 500,
-                margin: "10px 0",
-                fontSize: 16,
-                color: "#11142d",
-              }}
-            >
-              Enter Grade
-            </FormHelperText>
-            <TextField
-              fullWidth
-              required
-              id="outlined-basic"
-              color="info"
-              variant="outlined"
-              {...register("grade", { required: true })}
-            />
-          </FormControl>
 
           <Stack direction="column" gap={1} justifyContent="center" mb={2}>
             <Stack direction="row" gap={2}>
@@ -174,7 +152,7 @@ const StudentForm = ({
               color="#808191"
               sx={{ wordBreak: "break-all" }}
             >
-              {childImage?.name}
+              {studentImage?.name}
             </Typography>
           </Stack>
 
