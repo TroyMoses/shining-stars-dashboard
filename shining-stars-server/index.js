@@ -4,8 +4,8 @@ import cors from "cors";
 
 import connectDB from "./mongodb/connect.js";
 import userRouter from "./routes/user.routes.js";
-import childRouter from "./routes/child.routes.js";
-import leaderRouter from "./routes/leader.route.js";
+import childRouter from "./routes/student.routes.js";
+import leaderRouter from "./routes/admin.routes.js";
 
 dotenv.config();
 
