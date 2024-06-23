@@ -1,4 +1,4 @@
-import Child from "../mongodb/models/child.js";
+import Student from "../mongodb/models/student.js";
 import User from "../mongodb/models/user.js";
 
 import mongoose from "mongoose";
@@ -13,20 +13,20 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const getAllChildren = async (req, res) => {
+const getAllStudents = async (req, res) => {
   const {
     _end,
     _order,
     _start,
     _sort,
     name_like = "",
-    levelOfNeed = "",
+    grade = "",
   } = req.query;
 
   const query = {};
 
-  if (levelOfNeed !== "") {
-    query.levelOfNeed = levelOfNeed;
+  if (grade !== "") {
+    query.grade = grade;
   }
 
   if (name_like) {
@@ -34,9 +34,9 @@ const getAllChildren = async (req, res) => {
   }
 
   try {
-    const count = await Child.countDocuments({ query });
+    const count = await Student.countDocuments({ query });
 
-    const children = await Child.find(query)
+    const students = await Student.find(query)
       .limit(_end)
       .skip(_start)
       .sort({ [_sort]: _order });
@@ -44,28 +44,28 @@ const getAllChildren = async (req, res) => {
     res.header("x-total-count", count);
     res.header("Access-Control-Expose-Headers", "x-total-count");
 
-    res.status(200).json(children);
+    res.status(200).json(students);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const getChildDetail = async (req, res) => {
+const getStudentDetail = async (req, res) => {
   const { id } = req.params;
-  const childExists = await Child.findOne({ _id: id }).populate(
+  const studentExists = await Student.findOne({ _id: id }).populate(
     "creator",
   );
 
-  if (childExists) {
-    res.status(200).json(childExists);
+  if (studentExists) {
+    res.status(200).json(studentExists);
   } else {
-    res.status(404).json({ message: "Child not found" });
+    res.status(404).json({ message: "Student not found" });
   }
 };
 
-const createChild = async (req, res) => {
+const createStudent = async (req, res) => {
   try {
-    const { name, description, levelOfNeed, grade, donations, photo, email } =
+    const { name, grade, paymentCode, photo, email } =
       req.body;
 
     const session = await mongoose.startSession();
@@ -77,82 +77,78 @@ const createChild = async (req, res) => {
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
-    const newChild = await Child.create({
+    const newStudent = await Student.create({
       name,
-      description,
-      levelOfNeed,
       grade,
-      donations,
+      paymentCode,
       photo: photoUrl.url,
       creator: user._id,
     });
 
-    user.allChildren.push(newChild._id);
+    user.allStudents.push(newStudent._id);
     await user.save({ session });
 
     await session.commitTransaction();
 
-    res.status(200).json({ message: "Child created successfully" });
+    res.status(200).json({ message: "Student created successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const updateChild = async (req, res) => {
+const updateStudent = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, levelOfNeed, grade, donations, photo } =
+    const { name, grade, paymentCode, photo } =
       req.body;
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
-    await Child.findByIdAndUpdate(
+    await Student.findByIdAndUpdate(
       { _id: id },
       {
         name,
-        description,
-        levelOfNeed,
         grade,
-        donations,
+        paymentCode,
         photo: photoUrl.url || photo,
       },
     );
 
-    res.status(200).json({ message: "Child updated successfully" });
+    res.status(200).json({ message: "Student updated successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const deleteChild = async (req, res) => {
+const deleteStudent = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const childToDelete = await Child.findById({ _id: id }).populate(
+    const studentToDelete = await Student.findById({ _id: id }).populate(
       "creator",
     );
 
-    if (!childToDelete) throw new Error("Child not found");
+    if (!studentToDelete) throw new Error("Student not found");
 
     const session = await mongoose.startSession();
     session.startTransaction();
 
-    childToDelete.remove({ session });
-    childToDelete.creator.allChildren.pull(childToDelete);
+    studentToDelete.remove({ session });
+    studentToDelete.creator.allStudents.pull(studentToDelete);
 
-    await childToDelete.creator.save({ session });
+    await studentToDelete.creator.save({ session });
     await session.commitTransaction();
 
-    res.status(200).json({ message: "Child deleted successfully" });
+    res.status(200).json({ message: "Student deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
 export {
-  getAllChildren,
-  getChildDetail,
-  createChild,
-  updateChild,
-  deleteChild,
+  getAllStudents,
+  getStudentDetail,
+  createStudent,
+  updateStudent,
+  deleteStudent,
 };
