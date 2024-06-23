@@ -1,4 +1,4 @@
-import Admin from "../mongodb/models/admin.js";
+import Staff from "../mongodb/models/staff.js";
 import User from "../mongodb/models/user.js";
 
 import mongoose from "mongoose";
@@ -13,20 +13,20 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const getAllAdmins = async (req, res) => {
+const getAllStaffs = async (req, res) => {
   const {
     _end,
     _order,
     _start,
     _sort,
     name_like = "",
-    title = "",
+    staffType = "",
   } = req.query;
 
   const query = {};
 
-  if (title !== "") {
-    query.title = title;
+  if (staffType !== "") {
+    query.staffType = staffType;
   }
 
   if (name_like) {
@@ -34,9 +34,9 @@ const getAllAdmins = async (req, res) => {
   }
 
   try {
-    const count = await Admin.countDocuments({ query });
+    const count = await Staff.countDocuments({ query });
 
-    const admins = await Admin.find(query)
+    const staffs = await Staff.find(query)
       .limit(_end)
       .skip(_start)
       .sort({ [_sort]: _order });
@@ -44,28 +44,28 @@ const getAllAdmins = async (req, res) => {
     res.header("x-total-count", count);
     res.header("Access-Control-Expose-Headers", "x-total-count");
 
-    res.status(200).json(admins);
+    res.status(200).json(staffs);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const getAdminDetail = async (req, res) => {
+const getStaffDetail = async (req, res) => {
   const { id } = req.params;
-  const adminExists = await Admin.findOne({ _id: id }).populate(
+  const staffExists = await Staff.findOne({ _id: id }).populate(
     "creator"
   );
 
-  if (adminExists) {
-    res.status(200).json(adminExists);
+  if (staffExists) {
+    res.status(200).json(staffExists);
   } else {
-    res.status(404).json({ message: "Admin not found" });
+    res.status(404).json({ message: "Staff not found" });
   }
 };
 
-const createAdmin = async (req, res) => {
+const createStaff = async (req, res) => {
   try {
-    const { title, name, message, description, photo, email } =
+    const { staffType, name, photo, email } =
       req.body;
 
     const session = await mongoose.startSession();
@@ -77,80 +77,76 @@ const createAdmin = async (req, res) => {
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
-    const newAdmin = await Admin.create({
-      title,
+    const newStaff = await Staff.create({
+      staffType,
       name,
-      message,
-      description,
       photo: photoUrl.url,
       creator: user._id,
     });
 
-    user.allAdmins.push(newAdmin._id);
+    user.allStaffs.push(newStaff._id);
     await user.save({ session });
 
     await session.commitTransaction();
 
-    res.status(200).json({ message: "Admin created successfully" });
+    res.status(200).json({ message: "Staff created successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const updateAdmin = async (req, res) => {
+const updateStaff = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, name, message, description, photo, } =
+    const { staffType, name, photo, } =
       req.body;
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
-    await Admin.findByIdAndUpdate(
+    await Staff.findByIdAndUpdate(
       { _id: id },
       {
-        title,
+        staffType,
         name,
-        message,
-        description,
         photo: photoUrl.url || photo,
       }
     );
 
-    res.status(200).json({ message: "Admin updated successfully" });
+    res.status(200).json({ message: "Staff updated successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const deleteAdmin = async (req, res) => {
+const deleteStaff = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const adminToDelete = await Admin.findById({ _id: id }).populate(
+    const staffToDelete = await Staff.findById({ _id: id }).populate(
       "creator"
     );
 
-    if (!adminToDelete) throw new Error("Admin not found");
+    if (!staffToDelete) throw new Error("Staff not found");
 
     const session = await mongoose.startSession();
     session.startTransaction();
 
-    adminToDelete.remove({ session });
-    adminToDelete.creator.allAdmins.pull(adminToDelete);
+    staffToDelete.remove({ session });
+    staffToDelete.creator.allStaffs.pull(staffToDelete);
 
-    await adminToDelete.creator.save({ session });
+    await staffToDelete.creator.save({ session });
     await session.commitTransaction();
 
-    res.status(200).json({ message: "Admin deleted successfully" });
+    res.status(200).json({ message: "Staff deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
 export {
-  getAllAdmins,
-  getAdminDetail,
-  createAdmin,
-  updateAdmin,
-  deleteAdmin,
+  getAllStaffs,
+  getStaffDetail,
+  createStaff,
+  updateStaff,
+  deleteStaff,
 };

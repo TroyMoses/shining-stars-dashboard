@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const StaffSchema = new mongoose.Schema({
-  title: { type: String, required: true },
   name: { type: String, required: true },
   staffType: { type: String, required: true },
   photo: { type: String, required: true },
