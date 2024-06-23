@@ -1,7 +1,7 @@
 // common
 import Profile from "./common/Profile";
 import StudentCard from "./common/StudentCard";
-import LeaderCard from "./common/LeaderCard";
+import LeaderCard from "./common/AdminCard";
 import CustomButton from "./common/CustomButton";
 
 // charts

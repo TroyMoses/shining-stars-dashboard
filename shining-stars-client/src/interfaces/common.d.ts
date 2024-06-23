@@ -39,7 +39,7 @@ export interface StudentFormProps {
   studentImage: { name: string; url: string };
 }
 
-export interface LeaderFormProps {
+export interface AdminFormProps {
   type: string;
   register: any;
   onFinish: (
@@ -49,5 +49,5 @@ export interface LeaderFormProps {
   handleSubmit: FormEventHandler<HTMLFormElement> | undefined;
   handleImageChange: (file) => void;
   onFinishHandler: (data: FieldValues) => Promise<void> | void;
-  leaderImage: { name: string; url: string };
+  adminImage: { name: string; url: string };
 }
