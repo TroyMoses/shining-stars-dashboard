@@ -5,6 +5,7 @@ import StudentCard from "./common/StudentCard";
 import AdminCard from "./common/AdminCard";
 import StaffCard from "./common/StaffCard";
 import PrefectCard from "./common/PrefectCard";
+import EventCard from "./common/EventCard";
 
 import CustomButton from "./common/CustomButton";
 
@@ -25,6 +26,7 @@ export {
   AdminCard,
   StaffCard,
   PrefectCard,
+  EventCard,
   CustomButton,
   PieChart,
   ChildReferrals,
