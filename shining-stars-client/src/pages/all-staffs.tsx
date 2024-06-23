@@ -9,9 +9,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
-import {  AdminCard, CustomButton } from "components";
+import {  StudentCard, CustomButton } from "components";
 
-const AllAdmins = () => {
+const AllStudents = () => {
   const navigate = useNavigate();
 
   const {
@@ -26,7 +26,7 @@ const AllAdmins = () => {
     setFilters,
   } = useTable();
 
-  const allAdmins = data?.data ?? [];
+  const allStudents = data?.data ?? [];
 
   const currentFilterValues = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
@@ -35,8 +35,8 @@ const AllAdmins = () => {
 
     return {
       name: logicalFilters.find((item) => item.field === "name")?.value || "",
-      title:
-        logicalFilters.find((item) => item.field === "title")?.value ||
+      grade:
+        logicalFilters.find((item) => item.field === "grade")?.value ||
         "",
     };
   }, [filters]);
@@ -49,9 +49,9 @@ const AllAdmins = () => {
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
         <Stack direction="column" width="100%">
           <Typography fontSize={25} fontWeight={700} color="#11142d">
-            {!allAdmins.length
-              ? "There are no admins"
-              : "All Admins"}
+            {!allStudents.length
+              ? "There are no students"
+              : "All Students"}
           </Typography>
           <Box
             mb={2}
@@ -91,12 +91,12 @@ const AllAdmins = () => {
                 required
                 inputProps={{ "aria-label": "Without label" }}
                 defaultValue=""
-                value={currentFilterValues.title}
+                value={currentFilterValues.grade}
                 onChange={(e) => {
                   setFilters(
                     [
                       {
-                        field: "title",
+                        field: "grade",
                         operator: "eq",
                         value: e.target.value,
                       },
@@ -107,10 +107,16 @@ const AllAdmins = () => {
               >
                 <MenuItem value="">All</MenuItem>
                 {[
-                  "Head-Teacher",
-                  "Director-Of-Studies",
-                  "Deputy-Head-Teacher",
-                  "Bursar",
+                  "Baby Class",
+                  "Middle Class",
+                  "Top Class",
+                  "Primary One",
+                  "Primary Two",
+                  "Primary Three",
+                  "Primary Four",
+                  "Primary Five",
+                  "Primary Six",
+                  "Primary Seven",
                 ].map((type) => (
                   <MenuItem key={type} value={type.toLowerCase()}>
                     {type}
@@ -124,8 +130,8 @@ const AllAdmins = () => {
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <CustomButton
-          title="Add Admin"
-          handleClick={() => navigate("/admins/create")}
+          title="Add Student"
+          handleClick={() => navigate("/students/create")}
           backgroundColor="#475be8"
           color="#fcfcfc"
           icon={<Add />}
@@ -133,20 +139,19 @@ const AllAdmins = () => {
       </Stack>
 
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        {allAdmins?.map((admin) => (
-          <AdminCard
-            key={admin._id}
-            id={admin._id}
-            title={admin.title}
-            name={admin.name}
-            message={admin.message}
-            description={admin.description}
-            photo={admin.photo}
+        {allStudents?.map((student) => (
+          <StudentCard
+            key={student._id}
+            id={student._id}
+            name={student.name}
+            grade={student.grade}
+            paymentCode={student.paymentCode}
+            photo={student.photo}
           />
         ))}
       </Box>
 
-      {allAdmins.length > 0 && (
+      {allStudents.length > 0 && (
         <Box display="flex" gap={2} mt={3} flexWrap="wrap">
           <CustomButton
             title="Previous"
@@ -195,4 +200,4 @@ const AllAdmins = () => {
   );
 };
 
-export default AllAdmins;
+export default AllStudents;

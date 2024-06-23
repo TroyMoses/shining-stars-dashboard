@@ -1,7 +1,7 @@
 // common
 import Profile from "./common/Profile";
 import StudentCard from "./common/StudentCard";
-import LeaderCard from "./common/AdminCard";
+import AdminCard from "./common/AdminCard";
 import CustomButton from "./common/CustomButton";
 
 // charts
@@ -18,7 +18,7 @@ import TopAgent from "./home/TopAgent";
 export {
   Profile,
   StudentCard,
-  LeaderCard,
+  AdminCard,
   CustomButton,
   PieChart,
   ChildReferrals,
