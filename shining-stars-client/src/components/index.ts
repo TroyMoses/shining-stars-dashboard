@@ -1,7 +1,10 @@
 // common
 import Profile from "./common/Profile";
+
 import StudentCard from "./common/StudentCard";
 import AdminCard from "./common/AdminCard";
+import StaffCard from "./common/StaffCard";
+
 import CustomButton from "./common/CustomButton";
 
 // charts
@@ -19,6 +22,7 @@ export {
   Profile,
   StudentCard,
   AdminCard,
+  StaffCard,
   CustomButton,
   PieChart,
   ChildReferrals,

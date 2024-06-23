@@ -26,6 +26,14 @@ export interface StudentProps {
   creator: string;
 }
 
+export interface StaffProps {
+  _id: string;
+  name: string;
+  staffType: string;
+  photo: string;
+  creator: string;
+}
+
 export interface StudentFormProps {
   type: string;
   register: any;
@@ -50,4 +58,17 @@ export interface AdminFormProps {
   handleImageChange: (file) => void;
   onFinishHandler: (data: FieldValues) => Promise<void> | void;
   adminImage: { name: string; url: string };
+}
+
+export interface StaffFormProps {
+  type: string;
+  register: any;
+  onFinish: (
+    values: FieldValues,
+  ) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>;
+  formLoading: boolean;
+  handleSubmit: FormEventHandler<HTMLFormElement> | undefined;
+  handleImageChange: (file) => void;
+  onFinishHandler: (data: FieldValues) => Promise<void> | void;
+  staffImage: { name: string; url: string };
 }

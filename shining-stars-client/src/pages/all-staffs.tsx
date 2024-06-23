@@ -9,9 +9,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
-import {  StudentCard, CustomButton } from "components";
+import {  StaffCard, CustomButton } from "components";
 
-const AllStudents = () => {
+const AllStaffs = () => {
   const navigate = useNavigate();
 
   const {
@@ -26,7 +26,7 @@ const AllStudents = () => {
     setFilters,
   } = useTable();
 
-  const allStudents = data?.data ?? [];
+  const allStaffs = data?.data ?? [];
 
   const currentFilterValues = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
@@ -35,8 +35,8 @@ const AllStudents = () => {
 
     return {
       name: logicalFilters.find((item) => item.field === "name")?.value || "",
-      grade:
-        logicalFilters.find((item) => item.field === "grade")?.value ||
+      staffType:
+        logicalFilters.find((item) => item.field === "staffType")?.value ||
         "",
     };
   }, [filters]);
@@ -49,9 +49,9 @@ const AllStudents = () => {
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
         <Stack direction="column" width="100%">
           <Typography fontSize={25} fontWeight={700} color="#11142d">
-            {!allStudents.length
-              ? "There are no students"
-              : "All Students"}
+            {!allStaffs.length
+              ? "There are no staffs"
+              : "All Staffs"}
           </Typography>
           <Box
             mb={2}
@@ -91,12 +91,12 @@ const AllStudents = () => {
                 required
                 inputProps={{ "aria-label": "Without label" }}
                 defaultValue=""
-                value={currentFilterValues.grade}
+                value={currentFilterValues.staffType}
                 onChange={(e) => {
                   setFilters(
                     [
                       {
-                        field: "grade",
+                        field: "staffType",
                         operator: "eq",
                         value: e.target.value,
                       },
@@ -107,16 +107,8 @@ const AllStudents = () => {
               >
                 <MenuItem value="">All</MenuItem>
                 {[
-                  "Baby Class",
-                  "Middle Class",
-                  "Top Class",
-                  "Primary One",
-                  "Primary Two",
-                  "Primary Three",
-                  "Primary Four",
-                  "Primary Five",
-                  "Primary Six",
-                  "Primary Seven",
+                  "Teaching",
+                  "Non-Teaching",
                 ].map((type) => (
                   <MenuItem key={type} value={type.toLowerCase()}>
                     {type}
@@ -130,8 +122,8 @@ const AllStudents = () => {
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <CustomButton
-          title="Add Student"
-          handleClick={() => navigate("/students/create")}
+          title="Add Staff"
+          handleClick={() => navigate("/staffs/create")}
           backgroundColor="#475be8"
           color="#fcfcfc"
           icon={<Add />}
@@ -139,19 +131,18 @@ const AllStudents = () => {
       </Stack>
 
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        {allStudents?.map((student) => (
-          <StudentCard
-            key={student._id}
-            id={student._id}
-            name={student.name}
-            grade={student.grade}
-            paymentCode={student.paymentCode}
-            photo={student.photo}
+        {allStaffs?.map((staff) => (
+          <StaffCard
+            key={staff._id}
+            id={staff._id}
+            name={staff.name}
+            staffType={staff.staffType}
+            photo={staff.photo}
           />
         ))}
       </Box>
 
-      {allStudents.length > 0 && (
+      {allStaffs.length > 0 && (
         <Box display="flex" gap={2} mt={3} flexWrap="wrap">
           <CustomButton
             title="Previous"
@@ -200,4 +191,4 @@ const AllStudents = () => {
   );
 };
 
-export default AllStudents;
+export default AllStaffs;
