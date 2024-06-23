@@ -1,4 +1,4 @@
-import Leader from "../mongodb/models/leader.js";
+import Admin from "../mongodb/models/admin.js";
 import User from "../mongodb/models/user.js";
 
 import mongoose from "mongoose";
@@ -13,20 +13,20 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const getAllLeaders = async (req, res) => {
+const getAllAdmins = async (req, res) => {
   const {
     _end,
     _order,
     _start,
     _sort,
     name_like = "",
-    leaderShipType = "",
+    title = "",
   } = req.query;
 
   const query = {};
 
-  if (leaderShipType !== "") {
-    query.leaderShipType = leaderShipType;
+  if (title !== "") {
+    query.title = title;
   }
 
   if (name_like) {
@@ -34,9 +34,9 @@ const getAllLeaders = async (req, res) => {
   }
 
   try {
-    const count = await Leader.countDocuments({ query });
+    const count = await Admin.countDocuments({ query });
 
-    const leaders = await Leader.find(query)
+    const admins = await Admin.find(query)
       .limit(_end)
       .skip(_start)
       .sort({ [_sort]: _order });
@@ -44,28 +44,28 @@ const getAllLeaders = async (req, res) => {
     res.header("x-total-count", count);
     res.header("Access-Control-Expose-Headers", "x-total-count");
 
-    res.status(200).json(leaders);
+    res.status(200).json(admins);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const getLeaderDetail = async (req, res) => {
+const getAdminDetail = async (req, res) => {
   const { id } = req.params;
-  const leaderExists = await Leader.findOne({ _id: id }).populate(
+  const adminExists = await Admin.findOne({ _id: id }).populate(
     "creator"
   );
 
-  if (leaderExists) {
-    res.status(200).json(leaderExists);
+  if (adminExists) {
+    res.status(200).json(adminExists);
   } else {
-    res.status(404).json({ message: "Leader not found" });
+    res.status(404).json({ message: "Admin not found" });
   }
 };
 
-const createLeader = async (req, res) => {
+const createAdmin = async (req, res) => {
   try {
-    const { name, description, leaderShipType, position, donations, photo, email } =
+    const { title, name, message, description, photo, email } =
       req.body;
 
     const session = await mongoose.startSession();
@@ -77,82 +77,80 @@ const createLeader = async (req, res) => {
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
-    const newLeader = await Leader.create({
+    const newAdmin = await Admin.create({
+      title,
       name,
+      message,
       description,
-      leaderShipType,
-      position,
-      donations,
       photo: photoUrl.url,
       creator: user._id,
     });
 
-    user.allLeaders.push(newLeader._id);
+    user.allAdmins.push(newAdmin._id);
     await user.save({ session });
 
     await session.commitTransaction();
 
-    res.status(200).json({ message: "Leader created successfully" });
+    res.status(200).json({ message: "Admin created successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const updateLeader = async (req, res) => {
+const updateAdmin = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, leaderShipType, position, donations, photo } =
+    const { title, name, message, description, photo, } =
       req.body;
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
-    await Leader.findByIdAndUpdate(
+    await Admin.findByIdAndUpdate(
       { _id: id },
       {
+        title,
         name,
+        message,
         description,
-        leaderShipType,
-        position,
-        donations,
         photo: photoUrl.url || photo,
       }
     );
 
-    res.status(200).json({ message: "Leader updated successfully" });
+    res.status(200).json({ message: "Admin updated successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const deleteLeader = async (req, res) => {
+const deleteAdmin = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const leaderToDelete = await Leader.findById({ _id: id }).populate(
+    const adminToDelete = await Admin.findById({ _id: id }).populate(
       "creator"
     );
 
-    if (!leaderToDelete) throw new Error("Leader not found");
+    if (!adminToDelete) throw new Error("Admin not found");
 
     const session = await mongoose.startSession();
     session.startTransaction();
 
-    leaderToDelete.remove({ session });
-    leaderToDelete.creator.allLeaders.pull(childToDelete);
+    adminToDelete.remove({ session });
+    adminToDelete.creator.allAdmins.pull(adminToDelete);
 
-    await leaderToDelete.creator.save({ session });
+    await adminToDelete.creator.save({ session });
     await session.commitTransaction();
 
-    res.status(200).json({ message: "Leader deleted successfully" });
+    res.status(200).json({ message: "Admin deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
 export {
-  getAllLeaders,
-  getLeaderDetail,
-  createLeader,
-  updateLeader,
-  deleteLeader,
+  getAllAdmins,
+  getAdminDetail,
+  createAdmin,
+  updateAdmin,
+  deleteAdmin,
 };

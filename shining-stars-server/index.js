@@ -3,9 +3,15 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 
 import connectDB from "./mongodb/connect.js";
+
 import userRouter from "./routes/user.routes.js";
-import childRouter from "./routes/child.routes.js";
-import leaderRouter from "./routes/leader.route.js";
+import studentRouter from "./routes/student.routes.js";
+import adminRouter from "./routes/admin.routes.js";
+import eventRouter from "./routes/event.routes.js";
+import newsRouter from "./routes/new.routes.js";
+import prefectRouter from "./routes/prefect.routes.js";
+import sliderRouter from "./routes/slider.routes.js";
+import staffRouter from "./routes/staff.routes.js";
 
 dotenv.config();
 
@@ -18,8 +24,14 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/children", childRouter);
-app.use("/api/v1/leaders", leaderRouter);
+app.use("/api/v1/students", studentRouter);
+app.use("/api/v1/admins", adminRouter);
+app.use("/api/v1/events", eventRouter);
+app.use("/api/v1/news", newsRouter);
+app.use("/api/v1/prefects", prefectRouter);
+app.use("/api/v1/sliders", sliderRouter);
+app.use("/api/v1/staffs", staffRouter);
+
 
 const startServer = async () => {
   try {
