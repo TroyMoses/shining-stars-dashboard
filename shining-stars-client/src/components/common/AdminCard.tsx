@@ -48,15 +48,11 @@ const AdminCard = ({
           paddingX: "5px",
         }}
       >
-        <Stack direction="row" gap={2}>
+        <Stack direction="column" gap={1}>
           <Typography
-            fontSize={16}
+            fontSize={20}
             fontWeight={500}
-            color="#11142d"
-            px={1.5}
-            py={0.5}
-            borderRadius={1}
-            bgcolor="#dadefa"
+            color="#808191"
             height="fit-content"
           >
             {name.toUpperCase()}
@@ -65,22 +61,14 @@ const AdminCard = ({
             direction="row"
             gap={0.5}
             alignItems="flex-start"
-            px={1.5}
-            py={0.5}
-            borderRadius={1}
-            bgcolor="#dadefa"
             height="fit-content"
           >
-            <Typography fontSize={14} color="#475be8">
+            <Typography fontSize={16} fontWeight={600} color="#808191">
               {title}
             </Typography>
           </Stack>
         </Stack>
         <Box
-          px={1.5}
-          py={0.5}
-          borderRadius={1}
-          bgcolor="#dadefa"
           height="fit-content"
         >
           <Typography fontSize={12} fontWeight={600} color="#808191" style={{textDecoration: "underline"}}>

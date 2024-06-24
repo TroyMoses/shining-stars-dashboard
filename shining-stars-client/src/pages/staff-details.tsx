@@ -64,7 +64,7 @@ const StaffDetails = () => {
       width="fit-content"
     >
       <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Details
+        Staff Details
       </Typography>
 
       <Box
@@ -115,7 +115,7 @@ const StaffDetails = () => {
                 color="#11142D"
                 textTransform="capitalize"
               >
-                {staffDetails.staffType.toUpperCase()}
+                {staffDetails.staffType.toUpperCase()} STAFF
               </Typography>
             </Stack>
 

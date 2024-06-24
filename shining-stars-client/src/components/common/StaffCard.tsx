@@ -47,12 +47,12 @@ const StaffCard = ({
         }}
       >
         <Stack direction="column" gap={1}>
-          <Typography fontSize={16} fontWeight={500} color="#11142d">
+          <Typography fontSize={20} fontWeight={500} color="#808191">
             {name.toUpperCase()}
           </Typography>
           <Stack direction="row" gap={0.5} alignItems="flex-start">
             <Typography fontSize={14} color="#808191">
-              {staffType.toUpperCase()}
+              {staffType.toUpperCase()} STAFF
             </Typography>
           </Stack>
         </Stack>
