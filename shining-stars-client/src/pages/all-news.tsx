@@ -48,7 +48,7 @@ const AllNews = () => {
           <Typography fontSize={25} fontWeight={700} color="#11142d">
             {!allNews.length
               ? "There are no news"
-              : "All Students"}
+              : "All News"}
           </Typography>
           <Box
             mb={2}
@@ -81,45 +81,6 @@ const AllNews = () => {
                   ]);
                 }}
               />
-              <Select
-                variant="outlined"
-                color="info"
-                displayEmpty
-                required
-                inputProps={{ "aria-label": "Without label" }}
-                defaultValue=""
-                value={currentFilterValues.grade}
-                onChange={(e) => {
-                  setFilters(
-                    [
-                      {
-                        field: "grade",
-                        operator: "eq",
-                        value: e.target.value,
-                      },
-                    ],
-                    "replace",
-                  );
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {[
-                  "Baby Class",
-                  "Middle Class",
-                  "Top Class",
-                  "Primary One",
-                  "Primary Two",
-                  "Primary Three",
-                  "Primary Four",
-                  "Primary Five",
-                  "Primary Six",
-                  "Primary Seven",
-                ].map((type) => (
-                  <MenuItem key={type} value={type.toLowerCase()}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </Select>
             </Box>
           </Box>
         </Stack>
@@ -127,7 +88,7 @@ const AllNews = () => {
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <CustomButton
-          title="Add Student"
+          title="Add New"
           handleClick={() => navigate("/news/create")}
           backgroundColor="#475be8"
           color="#fcfcfc"
@@ -136,14 +97,13 @@ const AllNews = () => {
       </Stack>
 
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        {allNews?.map((student) => (
-          <StudentCard
-            key={student._id}
-            id={student._id}
-            title={student.title}
-            grade={student.grade}
-            paymentCode={student.paymentCode}
-            photo={student.photo}
+        {allNews?.map((news) => (
+          <NewCard
+            key={news._id}
+            id={news._id}
+            title={news.title}
+            description={news.description}
+            photo={news.photo}
           />
         ))}
       </Box>
