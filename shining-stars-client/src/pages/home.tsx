@@ -7,7 +7,7 @@ import {
   PieChart,
   ChildReferrals,
   TotalRevenue,
-  ChildCard,
+  StudentCard,
 } from "components";
 
 const Home = () => {
@@ -84,13 +84,12 @@ const Home = () => {
 
         <Box mt={2.5} sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
           {latestChildren.map((child) => (
-            <ChildCard
+            <StudentCard
               key={child._id}
               id={child._id}
               name={child.name}
-              levelOfNeed={child.levelOfNeed}
               grade={child.grade}
-              donations={child.donations}
+              paymentCode={child.paymentCode}
               photo={child.photo}
             />
           ))}

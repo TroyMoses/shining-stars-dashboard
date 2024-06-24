@@ -14,20 +14,6 @@ export const validateForm = (formValues: FormValues) => {
         }
         break;
 
-      case 'description':
-        if (!formValues.description) {
-          errors.message = 'Description is required';
-          hasError = true;
-        }
-        break;
-
-      case 'levelOfNeed':
-        if (!formValues.levelOfNeed) {
-          errors.message = 'Level of need is required';
-          hasError = true;
-        }
-        break;
-
       case 'grade':
         if (!formValues.grade) {
           errors.message = 'Grade is required';
@@ -35,8 +21,8 @@ export const validateForm = (formValues: FormValues) => {
         }
         break;
 
-      case 'donations':
-        if (!formValues.donations) {
+      case 'paymentCode':
+        if (!formValues.paymentCode) {
           errors.message = 'Donations is required';
           hasError = true;
         }

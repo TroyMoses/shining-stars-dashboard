@@ -5,8 +5,8 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import type { ProfileProps, ChildProps } from "interfaces/common";
-import ChildCard from "./StudentCard";
+import type { ProfileProps, StudentProps } from "interfaces/common";
+import StudentCard from "./StudentCard";
 
 function checkImage(url: any) {
   const img = new Image();
@@ -150,15 +150,14 @@ const Profile = ({ type, name, avatar, email, children }: ProfileProps) => (
             gap: 2.5,
           }}
         >
-          {children?.map((child: ChildProps) => (
-            <ChildCard
-              key={child._id}
-              id={child._id}
-              levelOfNeed={child.levelOfNeed}
-              name={child.name}
-              grade={child.grade}
-              donations={child.donations}
-              photo={child.photo}
+          {children?.map((student: StudentProps) => (
+            <StudentCard
+              key={student._id}
+              id={student._id}
+              name={student.name}
+              grade={student.grade}
+              paymentCode={student.paymentCode}
+              photo={student.photo}
             />
           ))}
         </Box>
