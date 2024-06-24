@@ -53,6 +53,14 @@ export interface EventProps {
   creator: string;
 }
 
+export interface NewProps {
+  _id: string;
+  title: string;
+  description: string;
+  photo: string;
+  creator: string;
+}
+
 export interface StudentFormProps {
   type: string;
   register: any;
@@ -116,4 +124,17 @@ export interface EventFormProps {
   handleImageChange: (file) => void;
   onFinishHandler: (data: FieldValues) => Promise<void> | void;
   eventImage: { name: string; url: string };
+}
+
+export interface NewFormProps {
+  type: string;
+  register: any;
+  onFinish: (
+    values: FieldValues,
+  ) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>;
+  formLoading: boolean;
+  handleSubmit: FormEventHandler<HTMLFormElement> | undefined;
+  handleImageChange: (file) => void;
+  onFinishHandler: (data: FieldValues) => Promise<void> | void;
+  newImage: { name: string; url: string };
 }
