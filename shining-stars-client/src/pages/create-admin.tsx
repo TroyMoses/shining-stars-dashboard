@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useGetIdentity } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
-import type { FieldValues } from "react-hook-form";
-import LeaderForm from "components/common/AdminForm";
 
-const EditLeader = () => {
+import type { FieldValues } from "react-hook-form";
+
+import AdminForm from "components/common/AdminForm";
+
+const CreateAdmin = () => {
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
   });
-  const [leaderImage, setLeaderImage] = useState({ name: "", url: "" });
+  const [adminImage, setAdminImage] = useState({ name: "", url: "" });
   const {
     refineCore: { onFinish, formLoading },
     register,
@@ -24,32 +26,31 @@ const EditLeader = () => {
       });
 
     reader(file).then((result: string) =>
-    setLeaderImage({ name: file?.name, url: result }),
+    setAdminImage({ name: file?.name, url: result }),
     );
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-    if (!leaderImage.name) return alert("Please upload a leader image");
+    if (!adminImage.name) return alert("Please select an image");
 
     await onFinish({
       ...data,
-      photo: leaderImage.url,
+      photo: adminImage.url,
       email: user.email,
     });
   };
 
   return (
-    <LeaderForm
-      type="Edit"
+    <AdminForm
+      type="Create"
       register={register}
       onFinish={onFinish}
       formLoading={formLoading}
       handleSubmit={handleSubmit}
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
-      leaderImage={leaderImage}
+      adminImage={adminImage}
     />
   );
 };
-
-export default EditLeader;
+export default CreateAdmin;

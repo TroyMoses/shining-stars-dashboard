@@ -38,7 +38,7 @@ const AdminForm = ({
           }}
           onSubmit={handleSubmit(onFinishHandler)}
         >
-        <FormControl sx={{ flex: 1 }}>
+          <FormControl>
             <FormHelperText
               sx={{
                 fontWeight: 500,
@@ -47,25 +47,18 @@ const AdminForm = ({
                 color: "#11142d",
               }}
             >
-              Select Title
+              Enter Admin title
             </FormHelperText>
-            <Select
-              variant="outlined"
-              color="info"
-              displayEmpty
+            <TextField
+              fullWidth
               required
-              inputProps={{ "aria-label": "Without label" }}
-              defaultValue="head-teacher"
-              {...register("title", {
-                required: true,
-              })}
-            >
-              <MenuItem value="head-teacher">Head-Teacher</MenuItem>
-              <MenuItem value="director-of-studies">Director-Of-Studies</MenuItem>
-              <MenuItem value="deputy-head-teacher">Deputy-Head-Teacher</MenuItem>
-              <MenuItem value="bursar">Bursar</MenuItem>
-            </Select>
+              id="outlined-basic"
+              color="info"
+              variant="outlined"
+              {...register("title", { required: true })}
+            />
           </FormControl>
+
           <FormControl>
             <FormHelperText
               sx={{

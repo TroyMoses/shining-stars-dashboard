@@ -7,7 +7,6 @@ import Logout from "@mui/icons-material/Logout";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import {
-  GitHubBanner,
   type LegacyAuthProvider as AuthProvider,
   Refine,
 } from "@refinedev/core";
@@ -29,14 +28,34 @@ import { parseJwt } from "utils/parse-jwt";
 import {
   AgentProfile,
   Agents,
-  AllChildren,
-  CreateChild,
-  EditChild,
-  ChildDetails,
-  AllLeaders,
-  CreateLeader,
-  EditLeader,
-  LeaderDetails,
+  AllStudents,
+  CreateStudent,
+  StudentDetails,
+  EditStudent,
+  AllAdmins,
+  CreateAdmin,
+  AdminDetails,
+  EditAdmin,
+  AllStaffs,
+  CreateStaff,
+  StaffDetails,
+  EditStaff,
+  AllPrefects,
+  CreatePrefect,
+  PrefectDetails,
+  EditPrefect,
+  AllEvents,
+  CreateEvent,
+  EventDetails,
+  EditEvent,
+  AllSliders,
+  CreateSlider,
+  SliderDetails,
+  EditSlider,
+  AllNews,
+  CreateNew,
+  NewDetails,
+  EditNew,
   Home,
   Login,
   MyProfile,
@@ -53,7 +72,7 @@ axiosInstance.interceptors.request.use(
 
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 );
 
 function App() {
@@ -81,7 +100,7 @@ function App() {
               ...profileObj,
               avatar: profileObj.picture,
               userid: data._id,
-            }),
+            })
           );
         } else {
           return Promise.reject();
@@ -126,7 +145,6 @@ function App() {
 
   return (
     <ColorModeContextProvider>
-      <GitHubBanner />
       <CssBaseline />
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
       <RefineSnackbarProvider>
@@ -137,21 +155,61 @@ function App() {
           catchAll={<ErrorComponent />}
           resources={[
             {
-              name: "children",
-              options: { label: "Children " },
-              list: AllChildren,
-              show: ChildDetails,
-              create: CreateChild,
-              edit: EditChild,
+              name: "admins",
+              options: { label: "Administrators " },
+              list: AllAdmins,
+              show: AdminDetails,
+              create: CreateAdmin,
+              edit: EditAdmin,
+              icon: <PeopleAltOutlined />,
+            },
+            {
+              name: "staffs",
+              list: AllStaffs,
+              show: StaffDetails,
+              create: CreateStaff,
+              edit: EditStaff,
+              icon: <PeopleAltOutlined />,
+            },
+            {
+              name: "students",
+              list: AllStudents,
+              show: StudentDetails,
+              create: CreateStudent,
+              edit: EditStudent,
+              icon: <PeopleAltOutlined />,
+            },
+            {
+              name: "prefects",
+              list: AllPrefects,
+              show: PrefectDetails,
+              create: CreatePrefect,
+              edit: EditPrefect,
+              icon: <PeopleAltOutlined />,
+            },
+            {
+              name: "events",
+              list: AllEvents,
+              show: EventDetails,
+              create: CreateEvent,
+              edit: EditEvent,
               icon: <VillaOutlined />,
             },
             {
-              name: "leaders",
-              list: AllLeaders,
-              show: LeaderDetails,
-              create: CreateLeader,
-              edit: EditLeader,
-              icon: <PeopleAltOutlined />,
+              name: "sliders",
+              list: AllSliders,
+              show: SliderDetails,
+              create: CreateSlider,
+              edit: EditSlider,
+              icon: <StarOutlineRounded />,
+            },
+            {
+              name: "news",
+              list: AllNews,
+              show: NewDetails,
+              create: CreateNew,
+              edit: EditNew,
+              icon: <StarOutlineRounded />,
             },
             {
               name: "agents",

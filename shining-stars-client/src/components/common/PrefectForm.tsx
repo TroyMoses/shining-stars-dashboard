@@ -59,6 +59,27 @@ const PrefectForm = ({
             />
           </FormControl>
 
+          <FormControl>
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: "10px 0",
+                fontSize: 16,
+                color: "#11142d",
+              }}
+            >
+              Enter Prefect title
+            </FormHelperText>
+            <TextField
+              fullWidth
+              required
+              id="outlined-basic"
+              color="info"
+              variant="outlined"
+              {...register("title", { required: true })}
+            />
+          </FormControl>
+
           <Stack direction="row" gap={4}>
             <FormControl sx={{ flex: 1 }}>
               <FormHelperText
@@ -92,39 +113,6 @@ const PrefectForm = ({
                 <MenuItem value="primary-five">Primary-Five</MenuItem>
                 <MenuItem value="primary-six">Primary-Six</MenuItem>
                 <MenuItem value="primary-seven">Primary-Seven</MenuItem>
-              </Select>
-            </FormControl>
-          </Stack>
-
-          <Stack direction="row" gap={4}>
-            <FormControl sx={{ flex: 1 }}>
-              <FormHelperText
-                sx={{
-                  fontWeight: 500,
-                  margin: "10px 0",
-                  fontSize: 16,
-                  color: "#11142d",
-                }}
-              >
-                Select Title
-              </FormHelperText>
-              <Select
-                variant="outlined"
-                color="info"
-                displayEmpty
-                required
-                inputProps={{ "aria-label": "Without label" }}
-                defaultValue="head-prefect"
-                {...register("title", {
-                  required: true,
-                })}
-              >
-                <MenuItem value="head-prefect">Head-Prefect</MenuItem>
-                <MenuItem value="food-prefect">Food-Prefect</MenuItem>
-                <MenuItem value="liturgy-prefect">Liturgy-Prefect</MenuItem>
-                <MenuItem value="entertainment-prefect">Entertainment-Prefect</MenuItem>
-                <MenuItem value="academic-prefect">Academic-Prefect</MenuItem>
-                <MenuItem value="class-prefect">Class-Prefect</MenuItem>
               </Select>
             </FormControl>
           </Stack>

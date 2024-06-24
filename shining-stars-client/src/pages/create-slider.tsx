@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useGetIdentity } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
-import type { FieldValues } from "react-hook-form";
-import Form from "components/common/StudentForm";
 
-const EditChild = () => {
+import type { FieldValues } from "react-hook-form";
+
+import NewForm from "components/common/NewForm";
+
+const CreateSlider = () => {
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
   });
-  const [childImage, setChildImage] = useState({ name: "", url: "" });
+  const [sliderImage, setSliderImage] = useState({ name: "", url: "" });
   const {
     refineCore: { onFinish, formLoading },
     register,
@@ -24,32 +26,31 @@ const EditChild = () => {
       });
 
     reader(file).then((result: string) =>
-    setChildImage({ name: file?.name, url: result }),
+    setSliderImage({ name: file?.name, url: result }),
     );
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-    if (!childImage.name) return alert("Please upload a child image");
+    if (!sliderImage.name) return alert("Please select an image");
 
     await onFinish({
       ...data,
-      photo: childImage.url,
+      photo: sliderImage.url,
       email: user.email,
     });
   };
 
   return (
-    <Form
-      type="Edit"
+    <NewForm
+      type="Create"
       register={register}
       onFinish={onFinish}
       formLoading={formLoading}
       handleSubmit={handleSubmit}
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
-      childImage={childImage}
+      newImage={sliderImage}
     />
   );
 };
-
-export default EditChild;
+export default CreateSlider;

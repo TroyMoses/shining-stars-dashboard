@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { useGetIdentity } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
-
 import type { FieldValues } from "react-hook-form";
+import StaffForm from "components/common/StaffForm";
 
-import LeaderForm from "components/common/AdminForm";
-
-const CreateLeader = () => {
+const EditStaff = () => {
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
   });
-  const [leaderImage, setLeaderImage] = useState({ name: "", url: "" });
+  const [staffImage, setStaffImage] = useState({ name: "", url: "" });
   const {
     refineCore: { onFinish, formLoading },
     register,
@@ -26,31 +24,32 @@ const CreateLeader = () => {
       });
 
     reader(file).then((result: string) =>
-    setLeaderImage({ name: file?.name, url: result }),
+    setStaffImage({ name: file?.name, url: result }),
     );
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-    if (!leaderImage.name) return alert("Please select an image");
+    if (!staffImage.name) return alert("Please upload a staff image");
 
     await onFinish({
       ...data,
-      photo: leaderImage.url,
+      photo: staffImage.url,
       email: user.email,
     });
   };
 
   return (
-    <LeaderForm
-      type="Create"
+    <StaffForm
+      type="Edit"
       register={register}
       onFinish={onFinish}
       formLoading={formLoading}
       handleSubmit={handleSubmit}
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
-      leaderImage={leaderImage}
+      staffImage={staffImage}
     />
   );
 };
-export default CreateLeader;
+
+export default EditStaff;

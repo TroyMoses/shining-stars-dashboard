@@ -7,8 +7,6 @@ import ChatBubble from "@mui/icons-material/ChatBubble";
 import Delete from "@mui/icons-material/Delete";
 import Edit from "@mui/icons-material/Edit";
 import Phone from "@mui/icons-material/Phone";
-import Place from "@mui/icons-material/Place";
-import Star from "@mui/icons-material/Star";
 
 import { CustomButton } from "components";
 
@@ -18,7 +16,7 @@ function checkImage(url: any) {
   return img.width !== 0 && img.height !== 0;
 }
 
-const ChildDetails = () => {
+const StudentDetails = () => {
   const navigate = useNavigate();
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
@@ -29,7 +27,7 @@ const ChildDetails = () => {
 
   const { data, isLoading, isError } = queryResult;
 
-  const childDetails = data?.data ?? {};
+  const studentDetails = data?.data ?? {};
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -39,19 +37,19 @@ const ChildDetails = () => {
     return <div>Something went wrong!</div>;
   }
 
-  const isCurrentUser = user.email === childDetails.creator.email;
+  const isCurrentUser = user.email === studentDetails.creator.email;
 
-  const handleDeleteChild = () => {
-    const response = confirm("Are you sure you want to delete this child?");
+  const handleDeleteStudent = () => {
+    const response = confirm("Are you sure you want to delete this student?");
     if (response) {
       mutate(
         {
-          resource: "children",
+          resource: "students",
           id: id as string,
         },
         {
           onSuccess: () => {
-            navigate("/children");
+            navigate("/students");
           },
         },
       );
@@ -77,7 +75,7 @@ const ChildDetails = () => {
       >
         <Box flex={1} maxWidth={764}>
           <img
-            src={childDetails.photo}
+            src={studentDetails.photo}
             alt="child_details-img"
             height={546}
             style={{ objectFit: "cover", borderRadius: "10px" }}
@@ -85,26 +83,6 @@ const ChildDetails = () => {
           />
 
           <Box mt="15px">
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              flexWrap="wrap"
-              alignItems="center"
-            >
-              <Typography
-                fontSize={18}
-                fontWeight={500}
-                color="#11142D"
-                textTransform="capitalize"
-              >
-                {childDetails.levelOfNeed}
-              </Typography>
-              <Box>
-                {[1, 2, 3, 4, 5].map((item) => (
-                  <Star key={`star-${item}`} sx={{ color: "#F2C94C" }} />
-                ))}
-              </Box>
-            </Stack>
 
             <Stack
               direction="row"
@@ -120,12 +98,12 @@ const ChildDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {childDetails.name}
+                  {studentDetails.name}
                 </Typography>
                 <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
-                  <Place sx={{ color: "#808191" }} />
+                  
                   <Typography fontSize={14} color="#808191">
-                    {childDetails.grade}
+                    {studentDetails.grade}
                   </Typography>
                 </Stack>
               </Box>
@@ -137,27 +115,16 @@ const ChildDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  Donations
+                  Payment Code
                 </Typography>
                 <Stack direction="row" alignItems="flex-end" gap={1}>
                   <Typography fontSize={25} fontWeight={700} color="#475BE8">
-                    {childDetails.donations}
-                  </Typography>
-                  <Typography fontSize={14} color="#808191" mb={0.5}>
-                    for one day
+                    {studentDetails.paymentCode}
                   </Typography>
                 </Stack>
               </Box>
             </Stack>
 
-            <Stack mt="25px" direction="column" gap="10px">
-              <Typography fontSize={18} color="#11142D">
-                Description
-              </Typography>
-              <Typography fontSize={14} color="#808191">
-                {childDetails.description}
-              </Typography>
-            </Stack>
           </Box>
         </Box>
 
@@ -186,8 +153,8 @@ const ChildDetails = () => {
             >
               <img
                 src={
-                  checkImage(childDetails.creator.avatar)
-                    ? childDetails.creator.avatar
+                  checkImage(studentDetails.creator.avatar)
+                    ? studentDetails.creator.avatar
                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                 }
                 alt="avatar"
@@ -201,7 +168,7 @@ const ChildDetails = () => {
 
               <Box mt="15px">
                 <Typography fontSize={18} fontWeight={600} color="#11142D">
-                  {childDetails.creator.name}
+                  {studentDetails.creator.name}
                 </Typography>
                 <Typography
                   mt="5px"
@@ -209,19 +176,12 @@ const ChildDetails = () => {
                   fontWeight={400}
                   color="#808191"
                 >
-                  Agent
+                  Creator
                 </Typography>
               </Box>
 
-              <Stack mt="15px" direction="row" alignItems="center" gap={1}>
-                <Place sx={{ color: "#808191" }} />
-                <Typography fontSize={14} fontWeight={400} color="#808191">
-                  North Carolina, USA
-                </Typography>
-              </Stack>
-
               <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">
-                {childDetails.creator.allChildren.length} Children
+                {studentDetails.creator.allStudents.length} Students
               </Typography>
             </Stack>
 
@@ -240,7 +200,7 @@ const ChildDetails = () => {
                 icon={!isCurrentUser ? <ChatBubble /> : <Edit />}
                 handleClick={() => {
                   if (isCurrentUser) {
-                    navigate(`/children/edit/${childDetails._id}`);
+                    navigate(`/students/edit/${studentDetails._id}`);
                   }
                 }}
               />
@@ -251,33 +211,16 @@ const ChildDetails = () => {
                 fullWidth
                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                 handleClick={() => {
-                  if (isCurrentUser) handleDeleteChild();
+                  if (isCurrentUser) handleDeleteStudent();
                 }}
               />
             </Stack>
           </Stack>
 
-          <Stack>
-            <img
-              src="https://serpmedia.org/scigen/images/googlemaps-nyc-standard.png?crc=3787557525"
-              width="100%"
-              height={306}
-              style={{ borderRadius: 10, objectFit: "cover" }}
-            />
-          </Stack>
-
-          <Box>
-            <CustomButton
-              title="Donate Now"
-              backgroundColor="#475BE8"
-              color="#FCFCFC"
-              fullWidth
-            />
-          </Box>
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default ChildDetails;
+export default StudentDetails;
