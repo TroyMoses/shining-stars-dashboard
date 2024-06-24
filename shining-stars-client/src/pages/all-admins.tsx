@@ -35,9 +35,6 @@ const AllAdmins = () => {
 
     return {
       name: logicalFilters.find((item) => item.field === "name")?.value || "",
-      title:
-        logicalFilters.find((item) => item.field === "title")?.value ||
-        "",
     };
   }, [filters]);
 
@@ -84,39 +81,6 @@ const AllAdmins = () => {
                   ]);
                 }}
               />
-              <Select
-                variant="outlined"
-                color="info"
-                displayEmpty
-                required
-                inputProps={{ "aria-label": "Without label" }}
-                defaultValue=""
-                value={currentFilterValues.title}
-                onChange={(e) => {
-                  setFilters(
-                    [
-                      {
-                        field: "title",
-                        operator: "eq",
-                        value: e.target.value,
-                      },
-                    ],
-                    "replace",
-                  );
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {[
-                  "Head-Teacher",
-                  "Director-Of-Studies",
-                  "Deputy-Head-Teacher",
-                  "Bursar",
-                ].map((type) => (
-                  <MenuItem key={type} value={type.toLowerCase()}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </Select>
             </Box>
           </Box>
         </Stack>
