@@ -50,6 +50,7 @@ const CreateSlider = () => {
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
       newImage={sliderImage}
+      exact="Slider"
     />
   );
 };

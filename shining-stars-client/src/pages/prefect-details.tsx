@@ -64,7 +64,7 @@ const PrefectDetails = () => {
       width="fit-content"
     >
       <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Details
+        Prefect Details
       </Typography>
 
       <Box
@@ -98,19 +98,19 @@ const PrefectDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {prefectDetails.name}
+                  {prefectDetails.name.toUpperCase()}
                 </Typography>
                 <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
                   
                   <Typography fontSize={14} color="#808191">
-                    {prefectDetails.grade}
+                    {prefectDetails.grade.toUpperCase()}
                   </Typography>
                 </Stack>
               </Box>
 
               <Box>
                 <Typography
-                  fontSize={16}
+                  fontSize={14}
                   fontWeight={600}
                   mt="10px"
                   color="#11142D"
@@ -118,7 +118,7 @@ const PrefectDetails = () => {
                   Prefect Title
                 </Typography>
                 <Stack direction="row" alignItems="flex-end" gap={1}>
-                  <Typography fontSize={25} fontWeight={700} color="#475BE8">
+                  <Typography fontSize={20} fontWeight={700} color="#475BE8">
                     {prefectDetails.title}
                   </Typography>
                 </Stack>

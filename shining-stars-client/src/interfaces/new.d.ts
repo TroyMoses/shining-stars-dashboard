@@ -15,4 +15,5 @@ export interface NewCardProps {
   title: string;
   description: string;
   photo: string;
+  type: string;
 }

@@ -49,6 +49,7 @@ const EditSlider = () => {
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
       newImage={sliderImage}
+      exact="Slider"
     />
   );
 };

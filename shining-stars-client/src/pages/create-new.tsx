@@ -50,6 +50,7 @@ const CreateNew = () => {
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
       newImage={newImage}
+      exact="New"
     />
   );
 };

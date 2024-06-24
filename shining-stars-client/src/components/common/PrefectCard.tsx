@@ -1,4 +1,3 @@
-import Place from "@mui/icons-material/Place";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -9,13 +8,7 @@ import Stack from "@mui/material/Stack";
 
 import type { PrefectCardProps } from "interfaces/prefect";
 
-const PrefectCard = ({
-  id,
-  name,
-  title,
-  grade,
-  photo,
-}: PrefectCardProps) => {
+const PrefectCard = ({ id, name, title, grade, photo }: PrefectCardProps) => {
   return (
     <Card
       component={Link}
@@ -48,21 +41,22 @@ const PrefectCard = ({
         }}
       >
         <Stack direction="column" gap={1}>
-          <Typography fontSize={16} fontWeight={500} color="#11142d">
-            {name}
-          </Typography>
-          <Stack direction="row" gap={0.5} alignItems="flex-start">
-            <Place
-              sx={{
-                fontSize: 18,
-                color: "#11142d",
-                marginTop: 0.5,
-              }}
-            />
-            <Typography fontSize={14} color="#808191">
-              {grade}
+            <Typography
+              fontSize={16}
+              fontWeight={500}
+              color="#11142d"
+              px={1.5}
+              py={0.5}
+              borderRadius={1}
+              bgcolor="#dadefa"
+              height="fit-content"
+            >
+              {name.toUpperCase()}
             </Typography>
-          </Stack>
+            <Typography fontSize={14} color="#808191">
+              {grade.toUpperCase()}
+            </Typography>
+            
         </Stack>
         <Box
           px={1.5}

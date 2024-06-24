@@ -64,7 +64,7 @@ const NewDetails = () => {
       width="fit-content"
     >
       <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Details
+        News Details
       </Typography>
 
       <Box
@@ -98,7 +98,7 @@ const NewDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {newDetails.title}
+                  {newDetails.title.toUpperCase()}
                 </Typography>
               </Box>
             </Stack>

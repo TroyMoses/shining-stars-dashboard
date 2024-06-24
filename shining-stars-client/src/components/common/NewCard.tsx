@@ -9,16 +9,11 @@ import Stack from "@mui/material/Stack";
 
 import type { NewCardProps } from "interfaces/new";
 
-const NewCard = ({
-  id,
-  title,
-  description,
-  photo,
-}: NewCardProps) => {
+const NewCard = ({ id, title, description, photo, type }: NewCardProps) => {
   return (
     <Card
       component={Link}
-      to={`/news/show/${id}`}
+      to={`/${type}/show/${id}`}
       sx={{
         maxWidth: "330px",
         padding: "10px",
@@ -40,25 +35,25 @@ const NewCard = ({
       <CardContent
         sx={{
           display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
+          flexDirection: "column",
           gap: "10px",
           paddingX: "5px",
         }}
       >
         <Stack direction="column" gap={1}>
-          <Typography fontSize={16} fontWeight={500} color="#11142d">
-            {title}
+          <Typography fontSize={16} fontWeight={500} color="#808191">
+            TITLE: {title.toUpperCase()}
           </Typography>
         </Stack>
-        <Box
-          px={1.5}
-          py={0.5}
-          borderRadius={1}
-          bgcolor="#dadefa"
-          height="fit-content"
-        >
-          <Typography fontSize={12} fontWeight={600} color="#475be8">
+        <Box sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "2px",
+        }}>
+          <Typography fontSize={12} fontWeight={600} color="#808191">
+            DESCRIPTION
+          </Typography>
+          <Typography fontSize={12} fontWeight={600} color="#808191">
             {description}
           </Typography>
         </Box>

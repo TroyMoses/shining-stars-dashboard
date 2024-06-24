@@ -47,7 +47,16 @@ const StudentCard = ({
         }}
       >
         <Stack direction="column" gap={1}>
-          <Typography fontSize={16} fontWeight={500} color="#11142d">
+          <Typography
+            fontSize={16}
+            fontWeight={500}
+            color="#11142d"
+            px={1.5}
+            py={0.5}
+            borderRadius={1}
+            bgcolor="#dadefa"
+            height="fit-content"
+          >
             {name.toUpperCase()}
           </Typography>
           <Stack direction="row" gap={0.5} alignItems="flex-start">

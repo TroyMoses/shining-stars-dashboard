@@ -59,6 +59,7 @@ export interface NewProps {
   description: string;
   photo: string;
   creator: string;
+  type: string;
 }
 
 export interface StudentFormProps {
@@ -128,6 +129,7 @@ export interface EventFormProps {
 
 export interface NewFormProps {
   type: string;
+  exact: string;
   register: any;
   onFinish: (
     values: FieldValues,
