@@ -5,14 +5,14 @@ import Stack from "@mui/material/Stack";
 
 import {
   PieChart,
-  ChildReferrals,
-  TotalRevenue,
+  StudentReferrals,
+  TotalFees,
   StudentCard,
 } from "components";
 
 const Home = () => {
   const { data, isLoading, isError } = useList({
-    resource: "children",
+    resource: "students",
     config: {
       pagination: {
         pageSize: 4,
@@ -20,7 +20,7 @@ const Home = () => {
     },
   });
 
-  const latestChildren = data?.data ?? [];
+  const latestStudents = data?.data ?? [];
 
   if (isLoading) return <Typography>Loading...</Typography>;
   if (isError) return <Typography>Something went wrong!</Typography>;
@@ -33,26 +33,26 @@ const Home = () => {
 
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
         <PieChart
-          title="Children To Sponsor"
-          value={684}
-          series={[75, 25]}
-          colors={["#275be8", "#c4e8ef"]}
-        />
-        <PieChart
-          title="Services for Donations"
-          value={550}
+          title="Total Administrators"
+          value={50}
           series={[60, 40]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
-          title="Total sponsors"
+          title="Total Staffs"
+          value={134}
+          series={[75, 25]}
+          colors={["#275be8", "#c4e8ef"]}
+        />
+        <PieChart
+          title="Total Students"
           value={5684}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
-          title="Children for Donation"
-          value={555}
+          title="Total Prefects"
+          value={355}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
@@ -64,8 +64,8 @@ const Home = () => {
         direction={{ xs: "column", lg: "row" }}
         gap={4}
       >
-        <TotalRevenue />
-        <ChildReferrals />
+        <TotalFees />
+        <StudentReferrals />
       </Stack>
 
       <Box
@@ -79,18 +79,18 @@ const Home = () => {
         mt="25px"
       >
         <Typography fontSize="18px" fontWeight={600} color="#11142d">
-          Latest Children
+          Latest Students
         </Typography>
 
         <Box mt={2.5} sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-          {latestChildren.map((child) => (
+          {latestStudents.map((student) => (
             <StudentCard
-              key={child._id}
-              id={child._id}
-              name={child.name}
-              grade={child.grade}
-              paymentCode={child.paymentCode}
-              photo={child.photo}
+              key={student._id}
+              id={student._id}
+              name={student.name}
+              grade={student.grade}
+              paymentCode={student.paymentCode}
+              photo={student.photo}
             />
           ))}
         </Box>

@@ -6,7 +6,7 @@ import ArrowCircleUpRounded from "@mui/icons-material/ArrowCircleUpRounded";
 
 import { TotalRevenueOptions, TotalRevenueSeries } from "./chart.config";
 
-const TotalRevenue = () => {
+const TotalFees = () => {
   return (
     <Box
       p={4}
@@ -18,7 +18,7 @@ const TotalRevenue = () => {
       borderRadius="15px"
     >
       <Typography fontSize={18} fontWeight={600} color="#11142d">
-        Total Revenue
+        Total Fees
       </Typography>
 
       <Stack my="20px" direction="row" gap={4} flexWrap="wrap">
@@ -48,4 +48,4 @@ const TotalRevenue = () => {
   );
 };
 
-export default TotalRevenue;
+export default TotalFees;

@@ -1,6 +1,9 @@
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
-import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
+import NewsPaperOutlined from "@mui/icons-material/NewspaperOutlined";
+import SupervisorAccountOutlined from "@mui/icons-material/SupervisorAccountOutlined";
 import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
+import CalendarMonthOutlined from "@mui/icons-material/CalendarMonthOutlined";
+import ViewCarouselOutlined from "@mui/icons-material/ViewCarouselOutlined";
 import StarOutlineRounded from "@mui/icons-material/StarOutlineRounded";
 import VillaOutlined from "@mui/icons-material/VillaOutlined";
 import Logout from "@mui/icons-material/Logout";
@@ -161,7 +164,7 @@ function App() {
               show: AdminDetails,
               create: CreateAdmin,
               edit: EditAdmin,
-              icon: <PeopleAltOutlined />,
+              icon: <SupervisorAccountOutlined />,
             },
             {
               name: "staffs",
@@ -193,7 +196,7 @@ function App() {
               show: EventDetails,
               create: CreateEvent,
               edit: EditEvent,
-              icon: <VillaOutlined />,
+              icon: <CalendarMonthOutlined />,
             },
             {
               name: "sliders",
@@ -201,7 +204,7 @@ function App() {
               show: SliderDetails,
               create: CreateSlider,
               edit: EditSlider,
-              icon: <StarOutlineRounded />,
+              icon: <ViewCarouselOutlined />,
             },
             {
               name: "news",
@@ -209,7 +212,7 @@ function App() {
               show: NewDetails,
               create: CreateNew,
               edit: EditNew,
-              icon: <StarOutlineRounded />,
+              icon: <NewsPaperOutlined />,
             },
             {
               name: "agents",

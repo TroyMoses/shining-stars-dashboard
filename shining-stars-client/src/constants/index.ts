@@ -1,21 +1,21 @@
-export const childReferralsInfo = [
+export const studentReferralsInfo = [
   {
-    title: "Social Media",
+    title: "Male Students",
     percentage: 64,
     color: "#6C5DD3",
   },
   {
-    title: "Marketplace",
+    title: "Female Students",
     percentage: 40,
     color: "#7FBA7A",
   },
   {
-    title: "Websites",
+    title: "Day Students",
     percentage: 50,
     color: "#FFCE73",
   },
   {
-    title: "Digital Ads",
+    title: "Boarding Students",
     percentage: 80,
     color: "#FFA2C0",
   },
