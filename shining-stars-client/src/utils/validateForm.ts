@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-import { FormValues } from 'interfaces/child';
+import { FormValues } from 'interfaces/student';
 
 export const validateForm = (formValues: FormValues) => {
   const errors: { message: string } = { message: '' };

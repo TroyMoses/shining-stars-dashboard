@@ -9,22 +9,22 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 
-import type { LeaderFormProps } from "interfaces/common";
+import type { AdminFormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
 
-const Form = ({
+const AdminForm = ({
   type,
   register,
   handleSubmit,
   handleImageChange,
   formLoading,
   onFinishHandler,
-  leaderImage,
-}: LeaderFormProps) => {
+  adminImage,
+}: AdminFormProps) => {
   return (
     <Box>
       <Typography fontSize={25} fontWeight={700} color="#11142d">
-        {type} a Leader
+        {type} an Admin
       </Typography>
 
       <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
@@ -38,6 +38,34 @@ const Form = ({
           }}
           onSubmit={handleSubmit(onFinishHandler)}
         >
+        <FormControl sx={{ flex: 1 }}>
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: "10px 0",
+                fontSize: 16,
+                color: "#11142d",
+              }}
+            >
+              Select Title
+            </FormHelperText>
+            <Select
+              variant="outlined"
+              color="info"
+              displayEmpty
+              required
+              inputProps={{ "aria-label": "Without label" }}
+              defaultValue="head-teacher"
+              {...register("title", {
+                required: true,
+              })}
+            >
+              <MenuItem value="head-teacher">Head-Teacher</MenuItem>
+              <MenuItem value="director-of-studies">Director-Of-Studies</MenuItem>
+              <MenuItem value="deputy-head-teacher">Deputy-Head-Teacher</MenuItem>
+              <MenuItem value="bursar">Bursar</MenuItem>
+            </Select>
+          </FormControl>
           <FormControl>
             <FormHelperText
               sx={{
@@ -47,7 +75,7 @@ const Form = ({
                 color: "#11142d",
               }}
             >
-              Enter Leader name
+              Enter Admin name
             </FormHelperText>
             <TextField
               fullWidth
@@ -58,6 +86,35 @@ const Form = ({
               {...register("name", { required: true })}
             />
           </FormControl>
+          <FormControl>
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: "10px 0",
+                fontSize: 16,
+                color: "#11142d",
+              }}
+            >
+              Enter Message
+            </FormHelperText>
+            <TextareaAutosize
+              minRows={5}
+              required
+              placeholder="Write message"
+              color="info"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
+              {...register("message", { required: true })}
+            />
+          </FormControl>
+
           <FormControl>
             <FormHelperText
               sx={{
@@ -87,79 +144,6 @@ const Form = ({
             />
           </FormControl>
 
-          <Stack direction="row" gap={4}>
-            <FormControl sx={{ flex: 1 }}>
-              <FormHelperText
-                sx={{
-                  fontWeight: 500,
-                  margin: "10px 0",
-                  fontSize: 16,
-                  color: "#11142d",
-                }}
-              >
-                Select Level Of Need
-              </FormHelperText>
-              <Select
-                variant="outlined"
-                color="info"
-                displayEmpty
-                required
-                inputProps={{ "aria-label": "Without label" }}
-                defaultValue="Average"
-                {...register("levelOfNeed", {
-                  required: true,
-                })}
-              >
-                <MenuItem value="average">Average</MenuItem>
-                <MenuItem value="high">High</MenuItem>
-                <MenuItem value="low">Low</MenuItem>
-                <MenuItem value="urgent">Urgent</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl>
-              <FormHelperText
-                sx={{
-                  fontWeight: 500,
-                  margin: "10px 0",
-                  fontSize: 16,
-                  color: "#11142d",
-                }}
-              >
-                Enter Leader Donations
-              </FormHelperText>
-              <TextField
-                fullWidth
-                required
-                id="outlined-basic"
-                color="info"
-                type="number"
-                variant="outlined"
-                {...register("donations", { required: true })}
-              />
-            </FormControl>
-          </Stack>
-
-          <FormControl>
-            <FormHelperText
-              sx={{
-                fontWeight: 500,
-                margin: "10px 0",
-                fontSize: 16,
-                color: "#11142d",
-              }}
-            >
-              Enter Grade
-            </FormHelperText>
-            <TextField
-              fullWidth
-              required
-              id="outlined-basic"
-              color="info"
-              variant="outlined"
-              {...register("grade", { required: true })}
-            />
-          </FormControl>
-
           <Stack direction="column" gap={1} justifyContent="center" mb={2}>
             <Stack direction="row" gap={2}>
               <Typography
@@ -168,7 +152,7 @@ const Form = ({
                 fontWeight={500}
                 my="10px"
               >
-                Leader Photo
+                Admin Photo
               </Typography>
 
               <Button
@@ -196,7 +180,7 @@ const Form = ({
               color="#808191"
               sx={{ wordBreak: "break-all" }}
             >
-              {leaderImage?.name}
+              {adminImage?.name}
             </Typography>
           </Stack>
 
@@ -212,4 +196,4 @@ const Form = ({
   );
 };
 
-export default Form;
+export default AdminForm;

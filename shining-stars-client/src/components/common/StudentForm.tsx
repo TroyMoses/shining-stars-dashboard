@@ -9,22 +9,22 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 
-import type { FormProps } from "interfaces/common";
+import type { StudentFormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
 
-const Form = ({
+const StudentForm = ({
   type,
   register,
   handleSubmit,
   handleImageChange,
   formLoading,
   onFinishHandler,
-  childImage,
-}: FormProps) => {
+  studentImage,
+}: StudentFormProps) => {
   return (
     <Box>
       <Typography fontSize={25} fontWeight={700} color="#11142d">
-        {type} a Child
+        {type} a Student
       </Typography>
 
       <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
@@ -47,7 +47,7 @@ const Form = ({
                 color: "#11142d",
               }}
             >
-              Enter Child name
+              Enter Student name
             </FormHelperText>
             <TextField
               fullWidth
@@ -56,34 +56,6 @@ const Form = ({
               color="info"
               variant="outlined"
               {...register("name", { required: true })}
-            />
-          </FormControl>
-          <FormControl>
-            <FormHelperText
-              sx={{
-                fontWeight: 500,
-                margin: "10px 0",
-                fontSize: 16,
-                color: "#11142d",
-              }}
-            >
-              Enter Description
-            </FormHelperText>
-            <TextareaAutosize
-              minRows={5}
-              required
-              placeholder="Write description"
-              color="info"
-              style={{
-                width: "100%",
-                background: "transparent",
-                fontSize: "16px",
-                borderColor: "rgba(0,0,0,0.23)",
-                borderRadius: 6,
-                padding: 10,
-                color: "#919191",
-              }}
-              {...register("description", { required: true })}
             />
           </FormControl>
 
@@ -97,7 +69,7 @@ const Form = ({
                   color: "#11142d",
                 }}
               >
-                Select Level Of Need
+                Select Grade
               </FormHelperText>
               <Select
                 variant="outlined"
@@ -105,15 +77,21 @@ const Form = ({
                 displayEmpty
                 required
                 inputProps={{ "aria-label": "Without label" }}
-                defaultValue="Average"
-                {...register("levelOfNeed", {
+                defaultValue="baby-class"
+                {...register("grade", {
                   required: true,
                 })}
               >
-                <MenuItem value="average">Average</MenuItem>
-                <MenuItem value="high">High</MenuItem>
-                <MenuItem value="low">Low</MenuItem>
-                <MenuItem value="urgent">Urgent</MenuItem>
+                <MenuItem value="baby-class">Baby-Class</MenuItem>
+                <MenuItem value="middle-class">Middle-Class</MenuItem>
+                <MenuItem value="top-class">Top-Class</MenuItem>
+                <MenuItem value="primary-one">Primary-One</MenuItem>
+                <MenuItem value="primary-two">Primary-Two</MenuItem>
+                <MenuItem value="primary-three">Primary-Three</MenuItem>
+                <MenuItem value="primary-four">Primary-Four</MenuItem>
+                <MenuItem value="primary-five">Primary-Five</MenuItem>
+                <MenuItem value="primary-six">Primary-Six</MenuItem>
+                <MenuItem value="primary-seven">Primary-Seven</MenuItem>
               </Select>
             </FormControl>
             <FormControl>
@@ -125,40 +103,18 @@ const Form = ({
                   color: "#11142d",
                 }}
               >
-                Enter Child Donations
+                Enter Student Payment Code
               </FormHelperText>
               <TextField
                 fullWidth
                 required
                 id="outlined-basic"
                 color="info"
-                type="number"
                 variant="outlined"
-                {...register("donations", { required: true })}
+                {...register("paymentCode", { required: true })}
               />
             </FormControl>
           </Stack>
-
-          <FormControl>
-            <FormHelperText
-              sx={{
-                fontWeight: 500,
-                margin: "10px 0",
-                fontSize: 16,
-                color: "#11142d",
-              }}
-            >
-              Enter Grade
-            </FormHelperText>
-            <TextField
-              fullWidth
-              required
-              id="outlined-basic"
-              color="info"
-              variant="outlined"
-              {...register("grade", { required: true })}
-            />
-          </FormControl>
 
           <Stack direction="column" gap={1} justifyContent="center" mb={2}>
             <Stack direction="row" gap={2}>
@@ -168,7 +124,7 @@ const Form = ({
                 fontWeight={500}
                 my="10px"
               >
-                Child Photo
+                Student Photo
               </Typography>
 
               <Button
@@ -196,7 +152,7 @@ const Form = ({
               color="#808191"
               sx={{ wordBreak: "break-all" }}
             >
-              {childImage?.name}
+              {studentImage?.name}
             </Typography>
           </Stack>
 
@@ -212,4 +168,4 @@ const Form = ({
   );
 };
 
-export default Form;
+export default StudentForm;

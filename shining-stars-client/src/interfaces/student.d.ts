@@ -7,17 +7,14 @@ export interface FormFieldProp {
 
 export interface FormValues {
   name: string;
-  description: string;
-  levelOfNeed: string;
+  paymentCode: string;
   grade: string;
-  donations: number | undefined;
 }
 
-export interface ChildCardProps {
+export interface StudentCardProps {
   id?: BaseKey | undefined;
   name: string;
   grade: string;
-  levelOfNeed: string;
-  donations: string;
+  paymentCode: string;
   photo: string;
 }

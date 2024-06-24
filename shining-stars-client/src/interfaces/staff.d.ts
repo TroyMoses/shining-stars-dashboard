@@ -7,17 +7,12 @@ export interface FormFieldProp {
 
 export interface FormValues {
   name: string;
-  description: string;
-  leaderShipType: string;
-  position: string;
-  donations: number | undefined;
+  staffType: string;
 }
 
-export interface LeaderCardProps {
+export interface StaffCardProps {
   id?: BaseKey | undefined;
   name: string;
-  position: string;
-  leaderShipType: string;
-  donations: string;
+  staffType: string;
   photo: string;
 }

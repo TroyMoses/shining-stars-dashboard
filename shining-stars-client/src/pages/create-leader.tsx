@@ -4,7 +4,7 @@ import { useForm } from "@refinedev/react-hook-form";
 
 import type { FieldValues } from "react-hook-form";
 
-import LeaderForm from "components/common/LeaderForm";
+import LeaderForm from "components/common/AdminForm";
 
 const CreateLeader = () => {
   const { data: user } = useGetIdentity({

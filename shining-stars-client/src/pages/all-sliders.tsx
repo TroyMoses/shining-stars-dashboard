@@ -9,9 +9,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
-import {  LeaderCard, CustomButton } from "components";
+import {  NewCard, CustomButton } from "components";
 
-const AllLeaders = () => {
+const AllSliders = () => {
   const navigate = useNavigate();
 
   const {
@@ -26,13 +26,7 @@ const AllLeaders = () => {
     setFilters,
   } = useTable();
 
-  const allLeaders = data?.data ?? [];
-
-  const currentDonation = sorter.find((item) => item.field === "donations")?.order;
-
-  const toggleSort = (field: string) => {
-    setSorter([{ field, order: currentDonation === "asc" ? "desc" : "asc" }]);
-  };
+  const allSliders = data?.data ?? [];
 
   const currentFilterValues = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
@@ -40,10 +34,7 @@ const AllLeaders = () => {
     );
 
     return {
-      name: logicalFilters.find((item) => item.field === "name")?.value || "",
-      leaderShipType:
-        logicalFilters.find((item) => item.field === "leaderShipType")?.value ||
-        "",
+      title: logicalFilters.find((item) => item.field === "title")?.value || "",
     };
   }, [filters]);
 
@@ -55,9 +46,9 @@ const AllLeaders = () => {
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
         <Stack direction="column" width="100%">
           <Typography fontSize={25} fontWeight={700} color="#11142d">
-            {!allLeaders.length
-              ? "There are no leaders"
-              : "All Leaders"}
+            {!allSliders.length
+              ? "There are no sliders"
+              : "All Sliders"}
           </Typography>
           <Box
             mb={2}
@@ -73,21 +64,15 @@ const AllLeaders = () => {
               flexWrap="wrap"
               mb={{ xs: "20px", sm: 0 }}
             >
-              <CustomButton
-                title={`Sort donations ${currentDonation === "asc" ? "↑" : "↓"}`}
-                handleClick={() => toggleSort("donations")}
-                backgroundColor="#475be8"
-                color="#fcfcfc"
-              />
               <TextField
                 variant="outlined"
                 color="info"
-                placeholder="Search by name"
-                value={currentFilterValues.name}
+                placeholder="Search by title"
+                value={currentFilterValues.title}
                 onChange={(e) => {
                   setFilters([
                     {
-                      field: "name",
+                      field: "title",
                       operator: "contains",
                       value: e.currentTarget.value
                         ? e.currentTarget.value
@@ -96,37 +81,6 @@ const AllLeaders = () => {
                   ]);
                 }}
               />
-              <Select
-                variant="outlined"
-                color="info"
-                displayEmpty
-                required
-                inputProps={{ "aria-label": "Without label" }}
-                defaultValue=""
-                value={currentFilterValues.leaderShipType}
-                onChange={(e) => {
-                  setFilters(
-                    [
-                      {
-                        field: "leaderShipType",
-                        operator: "eq",
-                        value: e.target.value,
-                      },
-                    ],
-                    "replace",
-                  );
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {[
-                  "Board Member",
-                  "Leadership Team",
-                ].map((type) => (
-                  <MenuItem key={type} value={type.toLowerCase()}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </Select>
             </Box>
           </Box>
         </Stack>
@@ -134,8 +88,8 @@ const AllLeaders = () => {
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <CustomButton
-          title="Add Leader"
-          handleClick={() => navigate("/leaders/create")}
+          title="Add Slider"
+          handleClick={() => navigate("/sliders/create")}
           backgroundColor="#475be8"
           color="#fcfcfc"
           icon={<Add />}
@@ -143,20 +97,18 @@ const AllLeaders = () => {
       </Stack>
 
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        {allLeaders?.map((leader) => (
-          <LeaderCard
-            key={leader._id}
-            id={leader._id}
-            name={leader.name}
-            leaderShipType={leader.leaderShipType}
-            position={leader.position}
-            donations={leader.donations}
-            photo={leader.photo}
+        {allSliders?.map((slider) => (
+          <NewCard
+            key={slider._id}
+            id={slider._id}
+            title={slider.title}
+            description={slider.description}
+            photo={slider.photo}
           />
         ))}
       </Box>
 
-      {allLeaders.length > 0 && (
+      {allSliders.length > 0 && (
         <Box display="flex" gap={2} mt={3} flexWrap="wrap">
           <CustomButton
             title="Previous"
@@ -205,4 +157,4 @@ const AllLeaders = () => {
   );
 };
 
-export default AllLeaders;
+export default AllSliders;

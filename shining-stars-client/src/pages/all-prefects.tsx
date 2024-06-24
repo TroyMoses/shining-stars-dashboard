@@ -9,9 +9,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
-import {  ChildCard, CustomButton } from "components";
+import {  PrefectCard, CustomButton } from "components";
 
-const AllChildren = () => {
+const AllPrefects = () => {
   const navigate = useNavigate();
 
   const {
@@ -26,13 +26,7 @@ const AllChildren = () => {
     setFilters,
   } = useTable();
 
-  const allChildren = data?.data ?? [];
-
-  const currentDonation = sorter.find((item) => item.field === "donations")?.order;
-
-  const toggleSort = (field: string) => {
-    setSorter([{ field, order: currentDonation === "asc" ? "desc" : "asc" }]);
-  };
+  const allPrefects = data?.data ?? [];
 
   const currentFilterValues = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
@@ -41,8 +35,8 @@ const AllChildren = () => {
 
     return {
       name: logicalFilters.find((item) => item.field === "name")?.value || "",
-      levelOfNeed:
-        logicalFilters.find((item) => item.field === "levelOfNeed")?.value ||
+      grade:
+        logicalFilters.find((item) => item.field === "grade")?.value ||
         "",
     };
   }, [filters]);
@@ -55,9 +49,9 @@ const AllChildren = () => {
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
         <Stack direction="column" width="100%">
           <Typography fontSize={25} fontWeight={700} color="#11142d">
-            {!allChildren.length
-              ? "There are no children"
-              : "All Children"}
+            {!allPrefects.length
+              ? "There are no prefects"
+              : "All Prefects"}
           </Typography>
           <Box
             mb={2}
@@ -73,12 +67,6 @@ const AllChildren = () => {
               flexWrap="wrap"
               mb={{ xs: "20px", sm: 0 }}
             >
-              <CustomButton
-                title={`Sort donations ${currentDonation === "asc" ? "↑" : "↓"}`}
-                handleClick={() => toggleSort("donations")}
-                backgroundColor="#475be8"
-                color="#fcfcfc"
-              />
               <TextField
                 variant="outlined"
                 color="info"
@@ -103,12 +91,12 @@ const AllChildren = () => {
                 required
                 inputProps={{ "aria-label": "Without label" }}
                 defaultValue=""
-                value={currentFilterValues.levelOfNeed}
+                value={currentFilterValues.grade}
                 onChange={(e) => {
                   setFilters(
                     [
                       {
-                        field: "levelOfNeed",
+                        field: "grade",
                         operator: "eq",
                         value: e.target.value,
                       },
@@ -119,10 +107,16 @@ const AllChildren = () => {
               >
                 <MenuItem value="">All</MenuItem>
                 {[
-                  "High",
-                  "Low",
-                  "Average",
-                  "Urgent",
+                  "Baby Class",
+                  "Middle Class",
+                  "Top Class",
+                  "Primary One",
+                  "Primary Two",
+                  "Primary Three",
+                  "Primary Four",
+                  "Primary Five",
+                  "Primary Six",
+                  "Primary Seven",
                 ].map((type) => (
                   <MenuItem key={type} value={type.toLowerCase()}>
                     {type}
@@ -136,8 +130,8 @@ const AllChildren = () => {
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <CustomButton
-          title="Add Child"
-          handleClick={() => navigate("/children/create")}
+          title="Add Prefect"
+          handleClick={() => navigate("/prefects/create")}
           backgroundColor="#475be8"
           color="#fcfcfc"
           icon={<Add />}
@@ -145,20 +139,19 @@ const AllChildren = () => {
       </Stack>
 
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        {allChildren?.map((child) => (
-          <ChildCard
-            key={child._id}
-            id={child._id}
-            name={child.name}
-            levelOfNeed={child.levelOfNeed}
-            grade={child.grade}
-            donations={child.donations}
-            photo={child.photo}
+        {allPrefects?.map((student) => (
+          <PrefectCard
+            key={student._id}
+            id={student._id}
+            name={student.name}
+            title={student.title}
+            grade={student.grade}
+            photo={student.photo}
           />
         ))}
       </Box>
 
-      {allChildren.length > 0 && (
+      {allPrefects.length > 0 && (
         <Box display="flex" gap={2} mt={3} flexWrap="wrap">
           <CustomButton
             title="Previous"
@@ -207,4 +200,4 @@ const AllChildren = () => {
   );
 };
 
-export default AllChildren;
+export default AllPrefects;

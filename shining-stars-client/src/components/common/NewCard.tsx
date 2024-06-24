@@ -7,20 +7,18 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 
-import type { LeaderCardProps } from "interfaces/leader";
+import type { NewCardProps } from "interfaces/new";
 
-const LeaderCard = ({
+const NewCard = ({
   id,
-  name,
-  position,
-  leaderShipType,
-  donations,
+  title,
+  description,
   photo,
-}: LeaderCardProps) => {
+}: NewCardProps) => {
   return (
     <Card
       component={Link}
-      to={`/leaders/show/${id}`}
+      to={`/news/show/${id}`}
       sx={{
         maxWidth: "330px",
         padding: "10px",
@@ -50,20 +48,8 @@ const LeaderCard = ({
       >
         <Stack direction="column" gap={1}>
           <Typography fontSize={16} fontWeight={500} color="#11142d">
-            {name}
+            {title}
           </Typography>
-          <Stack direction="row" gap={0.5} alignItems="flex-start">
-            <Place
-              sx={{
-                fontSize: 18,
-                color: "#11142d",
-                marginTop: 0.5,
-              }}
-            />
-            <Typography fontSize={14} color="#808191">
-              {position}
-            </Typography>
-          </Stack>
         </Stack>
         <Box
           px={1.5}
@@ -73,7 +59,7 @@ const LeaderCard = ({
           height="fit-content"
         >
           <Typography fontSize={12} fontWeight={600} color="#475be8">
-            {leaderShipType}
+            {description}
           </Typography>
         </Box>
       </CardContent>
@@ -81,4 +67,4 @@ const LeaderCard = ({
   );
 };
 
-export default LeaderCard;
+export default NewCard;
