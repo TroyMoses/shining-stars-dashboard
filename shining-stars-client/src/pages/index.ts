@@ -7,7 +7,7 @@ import ChildDetails from "./child-details";
 import EditChild from "./edit-child";
 
 import AllLeaders from "./all-admins";
-import CreateLeader from "./create-leader";
+import CreateLeader from "./create-admin";
 import LeaderDetails from "./leader-details";
 import EditLeader from "./edit-leader";
 
