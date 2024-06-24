@@ -83,6 +83,21 @@ const StudentForm = ({
                 color="info"
                 displayEmpty
                 required
+                sx={{
+                  flex: 1,
+                  '& .MuiSelect-select': { 
+                    color: '#919191',  
+                  },
+                  '& .MuiFormLabel-root': { 
+                    color: '#919191',
+                  },
+                  '& .MuiInputLabel-outlined': { 
+                    color: '#919191',
+                  },
+                }}
+                {...register("gender", {
+                  required: true,
+                })}
                 inputProps={{ "aria-label": "Without label" }}
                 defaultValue="baby-class"
                 {...register("grade", {
@@ -101,6 +116,49 @@ const StudentForm = ({
                 <MenuItem value="primary-seven">Primary-Seven</MenuItem>
               </Select>
             </FormControl>
+
+            <FormControl sx={{ flex: 1 }}>
+              <FormHelperText
+                sx={{
+                  fontWeight: 500,
+                  margin: "10px 0",
+                  fontSize: 16,
+                  color: "#11142d",
+                }}
+              >
+                Select Residence
+              </FormHelperText>
+              <Select
+                variant="outlined"
+                color="info"
+                displayEmpty
+                required
+                sx={{
+                  flex: 1,
+                  '& .MuiSelect-select': { 
+                    color: '#919191',  
+                  },
+                  '& .MuiFormLabel-root': { 
+                    color: '#919191',
+                  },
+                  '& .MuiInputLabel-outlined': { 
+                    color: '#919191',
+                  },
+                }}
+                {...register("gender", {
+                  required: true,
+                })}
+                inputProps={{ "aria-label": "Without label" }}
+                defaultValue="boarding"
+                {...register("residence", {
+                  required: true,
+                })}
+              >
+                <MenuItem value="boarding">Boarding</MenuItem>
+                <MenuItem value="day">Day</MenuItem>
+              </Select>
+            </FormControl>
+
             <FormControl>
               <FormHelperText
                 sx={{
@@ -129,6 +187,49 @@ const StudentForm = ({
             />
             </FormControl>
           </Stack>
+
+          <FormControl sx={{ flex: 1 }}>
+              <FormHelperText
+                sx={{
+                  fontWeight: 500,
+                  margin: "10px 0",
+                  fontSize: 16,
+                  color: "#11142d",
+                }}
+              >
+                Select Gender
+              </FormHelperText>
+              <Select
+                variant="outlined"
+                color="info"
+                displayEmpty
+                required
+                sx={{
+                  flex: 1,
+                  '& .MuiSelect-select': { 
+                    color: '#919191',  
+                  },
+                  '& .MuiFormLabel-root': { 
+                    color: '#919191',
+                  },
+                  '& .MuiInputLabel-outlined': { 
+                    color: '#919191',
+                  },
+                }}
+                {...register("gender", {
+                  required: true,
+                })}
+                inputProps={{ "aria-label": "Without label" }}
+                defaultValue="male"
+                {...register("gender", {
+                  required: true,
+                })}
+              >
+                <MenuItem value="male">Male</MenuItem>
+                <MenuItem value="female">Female</MenuItem>
+              </Select>
+            </FormControl>
+
 
           <Stack direction="column" gap={1} justifyContent="center" mb={2}>
             <Stack direction="row" gap={2}>

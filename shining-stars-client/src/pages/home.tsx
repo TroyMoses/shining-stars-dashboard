@@ -20,7 +20,40 @@ const Home = () => {
     },
   });
 
+  const adminsData = useList({
+    resource: "admins",
+    config: {
+      pagination: {
+        pageSize: 4,
+      },
+    },
+  });
+
+  const staffsData = useList({
+    resource: "staffs",
+    config: {
+      pagination: {
+        pageSize: 4,
+      },
+    },
+  });
+
+  const prefectsData = useList({
+    resource: "prefects",
+    config: {
+      pagination: {
+        pageSize: 4,
+      },
+    },
+  });
+
   const latestStudents = data?.data ?? [];
+
+  const noOfStudents = latestStudents.length;
+  const noOfAdmins = adminsData?.data?.data?.length;
+  const noOfStaffs = staffsData?.data?.data?.length;
+  const noOfPrefects = prefectsData?.data?.data?.length;
+
 
   if (isLoading) return <Typography>Loading...</Typography>;
   if (isError) return <Typography>Something went wrong!</Typography>;
@@ -34,25 +67,25 @@ const Home = () => {
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
         <PieChart
           title="Total Administrators"
-          value={50}
+          value={noOfAdmins!}
           series={[60, 40]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Total Staffs"
-          value={134}
+          value={noOfStaffs!}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Total Students"
-          value={5684}
+          value={noOfStudents!}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Total Prefects"
-          value={355}
+          value={noOfPrefects!}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
@@ -61,10 +94,7 @@ const Home = () => {
       <Stack
         mt="25px"
         width="100%"
-        direction={{ xs: "column", lg: "row" }}
-        gap={4}
       >
-        <TotalFees />
         <StudentReferrals />
       </Stack>
 
@@ -91,6 +121,8 @@ const Home = () => {
               grade={student.grade}
               paymentCode={student.paymentCode}
               photo={student.photo}
+              gender={student.gender}
+              residence={student.residence}
             />
           ))}
         </Box>

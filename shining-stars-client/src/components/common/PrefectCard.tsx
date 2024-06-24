@@ -8,7 +8,15 @@ import Stack from "@mui/material/Stack";
 
 import type { PrefectCardProps } from "interfaces/prefect";
 
-const PrefectCard = ({ id, name, title, grade, photo }: PrefectCardProps) => {
+const PrefectCard = ({
+  id,
+  name,
+  gender,
+  title,
+  grade,
+  residence,
+  photo,
+}: PrefectCardProps) => {
   return (
     <Card
       component={Link}
@@ -34,41 +42,65 @@ const PrefectCard = ({ id, name, title, grade, photo }: PrefectCardProps) => {
       <CardContent
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
           gap: "10px",
           paddingX: "5px",
         }}
       >
-        <Stack direction="column" gap={1}>
-            <Typography
-              fontSize={16}
-              fontWeight={500}
-              color="#11142d"
-              px={1.5}
-              py={0.5}
-              borderRadius={1}
-              bgcolor="#dadefa"
-              height="fit-content"
-            >
-              {name.toUpperCase()}
-            </Typography>
-            <Typography fontSize={14} color="#808191">
-              {grade.toUpperCase()}
-            </Typography>
-            
-        </Stack>
-        <Box
-          px={1.5}
-          py={0.5}
-          borderRadius={1}
-          bgcolor="#dadefa"
-          height="fit-content"
+        <Stack
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            gap: "10px",
+          }}
         >
-          <Typography fontSize={12} fontWeight={600} color="#475be8">
-            {title}
+          <Typography
+            fontSize={16}
+            fontWeight={500}
+            color="#11142d"
+            px={1.5}
+            py={0.5}
+            borderRadius={1}
+            bgcolor="#dadefa"
+            height="fit-content"
+          >
+            {name.toUpperCase()}
           </Typography>
-        </Box>
+          <Box
+            px={1.5}
+            py={0.5}
+            borderRadius={1}
+            bgcolor="#dadefa"
+            height="fit-content"
+          >
+            <Typography fontSize={12} fontWeight={600} color="#475be8">
+              {title}
+            </Typography>
+          </Box>
+        </Stack>
+
+        <Stack
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            gap: "10px",
+          }}
+        >
+          <Typography fontSize={14} color="#808191">
+            {grade.toUpperCase()}
+          </Typography>
+          <Typography fontSize={14} color="#808191">
+            {residence.toUpperCase()}
+          </Typography>
+        </Stack>
+
+        <Typography fontSize={14} color="#808191">
+          {gender.toUpperCase()}
+        </Typography>
+        
       </CardContent>
     </Card>
   );

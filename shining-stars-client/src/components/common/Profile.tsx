@@ -122,6 +122,8 @@ const Profile = ({ type, name, avatar, email, students }: ProfileProps) => (
               grade={student.grade}
               paymentCode={student.paymentCode}
               photo={student.photo}
+              gender={student.gender}
+              residence={student.residence}
             />
           ))}
         </Box>

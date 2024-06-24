@@ -21,12 +21,22 @@ const getAllPrefects = async (req, res) => {
     _sort,
     name_like = "",
     grade = "",
+    gender = "",
+    residence = "",
   } = req.query;
 
   const query = {};
 
   if (grade !== "") {
     query.grade = grade;
+  }
+
+  if (gender !== "") {
+    query.gender = gender;
+  }
+
+  if (residence !== "") {
+    query.residence = residence;
   }
 
   if (name_like) {
@@ -65,7 +75,7 @@ const getPrefectDetail = async (req, res) => {
 
 const createPrefect = async (req, res) => {
   try {
-    const { name, title, grade, photo, email } =
+    const { name, gender, title, grade, residence, photo, email } =
       req.body;
 
     const session = await mongoose.startSession();
@@ -79,8 +89,10 @@ const createPrefect = async (req, res) => {
 
     const newPrefect = await Prefect.create({
       name,
+      gender,
       title,
       grade,
+      residence,
       photo: photoUrl.url,
       creator: user._id,
     });
@@ -99,7 +111,7 @@ const createPrefect = async (req, res) => {
 const updatePrefect = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, title, grade, photo } =
+    const { name, gender, title, grade, residence, photo } =
       req.body;
 
     const photoUrl = await cloudinary.uploader.upload(photo);
@@ -108,8 +120,10 @@ const updatePrefect = async (req, res) => {
       { _id: id },
       {
         name,
+        gender,
         title,
         grade,
+        residence,
         photo: photoUrl.url || photo,
       },
     );

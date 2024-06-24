@@ -19,9 +19,4 @@ export const studentReferralsInfo = [
     percentage: 80,
     color: "#FFA2C0",
   },
-  {
-    title: "Others",
-    percentage: 15,
-    color: "#F45252",
-  },
 ];

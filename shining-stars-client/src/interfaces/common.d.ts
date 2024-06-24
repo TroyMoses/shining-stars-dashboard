@@ -21,6 +21,8 @@ export interface StudentProps {
   _id: string;
   name: string;
   grade: string;
+  gender: string;
+  residence: string
   paymentCode: string;
   photo: string;
   creator: string;
@@ -29,8 +31,10 @@ export interface StudentProps {
 export interface PrefectProps {
   _id: string;
   name: string;
+  gender: string;
   title: string;
   grade: string;
+  residence: string
   photo: string;
   creator: string;
 }

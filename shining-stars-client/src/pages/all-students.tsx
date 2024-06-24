@@ -38,6 +38,12 @@ const AllStudents = () => {
       grade:
         logicalFilters.find((item) => item.field === "grade")?.value ||
         "",
+        gender:
+        logicalFilters.find((item) => item.field === "gender")?.value ||
+        "",
+        residence:
+        logicalFilters.find((item) => item.field === "residence")?.value ||
+        "",
     };
   }, [filters]);
 
@@ -63,7 +69,7 @@ const AllStudents = () => {
           >
             <Box
               display="flex"
-              gap={2}
+              gap={5}
               flexWrap="wrap"
               mb={{ xs: "20px", sm: 0 }}
             >
@@ -105,7 +111,7 @@ const AllStudents = () => {
                   );
                 }}
               >
-                <MenuItem value="">All</MenuItem>
+                <MenuItem value="">Filter By Class</MenuItem>
                 {[
                   "Baby-Class",
                   "Middle-Class",
@@ -123,6 +129,71 @@ const AllStudents = () => {
                   </MenuItem>
                 ))}
               </Select>
+
+              <Select
+                variant="outlined"
+                color="info"
+                displayEmpty
+                required
+                inputProps={{ "aria-label": "Without label" }}
+                defaultValue=""
+                value={currentFilterValues.gender}
+                onChange={(e) => {
+                  setFilters(
+                    [
+                      {
+                        field: "gender",
+                        operator: "eq",
+                        value: e.target.value,
+                      },
+                    ],
+                    "replace",
+                  );
+                }}
+              >
+                <MenuItem value="">Filter By Gender</MenuItem>
+                {[
+                  "Male",
+                  "Female",
+                ].map((type) => (
+                  <MenuItem key={type} value={type.toLowerCase()}>
+                    {type}
+                  </MenuItem>
+                ))}
+              </Select>
+
+              <Select
+                variant="outlined"
+                color="info"
+                displayEmpty
+                required
+                inputProps={{ "aria-label": "Without label" }}
+                defaultValue=""
+                value={currentFilterValues.residence}
+                onChange={(e) => {
+                  setFilters(
+                    [
+                      {
+                        field: "residence",
+                        operator: "eq",
+                        value: e.target.value,
+                      },
+                    ],
+                    "replace",
+                  );
+                }}
+              >
+                <MenuItem value="">Filter By Residence</MenuItem>
+                {[
+                  "Boarding",
+                  "Day",
+                ].map((type) => (
+                  <MenuItem key={type} value={type.toLowerCase()}>
+                    {type}
+                  </MenuItem>
+                ))}
+              </Select>
+              
             </Box>
           </Box>
         </Stack>
@@ -147,6 +218,8 @@ const AllStudents = () => {
             grade={student.grade}
             paymentCode={student.paymentCode}
             photo={student.photo}
+            gender={student.gender}
+            residence={student.residence}
           />
         ))}
       </Box>

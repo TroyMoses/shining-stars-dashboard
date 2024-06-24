@@ -15,6 +15,8 @@ export interface StudentCardProps {
   id?: BaseKey | undefined;
   name: string;
   grade: string;
+  gender: string;
+  residence: string;
   paymentCode: string;
   photo: string;
 }
