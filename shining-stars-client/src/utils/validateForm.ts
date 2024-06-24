@@ -23,7 +23,7 @@ export const validateForm = (formValues: FormValues) => {
 
       case 'paymentCode':
         if (!formValues.paymentCode) {
-          errors.message = 'Donations is required';
+          errors.message = 'Payment Code is required';
           hasError = true;
         }
         break;
