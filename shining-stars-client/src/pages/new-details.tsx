@@ -16,7 +16,7 @@ function checkImage(url: any) {
   return img.width !== 0 && img.height !== 0;
 }
 
-const StudentDetails = () => {
+const NewDetails = () => {
   const navigate = useNavigate();
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
@@ -27,7 +27,7 @@ const StudentDetails = () => {
 
   const { data, isLoading, isError } = queryResult;
 
-  const studentDetails = data?.data ?? {};
+  const newDetails = data?.data ?? {};
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -37,21 +37,21 @@ const StudentDetails = () => {
     return <div>Something went wrong!</div>;
   }
 
-  const isCurrentUser = user.email === studentDetails.creator.email;
+  const isCurrentUser = user.email === newDetails.creator.email;
 
-  const handleDeleteStudent = () => {
-    const response = confirm("Are you sure you want to delete this student?");
+  const handleDeleteNew = () => {
+    const response = confirm("Are you sure you want to delete this new?");
     if (response) {
       mutate(
         {
-          resource: "students",
+          resource: "news",
           id: id as string,
         },
         {
           onSuccess: () => {
-            navigate("/students");
+            navigate("/news");
           },
-        },
+        }
       );
     }
   };
@@ -75,11 +75,11 @@ const StudentDetails = () => {
       >
         <Box flex={1} maxWidth={764}>
           <img
-            src={studentDetails.photo}
-            alt="child_details-img"
+            src={newDetails.photo}
+            alt="leader_details-img"
             height={546}
             style={{ objectFit: "cover", borderRadius: "10px" }}
-            className="child_details-img"
+            className="leader_details-img"
           />
 
           <Box mt="15px">
@@ -98,33 +98,19 @@ const StudentDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {studentDetails.name}
+                  {newDetails.title}
                 </Typography>
-                <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
-                  
-                  <Typography fontSize={14} color="#808191">
-                    {studentDetails.grade}
-                  </Typography>
-                </Stack>
-              </Box>
-
-              <Box>
-                <Typography
-                  fontSize={16}
-                  fontWeight={600}
-                  mt="10px"
-                  color="#11142D"
-                >
-                  Payment Code
-                </Typography>
-                <Stack direction="row" alignItems="flex-end" gap={1}>
-                  <Typography fontSize={25} fontWeight={700} color="#475BE8">
-                    {studentDetails.paymentCode}
-                  </Typography>
-                </Stack>
               </Box>
             </Stack>
 
+            <Stack mt="25px" direction="column" gap="10px">
+              <Typography fontSize={18} color="#11142D">
+                Description
+              </Typography>
+              <Typography fontSize={14} color="#808191">
+                {newDetails.description}
+              </Typography>
+            </Stack>
           </Box>
         </Box>
 
@@ -153,8 +139,8 @@ const StudentDetails = () => {
             >
               <img
                 src={
-                  checkImage(studentDetails.creator.avatar)
-                    ? studentDetails.creator.avatar
+                  checkImage(newDetails.creator.avatar)
+                    ? newDetails.creator.avatar
                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                 }
                 alt="avatar"
@@ -168,7 +154,7 @@ const StudentDetails = () => {
 
               <Box mt="15px">
                 <Typography fontSize={18} fontWeight={600} color="#11142D">
-                  {studentDetails.creator.name}
+                  {newDetails.creator.name}
                 </Typography>
                 <Typography
                   mt="5px"
@@ -181,7 +167,7 @@ const StudentDetails = () => {
               </Box>
 
               <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">
-                {studentDetails.creator.allStudents.length} Students
+                {newDetails.creator.allNews.length} News
               </Typography>
             </Stack>
 
@@ -200,7 +186,7 @@ const StudentDetails = () => {
                 icon={!isCurrentUser ? <ChatBubble /> : <Edit />}
                 handleClick={() => {
                   if (isCurrentUser) {
-                    navigate(`/students/edit/${studentDetails._id}`);
+                    navigate(`/news/edit/${newDetails._id}`);
                   }
                 }}
               />
@@ -211,16 +197,15 @@ const StudentDetails = () => {
                 fullWidth
                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                 handleClick={() => {
-                  if (isCurrentUser) handleDeleteStudent();
+                  if (isCurrentUser) handleDeleteNew();
                 }}
               />
             </Stack>
           </Stack>
-
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default StudentDetails;
+export default NewDetails;

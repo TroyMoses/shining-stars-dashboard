@@ -16,7 +16,7 @@ function checkImage(url: any) {
   return img.width !== 0 && img.height !== 0;
 }
 
-const StudentDetails = () => {
+const AdminDetails = () => {
   const navigate = useNavigate();
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
@@ -27,7 +27,7 @@ const StudentDetails = () => {
 
   const { data, isLoading, isError } = queryResult;
 
-  const studentDetails = data?.data ?? {};
+  const adminDetails = data?.data ?? {};
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -37,19 +37,19 @@ const StudentDetails = () => {
     return <div>Something went wrong!</div>;
   }
 
-  const isCurrentUser = user.email === studentDetails.creator.email;
+  const isCurrentUser = user.email === adminDetails.creator.email;
 
-  const handleDeleteStudent = () => {
-    const response = confirm("Are you sure you want to delete this student?");
+  const handleDeleteAdmin = () => {
+    const response = confirm("Are you sure you want to delete this admin?");
     if (response) {
       mutate(
         {
-          resource: "students",
+          resource: "admins",
           id: id as string,
         },
         {
           onSuccess: () => {
-            navigate("/students");
+            navigate("/admins");
           },
         },
       );
@@ -75,14 +75,29 @@ const StudentDetails = () => {
       >
         <Box flex={1} maxWidth={764}>
           <img
-            src={studentDetails.photo}
-            alt="child_details-img"
+            src={adminDetails.photo}
+            alt="leader_details-img"
             height={546}
             style={{ objectFit: "cover", borderRadius: "10px" }}
-            className="child_details-img"
+            className="leader_details-img"
           />
 
           <Box mt="15px">
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              flexWrap="wrap"
+              alignItems="center"
+            >
+              <Typography
+                fontSize={18}
+                fontWeight={500}
+                color="#11142D"
+                textTransform="capitalize"
+              >
+                {adminDetails.title}
+              </Typography>
+            </Stack>
 
             <Stack
               direction="row"
@@ -98,33 +113,28 @@ const StudentDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {studentDetails.name}
+                  {adminDetails.name}
                 </Typography>
-                <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
-                  
-                  <Typography fontSize={14} color="#808191">
-                    {studentDetails.grade}
-                  </Typography>
-                </Stack>
-              </Box>
-
-              <Box>
-                <Typography
-                  fontSize={16}
-                  fontWeight={600}
-                  mt="10px"
-                  color="#11142D"
-                >
-                  Payment Code
-                </Typography>
-                <Stack direction="row" alignItems="flex-end" gap={1}>
-                  <Typography fontSize={25} fontWeight={700} color="#475BE8">
-                    {studentDetails.paymentCode}
-                  </Typography>
-                </Stack>
               </Box>
             </Stack>
 
+            <Stack mt="25px" direction="column" gap="10px">
+              <Typography fontSize={18} color="#11142D">
+                Message
+              </Typography>
+              <Typography fontSize={14} color="#808191">
+                {adminDetails.message}
+              </Typography>
+            </Stack>
+
+            <Stack mt="25px" direction="column" gap="10px">
+              <Typography fontSize={18} color="#11142D">
+                Description
+              </Typography>
+              <Typography fontSize={14} color="#808191">
+                {adminDetails.description}
+              </Typography>
+            </Stack>
           </Box>
         </Box>
 
@@ -153,8 +163,8 @@ const StudentDetails = () => {
             >
               <img
                 src={
-                  checkImage(studentDetails.creator.avatar)
-                    ? studentDetails.creator.avatar
+                  checkImage(adminDetails.creator.avatar)
+                    ? adminDetails.creator.avatar
                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                 }
                 alt="avatar"
@@ -168,7 +178,7 @@ const StudentDetails = () => {
 
               <Box mt="15px">
                 <Typography fontSize={18} fontWeight={600} color="#11142D">
-                  {studentDetails.creator.name}
+                  {adminDetails.creator.name}
                 </Typography>
                 <Typography
                   mt="5px"
@@ -181,7 +191,7 @@ const StudentDetails = () => {
               </Box>
 
               <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">
-                {studentDetails.creator.allStudents.length} Students
+                {adminDetails.creator.allAdmins.length} Admins
               </Typography>
             </Stack>
 
@@ -200,7 +210,7 @@ const StudentDetails = () => {
                 icon={!isCurrentUser ? <ChatBubble /> : <Edit />}
                 handleClick={() => {
                   if (isCurrentUser) {
-                    navigate(`/students/edit/${studentDetails._id}`);
+                    navigate(`/admins/edit/${adminDetails._id}`);
                   }
                 }}
               />
@@ -211,16 +221,16 @@ const StudentDetails = () => {
                 fullWidth
                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                 handleClick={() => {
-                  if (isCurrentUser) handleDeleteStudent();
+                  if (isCurrentUser) handleDeleteAdmin();
                 }}
               />
             </Stack>
           </Stack>
-
+          
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default StudentDetails;
+export default AdminDetails;

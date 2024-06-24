@@ -16,7 +16,7 @@ function checkImage(url: any) {
   return img.width !== 0 && img.height !== 0;
 }
 
-const StudentDetails = () => {
+const PrefectDetails = () => {
   const navigate = useNavigate();
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
@@ -27,7 +27,7 @@ const StudentDetails = () => {
 
   const { data, isLoading, isError } = queryResult;
 
-  const studentDetails = data?.data ?? {};
+  const prefectDetails = data?.data ?? {};
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -37,19 +37,19 @@ const StudentDetails = () => {
     return <div>Something went wrong!</div>;
   }
 
-  const isCurrentUser = user.email === studentDetails.creator.email;
+  const isCurrentUser = user.email === prefectDetails.creator.email;
 
-  const handleDeleteStudent = () => {
-    const response = confirm("Are you sure you want to delete this student?");
+  const handleDeletePrefect = () => {
+    const response = confirm("Are you sure you want to delete this prefect?");
     if (response) {
       mutate(
         {
-          resource: "students",
+          resource: "prefects",
           id: id as string,
         },
         {
           onSuccess: () => {
-            navigate("/students");
+            navigate("/prefects");
           },
         },
       );
@@ -75,7 +75,7 @@ const StudentDetails = () => {
       >
         <Box flex={1} maxWidth={764}>
           <img
-            src={studentDetails.photo}
+            src={prefectDetails.photo}
             alt="child_details-img"
             height={546}
             style={{ objectFit: "cover", borderRadius: "10px" }}
@@ -98,12 +98,12 @@ const StudentDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {studentDetails.name}
+                  {prefectDetails.name}
                 </Typography>
                 <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
                   
                   <Typography fontSize={14} color="#808191">
-                    {studentDetails.grade}
+                    {prefectDetails.grade}
                   </Typography>
                 </Stack>
               </Box>
@@ -115,11 +115,11 @@ const StudentDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  Payment Code
+                  Prefect Title
                 </Typography>
                 <Stack direction="row" alignItems="flex-end" gap={1}>
                   <Typography fontSize={25} fontWeight={700} color="#475BE8">
-                    {studentDetails.paymentCode}
+                    {prefectDetails.title}
                   </Typography>
                 </Stack>
               </Box>
@@ -153,8 +153,8 @@ const StudentDetails = () => {
             >
               <img
                 src={
-                  checkImage(studentDetails.creator.avatar)
-                    ? studentDetails.creator.avatar
+                  checkImage(prefectDetails.creator.avatar)
+                    ? prefectDetails.creator.avatar
                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                 }
                 alt="avatar"
@@ -168,7 +168,7 @@ const StudentDetails = () => {
 
               <Box mt="15px">
                 <Typography fontSize={18} fontWeight={600} color="#11142D">
-                  {studentDetails.creator.name}
+                  {prefectDetails.creator.name}
                 </Typography>
                 <Typography
                   mt="5px"
@@ -181,7 +181,7 @@ const StudentDetails = () => {
               </Box>
 
               <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">
-                {studentDetails.creator.allStudents.length} Students
+                {prefectDetails.creator.allPrefects.length} Prefects
               </Typography>
             </Stack>
 
@@ -200,7 +200,7 @@ const StudentDetails = () => {
                 icon={!isCurrentUser ? <ChatBubble /> : <Edit />}
                 handleClick={() => {
                   if (isCurrentUser) {
-                    navigate(`/students/edit/${studentDetails._id}`);
+                    navigate(`/prefects/edit/${prefectDetails._id}`);
                   }
                 }}
               />
@@ -211,7 +211,7 @@ const StudentDetails = () => {
                 fullWidth
                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                 handleClick={() => {
-                  if (isCurrentUser) handleDeleteStudent();
+                  if (isCurrentUser) handleDeletePrefect();
                 }}
               />
             </Stack>
@@ -223,4 +223,4 @@ const StudentDetails = () => {
   );
 };
 
-export default StudentDetails;
+export default PrefectDetails;

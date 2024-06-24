@@ -8,7 +8,7 @@ import EditChild from "./edit-student";
 
 import AllLeaders from "./all-admins";
 import CreateLeader from "./create-admin";
-import LeaderDetails from "./leader-details";
+import LeaderDetails from "./admin-details";
 import EditLeader from "./edit-admin";
 
 import Home from "./home";

@@ -7,8 +7,6 @@ import ChatBubble from "@mui/icons-material/ChatBubble";
 import Delete from "@mui/icons-material/Delete";
 import Edit from "@mui/icons-material/Edit";
 import Phone from "@mui/icons-material/Phone";
-import Place from "@mui/icons-material/Place";
-import Star from "@mui/icons-material/Star";
 
 import { CustomButton } from "components";
 
@@ -18,7 +16,7 @@ function checkImage(url: any) {
   return img.width !== 0 && img.height !== 0;
 }
 
-const LeaderDetails = () => {
+const EventDetails = () => {
   const navigate = useNavigate();
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
@@ -29,7 +27,7 @@ const LeaderDetails = () => {
 
   const { data, isLoading, isError } = queryResult;
 
-  const leaderDetails = data?.data ?? {};
+  const eventDetails = data?.data ?? {};
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -39,21 +37,21 @@ const LeaderDetails = () => {
     return <div>Something went wrong!</div>;
   }
 
-  const isCurrentUser = user.email === leaderDetails.creator.email;
+  const isCurrentUser = user.email === eventDetails.creator.email;
 
-  const handleDeleteLeader = () => {
-    const response = confirm("Are you sure you want to delete this leader?");
+  const handleDeleteEvent = () => {
+    const response = confirm("Are you sure you want to delete this event?");
     if (response) {
       mutate(
         {
-          resource: "leaders",
+          resource: "events",
           id: id as string,
         },
         {
           onSuccess: () => {
-            navigate("/leaders");
+            navigate("/events");
           },
-        },
+        }
       );
     }
   };
@@ -77,7 +75,7 @@ const LeaderDetails = () => {
       >
         <Box flex={1} maxWidth={764}>
           <img
-            src={leaderDetails.photo}
+            src={eventDetails.photo}
             alt="leader_details-img"
             height={546}
             style={{ objectFit: "cover", borderRadius: "10px" }}
@@ -97,13 +95,17 @@ const LeaderDetails = () => {
                 color="#11142D"
                 textTransform="capitalize"
               >
-                {leaderDetails.leaderShipType}
+                {eventDetails.place}
               </Typography>
-              <Box>
-                {[1, 2, 3, 4, 5].map((item) => (
-                  <Star key={`star-${item}`} sx={{ color: "#F2C94C" }} />
-                ))}
-              </Box>
+
+              <Typography
+                fontSize={18}
+                fontWeight={500}
+                color="#11142D"
+                textTransform="capitalize"
+              >
+                {eventDetails.date}
+              </Typography>
             </Stack>
 
             <Stack
@@ -120,33 +122,8 @@ const LeaderDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {leaderDetails.name}
+                  {eventDetails.activity}
                 </Typography>
-                <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
-                  <Place sx={{ color: "#808191" }} />
-                  <Typography fontSize={14} color="#808191">
-                    {leaderDetails.position}
-                  </Typography>
-                </Stack>
-              </Box>
-
-              <Box>
-                <Typography
-                  fontSize={16}
-                  fontWeight={600}
-                  mt="10px"
-                  color="#11142D"
-                >
-                  Donations
-                </Typography>
-                <Stack direction="row" alignItems="flex-end" gap={1}>
-                  <Typography fontSize={25} fontWeight={700} color="#475BE8">
-                    {leaderDetails.donations}
-                  </Typography>
-                  <Typography fontSize={14} color="#808191" mb={0.5}>
-                    for one day
-                  </Typography>
-                </Stack>
               </Box>
             </Stack>
 
@@ -155,7 +132,7 @@ const LeaderDetails = () => {
                 Description
               </Typography>
               <Typography fontSize={14} color="#808191">
-                {leaderDetails.description}
+                {eventDetails.description}
               </Typography>
             </Stack>
           </Box>
@@ -186,8 +163,8 @@ const LeaderDetails = () => {
             >
               <img
                 src={
-                  checkImage(leaderDetails.creator.avatar)
-                    ? leaderDetails.creator.avatar
+                  checkImage(eventDetails.creator.avatar)
+                    ? eventDetails.creator.avatar
                     : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                 }
                 alt="avatar"
@@ -201,7 +178,7 @@ const LeaderDetails = () => {
 
               <Box mt="15px">
                 <Typography fontSize={18} fontWeight={600} color="#11142D">
-                  {leaderDetails.creator.name}
+                  {eventDetails.creator.name}
                 </Typography>
                 <Typography
                   mt="5px"
@@ -209,19 +186,12 @@ const LeaderDetails = () => {
                   fontWeight={400}
                   color="#808191"
                 >
-                  Leader
+                  Creator
                 </Typography>
               </Box>
 
-              <Stack mt="15px" direction="row" alignItems="center" gap={1}>
-                <Place sx={{ color: "#808191" }} />
-                <Typography fontSize={14} fontWeight={400} color="#808191">
-                  North Carolina, USA
-                </Typography>
-              </Stack>
-
               <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">
-                {leaderDetails.creator.allLeaders.length} Leaders
+                {eventDetails.creator.allEvents.length} Events
               </Typography>
             </Stack>
 
@@ -240,7 +210,7 @@ const LeaderDetails = () => {
                 icon={!isCurrentUser ? <ChatBubble /> : <Edit />}
                 handleClick={() => {
                   if (isCurrentUser) {
-                    navigate(`/leaders/edit/${leaderDetails._id}`);
+                    navigate(`/events/edit/${eventDetails._id}`);
                   }
                 }}
               />
@@ -251,33 +221,15 @@ const LeaderDetails = () => {
                 fullWidth
                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                 handleClick={() => {
-                  if (isCurrentUser) handleDeleteLeader();
+                  if (isCurrentUser) handleDeleteEvent();
                 }}
               />
             </Stack>
           </Stack>
-
-          <Stack>
-            <img
-              src="https://serpmedia.org/scigen/images/googlemaps-nyc-standard.png?crc=3787557525"
-              width="100%"
-              height={306}
-              style={{ borderRadius: 10, objectFit: "cover" }}
-            />
-          </Stack>
-
-          <Box>
-            <CustomButton
-              title="Donate Now"
-              backgroundColor="#475BE8"
-              color="#FCFCFC"
-              fullWidth
-            />
-          </Box>
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default LeaderDetails;
+export default EventDetails;
