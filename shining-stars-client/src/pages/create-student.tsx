@@ -4,13 +4,13 @@ import { useForm } from "@refinedev/react-hook-form";
 
 import type { FieldValues } from "react-hook-form";
 
-import Form from "components/common/StudentForm";
+import StudentForm from "components/common/StudentForm";
 
-const CreateChild = () => {
+const CreateStudent = () => {
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
   });
-  const [childImage, setChildImage] = useState({ name: "", url: "" });
+  const [studentImage, setStudentImage] = useState({ name: "", url: "" });
   const {
     refineCore: { onFinish, formLoading },
     register,
@@ -26,22 +26,22 @@ const CreateChild = () => {
       });
 
     reader(file).then((result: string) =>
-    setChildImage({ name: file?.name, url: result }),
+    setStudentImage({ name: file?.name, url: result }),
     );
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-    if (!childImage.name) return alert("Please select an image");
+    if (!studentImage.name) return alert("Please select an image");
 
     await onFinish({
       ...data,
-      photo: childImage.url,
+      photo: studentImage.url,
       email: user.email,
     });
   };
 
   return (
-    <Form
+    <StudentForm
       type="Create"
       register={register}
       onFinish={onFinish}
@@ -49,8 +49,8 @@ const CreateChild = () => {
       handleSubmit={handleSubmit}
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
-      childImage={childImage}
+      studentImage={studentImage}
     />
   );
 };
-export default CreateChild;
+export default CreateStudent;

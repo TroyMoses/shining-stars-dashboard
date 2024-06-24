@@ -2,7 +2,7 @@ import AgentProfile from "./agent-profile";
 import Agents from "./agent";
 
 import AllChildren from "./all-students";
-import CreateChild from "./create-child";
+import CreateChild from "./create-student";
 import ChildDetails from "./child-details";
 import EditChild from "./edit-child";
 
