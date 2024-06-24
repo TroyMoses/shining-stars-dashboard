@@ -49,12 +49,19 @@ const StudentForm = ({
             >
               Enter Student name
             </FormHelperText>
-            <TextField
-              fullWidth
+            <TextareaAutosize
+              minRows={1}
               required
-              id="outlined-basic"
               color="info"
-              variant="outlined"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
               {...register("name", { required: true })}
             />
           </FormControl>
@@ -69,7 +76,7 @@ const StudentForm = ({
                   color: "#11142d",
                 }}
               >
-                Select Grade
+                Select Class
               </FormHelperText>
               <Select
                 variant="outlined"
@@ -105,14 +112,21 @@ const StudentForm = ({
               >
                 Enter Student Payment Code
               </FormHelperText>
-              <TextField
-                fullWidth
-                required
-                id="outlined-basic"
-                color="info"
-                variant="outlined"
-                {...register("paymentCode", { required: true })}
-              />
+              <TextareaAutosize
+              minRows={1}
+              required
+              color="info"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
+              {...register("paymentCode", { required: true })}
+            />
             </FormControl>
           </Stack>
 

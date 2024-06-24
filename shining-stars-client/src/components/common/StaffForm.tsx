@@ -49,12 +49,19 @@ const StaffForm = ({
             >
               Enter Staff name
             </FormHelperText>
-            <TextField
-              fullWidth
+            <TextareaAutosize
+              minRows={1}
               required
-              id="outlined-basic"
               color="info"
-              variant="outlined"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
               {...register("name", { required: true })}
             />
           </FormControl>

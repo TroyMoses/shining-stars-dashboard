@@ -42,25 +42,36 @@ const AdminCard = ({
       <CardContent
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
           gap: "10px",
           paddingX: "5px",
         }}
       >
-        <Stack direction="column" gap={1}>
-          <Typography fontSize={16} fontWeight={500} color="#11142d">
-            {name}
+        <Stack direction="row" gap={2}>
+          <Typography
+            fontSize={16}
+            fontWeight={500}
+            color="#11142d"
+            px={1.5}
+            py={0.5}
+            borderRadius={1}
+            bgcolor="#dadefa"
+            height="fit-content"
+          >
+            {name.toUpperCase()}
           </Typography>
-          <Stack direction="row" gap={0.5} alignItems="flex-start">
-            <Place
-              sx={{
-                fontSize: 18,
-                color: "#11142d",
-                marginTop: 0.5,
-              }}
-            />
-            <Typography fontSize={14} color="#808191">
+          <Stack
+            direction="row"
+            gap={0.5}
+            alignItems="flex-start"
+            px={1.5}
+            py={0.5}
+            borderRadius={1}
+            bgcolor="#dadefa"
+            height="fit-content"
+          >
+            <Typography fontSize={14} color="#475be8">
               {title}
             </Typography>
           </Stack>
@@ -72,11 +83,11 @@ const AdminCard = ({
           bgcolor="#dadefa"
           height="fit-content"
         >
-          <Typography fontSize={12} fontWeight={600} color="#475be8">
-            {message}
+          <Typography fontSize={12} fontWeight={600} color="#808191" style={{textDecoration: "underline"}}>
+            MESSAGE           
           </Typography>
-          <Typography fontSize={12} fontWeight={600} color="#475be8">
-            {description}
+          <Typography fontSize={12} fontWeight={600} color="#808191">
+            {message}
           </Typography>
         </Box>
       </CardContent>

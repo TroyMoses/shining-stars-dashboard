@@ -64,7 +64,7 @@ const StudentDetails = () => {
       width="fit-content"
     >
       <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Details
+        Student Details
       </Typography>
 
       <Box
@@ -98,12 +98,12 @@ const StudentDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {studentDetails.name}
+                  {studentDetails.name.toUpperCase()}
                 </Typography>
                 <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
                   
                   <Typography fontSize={14} color="#808191">
-                    {studentDetails.grade}
+                    {studentDetails.grade.toUpperCase()}
                   </Typography>
                 </Stack>
               </Box>

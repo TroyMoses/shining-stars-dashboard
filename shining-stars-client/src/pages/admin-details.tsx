@@ -64,7 +64,7 @@ const AdminDetails = () => {
       width="fit-content"
     >
       <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Details
+        Administrator Details
       </Typography>
 
       <Box
@@ -82,7 +82,26 @@ const AdminDetails = () => {
             className="leader_details-img"
           />
 
-          <Box mt="15px">
+          <Box>
+            <Stack
+              direction="row"
+              flexWrap="wrap"
+              justifyContent="space-between"
+              alignItems="center"
+              gap={2}
+            >
+              <Box>
+                <Typography
+                  fontSize={22}
+                  fontWeight={600}
+                  mt="10px"
+                  color="#11142D"
+                >
+                  {adminDetails.name.toUpperCase()}
+                </Typography>
+              </Box>
+            </Stack>
+
             <Stack
               direction="row"
               justifyContent="space-between"
@@ -99,24 +118,6 @@ const AdminDetails = () => {
               </Typography>
             </Stack>
 
-            <Stack
-              direction="row"
-              flexWrap="wrap"
-              justifyContent="space-between"
-              alignItems="center"
-              gap={2}
-            >
-              <Box>
-                <Typography
-                  fontSize={22}
-                  fontWeight={600}
-                  mt="10px"
-                  color="#11142D"
-                >
-                  {adminDetails.name}
-                </Typography>
-              </Box>
-            </Stack>
 
             <Stack mt="25px" direction="column" gap="10px">
               <Typography fontSize={18} color="#11142D">

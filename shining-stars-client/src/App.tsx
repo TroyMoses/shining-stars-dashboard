@@ -4,8 +4,6 @@ import SupervisorAccountOutlined from "@mui/icons-material/SupervisorAccountOutl
 import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
 import CalendarMonthOutlined from "@mui/icons-material/CalendarMonthOutlined";
 import ViewCarouselOutlined from "@mui/icons-material/ViewCarouselOutlined";
-import StarOutlineRounded from "@mui/icons-material/StarOutlineRounded";
-import VillaOutlined from "@mui/icons-material/VillaOutlined";
 import Logout from "@mui/icons-material/Logout";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";

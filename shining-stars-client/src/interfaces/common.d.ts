@@ -14,7 +14,7 @@ export interface ProfileProps {
   name: string;
   avatar: string;
   email: string;
-  children: Array | undefined;
+  students: Array | undefined;
 }
 
 export interface StudentProps {

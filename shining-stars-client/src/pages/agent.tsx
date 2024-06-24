@@ -34,7 +34,13 @@ const Agents = () => {
             name={agent.name}
             email={agent.email}
             avatar={agent.avatar}
-            noOfChildren={agent.allChildren.length}
+            noOfStudents={agent.allStudents.length}
+            noOfPrefects={agent.allPrefects.length}
+            noOfAdmins={agent.allAdmins.length}
+            noOfStaffs={agent.allStaffs.length}
+            noOfSliders={agent.allSliders.length}
+            noOfEvents={agent.allEvents.length}
+            noOfNews={agent.allNews.length}
           />
         ))}
       </Box>

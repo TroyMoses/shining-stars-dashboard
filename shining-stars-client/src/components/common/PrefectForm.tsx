@@ -49,12 +49,19 @@ const PrefectForm = ({
             >
               Enter Prefect name
             </FormHelperText>
-            <TextField
-              fullWidth
+            <TextareaAutosize
+              minRows={1}
               required
-              id="outlined-basic"
               color="info"
-              variant="outlined"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
               {...register("name", { required: true })}
             />
           </FormControl>
@@ -70,12 +77,19 @@ const PrefectForm = ({
             >
               Enter Prefect title
             </FormHelperText>
-            <TextField
-              fullWidth
+            <TextareaAutosize
+              minRows={1}
               required
-              id="outlined-basic"
               color="info"
-              variant="outlined"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
               {...register("title", { required: true })}
             />
           </FormControl>
@@ -90,7 +104,7 @@ const PrefectForm = ({
                   color: "#11142d",
                 }}
               >
-                Select Grade
+                Select Class
               </FormHelperText>
               <Select
                 variant="outlined"

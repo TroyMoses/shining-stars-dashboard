@@ -107,16 +107,16 @@ const AllPrefects = () => {
               >
                 <MenuItem value="">All</MenuItem>
                 {[
-                  "Baby Class",
-                  "Middle Class",
-                  "Top Class",
-                  "Primary One",
-                  "Primary Two",
-                  "Primary Three",
-                  "Primary Four",
-                  "Primary Five",
-                  "Primary Six",
-                  "Primary Seven",
+                  "Baby-Class",
+                  "Middle-Class",
+                  "Top-Class",
+                  "Primary-One",
+                  "Primary-Two",
+                  "Primary-Three",
+                  "Primary-Four",
+                  "Primary-Five",
+                  "Primary-Six",
+                  "Primary-Seven",
                 ].map((type) => (
                   <MenuItem key={type} value={type.toLowerCase()}>
                     {type}

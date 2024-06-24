@@ -1,4 +1,3 @@
-import Place from "@mui/icons-material/Place";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -49,18 +48,11 @@ const StudentCard = ({
       >
         <Stack direction="column" gap={1}>
           <Typography fontSize={16} fontWeight={500} color="#11142d">
-            {name}
+            {name.toUpperCase()}
           </Typography>
           <Stack direction="row" gap={0.5} alignItems="flex-start">
-            <Place
-              sx={{
-                fontSize: 18,
-                color: "#11142d",
-                marginTop: 0.5,
-              }}
-            />
             <Typography fontSize={14} color="#808191">
-              {grade}
+              {grade.toUpperCase()}
             </Typography>
           </Stack>
         </Stack>

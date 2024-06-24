@@ -83,21 +83,6 @@ const StaffDetails = () => {
           />
 
           <Box mt="15px">
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              flexWrap="wrap"
-              alignItems="center"
-            >
-              <Typography
-                fontSize={18}
-                fontWeight={500}
-                color="#11142D"
-                textTransform="capitalize"
-              >
-                {staffDetails.staffType}
-              </Typography>
-            </Stack>
 
             <Stack
               direction="row"
@@ -110,12 +95,28 @@ const StaffDetails = () => {
                 <Typography
                   fontSize={22}
                   fontWeight={600}
-                  mt="10px"
+                  mb="10px"
                   color="#11142D"
                 >
-                  {staffDetails.name}
+                  {staffDetails.name.toUpperCase()}
                 </Typography>
               </Box>
+            </Stack>
+
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              flexWrap="wrap"
+              alignItems="center"
+            >
+              <Typography
+                fontSize={18}
+                fontWeight={500}
+                color="#11142D"
+                textTransform="capitalize"
+              >
+                {staffDetails.staffType.toUpperCase()}
+              </Typography>
             </Stack>
 
           </Box>
