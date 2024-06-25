@@ -20,11 +20,12 @@ const NewForm = ({
   formLoading,
   onFinishHandler,
   newImage,
+  exact,
 }: NewFormProps) => {
   return (
     <Box>
       <Typography fontSize={25} fontWeight={700} color="#11142d">
-        {type} a New
+        {type} a {exact}
       </Typography>
 
       <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
@@ -47,14 +48,21 @@ const NewForm = ({
                 color: "#11142d",
               }}
             >
-              Enter New Title 
+              Enter Title 
             </FormHelperText>
-            <TextField
-              fullWidth
+            <TextareaAutosize
+              minRows={1}
               required
-              id="outlined-basic"
               color="info"
-              variant="title"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
               {...register("title", { required: true })}
             />
           </FormControl>
@@ -96,7 +104,7 @@ const NewForm = ({
                 fontWeight={500}
                 my="10px"
               >
-                New Photo
+                {exact} Photo
               </Typography>
 
               <Button

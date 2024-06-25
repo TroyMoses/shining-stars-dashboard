@@ -5,7 +5,13 @@ export interface AgentCardProp {
   name: string;
   email: string;
   avatar: string;
-  noOfChildren: number;
+  noOfStudents: number;
+  noOfPrefects: number;
+  noOfAdmins: number;
+  noOfStaffs: number;
+  noOfSliders: number;
+  noOfEvents: number;
+  noOfNews: number;
 }
 
 export interface InfoBarProps {

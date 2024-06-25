@@ -1,4 +1,3 @@
-import Place from "@mui/icons-material/Place";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -12,7 +11,9 @@ import type { StudentCardProps } from "interfaces/student";
 const StudentCard = ({
   id,
   name,
+  gender,
   grade,
+  residence,
   paymentCode,
   photo,
 }: StudentCardProps) => {
@@ -41,40 +42,59 @@ const StudentCard = ({
       <CardContent
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
           gap: "10px",
           paddingX: "5px",
         }}
       >
-        <Stack direction="column" gap={1}>
-          <Typography fontSize={16} fontWeight={500} color="#11142d">
-            {name}
+        <Stack direction="row" gap={1}>
+          <Typography
+            fontSize={16}
+            fontWeight={500}
+            color="#11142d"
+            px={1.5}
+            py={0.5}
+            borderRadius={1}
+            bgcolor="#dadefa"
+            height="fit-content"
+          >
+            {name.toUpperCase()}
           </Typography>
-          <Stack direction="row" gap={0.5} alignItems="flex-start">
-            <Place
-              sx={{
-                fontSize: 18,
-                color: "#11142d",
-                marginTop: 0.5,
-              }}
-            />
-            <Typography fontSize={14} color="#808191">
-              {grade}
+
+          <Box
+            px={1.5}
+            py={0.5}
+            borderRadius={1}
+            bgcolor="#dadefa"
+            height="fit-content"
+          >
+            <Typography fontSize={12} fontWeight={600} color="#475be8">
+              {paymentCode}
             </Typography>
-          </Stack>
+          </Box>
         </Stack>
-        <Box
-          px={1.5}
-          py={0.5}
-          borderRadius={1}
-          bgcolor="#dadefa"
-          height="fit-content"
+
+        <Stack
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            gap: "10px",
+          }}
         >
-          <Typography fontSize={12} fontWeight={600} color="#475be8">
-            {paymentCode}
+          <Typography fontSize={14} color="#808191">
+            {grade.toUpperCase()}
           </Typography>
-        </Box>
+          <Typography fontSize={14} color="#808191">
+            {residence.toUpperCase()}
+          </Typography>
+        </Stack>
+
+        <Typography fontSize={14} color="#808191">
+          {gender.toUpperCase()}
+        </Typography>
+
       </CardContent>
     </Card>
   );

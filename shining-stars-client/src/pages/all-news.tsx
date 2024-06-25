@@ -104,6 +104,7 @@ const AllNews = () => {
             title={news.title}
             description={news.description}
             photo={news.photo}
+            type="news"
           />
         ))}
       </Box>

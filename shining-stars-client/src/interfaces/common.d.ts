@@ -14,13 +14,15 @@ export interface ProfileProps {
   name: string;
   avatar: string;
   email: string;
-  children: Array | undefined;
+  students: Array | undefined;
 }
 
 export interface StudentProps {
   _id: string;
   name: string;
   grade: string;
+  gender: string;
+  residence: string
   paymentCode: string;
   photo: string;
   creator: string;
@@ -29,8 +31,10 @@ export interface StudentProps {
 export interface PrefectProps {
   _id: string;
   name: string;
+  gender: string;
   title: string;
   grade: string;
+  residence: string
   photo: string;
   creator: string;
 }
@@ -59,6 +63,7 @@ export interface NewProps {
   description: string;
   photo: string;
   creator: string;
+  type: string;
 }
 
 export interface StudentFormProps {
@@ -128,6 +133,7 @@ export interface EventFormProps {
 
 export interface NewFormProps {
   type: string;
+  exact: string;
   register: any;
   onFinish: (
     values: FieldValues,

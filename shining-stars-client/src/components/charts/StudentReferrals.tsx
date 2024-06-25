@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import { childReferralsInfo } from "constants/index";
+import { studentReferralsInfo } from "constants/index";
 
 interface ProgressBarProps {
   title: string;
@@ -11,6 +11,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({ title, percentage, color }: ProgressBarProps) => (
+
   <Box width="100%">
     <Stack direction="row" alignItems="center" justifyContent="space-between">
       <Typography fontSize={16} fontWeight={500} color="#11142d">
@@ -39,7 +40,7 @@ const ProgressBar = ({ title, percentage, color }: ProgressBarProps) => (
   </Box>
 );
 
-const ChildReferrals = () => {
+const StudentReferrals = () => {
   return (
     <Box
       p={4}
@@ -51,16 +52,48 @@ const ChildReferrals = () => {
       borderRadius="15px"
     >
       <Typography fontSize={18} fontWeight={600} color="#11142d">
-        Child Referrals
+        Student Referrals
       </Typography>
 
       <Stack my="20px" direction="column" gap={4}>
-        {childReferralsInfo.map((bar) => (
+        {studentReferralsInfo.map((bar) => (
+          // <Box width="100%">
+          //   <Stack
+          //     direction="row"
+          //     alignItems="center"
+          //     justifyContent="space-between"
+          //   >
+          //     <Typography fontSize={16} fontWeight={500} color="#11142d">
+          //       Title
+          //     </Typography>
+          //     <Typography fontSize={16} fontWeight={500} color="#11142d">
+          //       Percentage%
+          //     </Typography>
+          //   </Stack>
+          //   <Box
+          //     mt={2}
+          //     position="relative"
+          //     width="100%"
+          //     height="8px"
+          //     borderRadius={1}
+          //     bgcolor="#e4e8ef"
+          //   >
+          //     <Box
+          //       // width={`${percentage}%`}
+          //       // bgcolor={color}
+          //       position="absolute"
+          //       height="100%"
+          //       borderRadius={1}
+          //     />
+          //   </Box>
+          // </Box>
           <ProgressBar key={bar.title} {...bar} />
         ))}
+
+        
       </Stack>
     </Box>
   );
 };
 
-export default ChildReferrals;
+export default StudentReferrals;

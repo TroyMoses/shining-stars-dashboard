@@ -7,6 +7,8 @@ import ChatBubble from "@mui/icons-material/ChatBubble";
 import Delete from "@mui/icons-material/Delete";
 import Edit from "@mui/icons-material/Edit";
 import Phone from "@mui/icons-material/Phone";
+import Place from "@mui/icons-material/Place";
+import CalendarMonthOutlined from "@mui/icons-material/CalendarMonthOutlined";
 
 import { CustomButton } from "components";
 
@@ -64,7 +66,7 @@ const EventDetails = () => {
       width="fit-content"
     >
       <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Details
+        Event Details
       </Typography>
 
       <Box
@@ -82,6 +84,25 @@ const EventDetails = () => {
             className="leader_details-img"
           />
 
+          <Stack
+            direction="row"
+            flexWrap="wrap"
+            justifyContent="space-between"
+            alignItems="center"
+            gap={2}
+          >
+            <Box>
+              <Typography
+                fontSize={22}
+                fontWeight={600}
+                mt="10px"
+                color="#11142D"
+              >
+                {eventDetails.activity.toUpperCase()}
+              </Typography>
+            </Box>
+          </Stack>
+
           <Box mt="15px">
             <Stack
               direction="row"
@@ -89,53 +110,42 @@ const EventDetails = () => {
               flexWrap="wrap"
               alignItems="center"
             >
-              <Typography
-                fontSize={18}
-                fontWeight={500}
-                color="#11142D"
-                textTransform="capitalize"
-              >
-                {eventDetails.place}
-              </Typography>
-
-              <Typography
-                fontSize={18}
-                fontWeight={500}
-                color="#11142D"
-                textTransform="capitalize"
-              >
-                {eventDetails.date}
-              </Typography>
-            </Stack>
-
-            <Stack
-              direction="row"
-              flexWrap="wrap"
-              justifyContent="space-between"
-              alignItems="center"
-              gap={2}
-            >
-              <Box>
-                <Typography
-                  fontSize={22}
-                  fontWeight={600}
-                  mt="10px"
-                  color="#11142D"
-                >
-                  {eventDetails.activity}
+              <Stack direction="row" gap={0.5} alignItems="flex-start">
+                <Place
+                  sx={{
+                    fontSize: 18,
+                    color: "#808191",
+                    marginTop: 0.5,
+                  }}
+                />
+                <Typography fontSize={16} color="#808191">
+                  {eventDetails.place}
                 </Typography>
-              </Box>
-            </Stack>
+              </Stack>
 
-            <Stack mt="25px" direction="column" gap="10px">
-              <Typography fontSize={18} color="#11142D">
-                Description
-              </Typography>
-              <Typography fontSize={14} color="#808191">
-                {eventDetails.description}
-              </Typography>
+              <Stack direction="row" gap={0.5} alignItems="flex-start">
+                <CalendarMonthOutlined
+                  sx={{
+                    fontSize: 18,
+                    color: "#808191",
+                    marginTop: 0.5,
+                  }}
+                />
+                <Typography fontSize={16} color="#808191">
+                  {eventDetails.date}
+                </Typography>
+              </Stack>
             </Stack>
           </Box>
+
+          <Stack mt="25px" direction="column" gap="10px">
+            <Typography fontSize={18} color="#11142D">
+              Description
+            </Typography>
+            <Typography fontSize={14} color="#808191">
+              {eventDetails.description}
+            </Typography>
+          </Stack>
         </Box>
 
         <Box

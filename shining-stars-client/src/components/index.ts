@@ -12,8 +12,8 @@ import CustomButton from "./common/CustomButton";
 
 // charts
 import PieChart from "./charts/PieChart";
-import ChildReferrals from "./charts/ChildReferrals";
-import TotalRevenue from "./charts/TotalRevenue";
+import StudentReferrals from "./charts/StudentReferrals";
+import TotalFees from "./charts/TotalFees";
 
 // agent
 import AgentCard from "./agent/AgentCard";
@@ -31,8 +31,8 @@ export {
   NewCard,
   CustomButton,
   PieChart,
-  ChildReferrals,
-  TotalRevenue,
+  StudentReferrals,
+  TotalFees,
   AgentCard,
   TopAgent,
 };

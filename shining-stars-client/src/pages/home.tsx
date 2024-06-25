@@ -3,27 +3,142 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
-import {
-  PieChart,
-  ChildReferrals,
-  TotalRevenue,
-  ChildCard,
-} from "components";
+import { PieChart, StudentReferrals, TotalFees, StudentCard } from "components";
+import { studentReferralsInfo } from "constants/index";
+
 
 const Home = () => {
   const { data, isLoading, isError } = useList({
-    resource: "children",
+    resource: "students",
     config: {
       pagination: {
-        pageSize: 4,
+        pageSize: 6,
       },
     },
   });
 
-  const latestChildren = data?.data ?? [];
+  const adminsData = useList({
+    resource: "admins",
+    config: {
+      pagination: {
+        pageSize: 6,
+      },
+    },
+  });
+
+  const staffsData = useList({
+    resource: "staffs",
+    config: {
+      pagination: {
+        pageSize: 6,
+      },
+    },
+  });
+
+  const prefectsData = useList({
+    resource: "prefects",
+    config: {
+      pagination: {
+        pageSize: 6,
+      },
+    },
+  });
+
+  const latestStudents = data?.data ?? [];
+
+  const noOfStudents = latestStudents.length;
+  const noOfAdmins = adminsData?.data?.data?.length;
+  const noOfStaffs = staffsData?.data?.data?.length;
+  const noOfPrefects = prefectsData?.data?.data?.length;
+
+  // Male students filter
+  const maleStudents = latestStudents.filter(
+    (student) => student.gender === "male"
+  );
+  const numberOfMaleStudents = maleStudents.length;
+  const malePercentage = Math.round(
+    (numberOfMaleStudents / noOfStudents) * 100
+  );
+
+  // Female students filter
+  const femaleStudents = latestStudents.filter(
+    (student) => student.gender === "female"
+  );
+  const numberOfFemaleStudents = femaleStudents.length;
+  const femalePercentage = Math.round(
+    (numberOfFemaleStudents / noOfStudents) * 100
+  );
+
+  // Day students filter
+  const dayStudents = latestStudents.filter(
+    (student) => student.residence === "day"
+  );
+  const numberOfDayStudents = dayStudents.length;
+  const dayPercentage = Math.round((numberOfDayStudents / noOfStudents) * 100);
+
+  // Boarding students filter
+  const boardingStudents = latestStudents.filter(
+    (student) => student.residence === "boarding"
+  );
+  const numberOfBoardingStudents = boardingStudents.length;
+  const boardingPercentage = Math.round(
+    (numberOfBoardingStudents / noOfStudents) * 100
+  );
 
   if (isLoading) return <Typography>Loading...</Typography>;
   if (isError) return <Typography>Something went wrong!</Typography>;
+
+  interface ProgressBarProps {
+    title: string;
+    percentage: number;
+    color: string;
+  }
+
+  const ProgressBar = ({ title, percentage, color }: ProgressBarProps) => (
+    <Box width="100%">
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Typography fontSize={16} fontWeight={500} color="#11142d">
+          {title}
+        </Typography>
+        <Typography fontSize={16} fontWeight={500} color="#11142d">
+          {percentage}%
+        </Typography>
+      </Stack>
+      <Box
+        mt={2}
+        position="relative"
+        width="100%"
+        height="8px"
+        borderRadius={1}
+        bgcolor="#e4e8ef"
+      >
+        <Box
+          width={`${percentage}%`}
+          bgcolor={color}
+          position="absolute"
+          height="100%"
+          borderRadius={1}
+        />
+      </Box>
+    </Box>
+  );
+
+  const percentages = [malePercentage, femalePercentage, dayPercentage, boardingPercentage];
+
+  const renderProgressBars = () => {
+    return percentages.map((percentage, index) => {
+      const barData = studentReferralsInfo[index]; 
+      return (
+        <Stack key={barData.title} my="20px" direction="column" gap={4}>
+          <ProgressBar
+            title={barData.title}
+            percentage={percentage}
+            color={barData.color}
+          />
+        </Stack>
+      );
+    });
+  };
 
   return (
     <Box>
@@ -33,39 +148,52 @@ const Home = () => {
 
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
         <PieChart
-          title="Children To Sponsor"
-          value={684}
-          series={[75, 25]}
-          colors={["#275be8", "#c4e8ef"]}
-        />
-        <PieChart
-          title="Services for Donations"
-          value={550}
+          title="Total Administrators"
+          value={noOfAdmins!}
           series={[60, 40]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
-          title="Total sponsors"
-          value={5684}
+          title="Total Staffs"
+          value={noOfStaffs!}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
-          title="Children for Donation"
-          value={555}
+          title="Total Students"
+          value={noOfStudents!}
+          series={[75, 25]}
+          colors={["#275be8", "#c4e8ef"]}
+        />
+        <PieChart
+          title="Total Prefects"
+          value={noOfPrefects!}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
       </Box>
 
-      <Stack
-        mt="25px"
-        width="100%"
-        direction={{ xs: "column", lg: "row" }}
-        gap={4}
-      >
-        <TotalRevenue />
-        <ChildReferrals />
+      <Stack mt="25px" width="100%">
+        {/* <StudentReferrals /> */}
+        <Box
+          p={4}
+          bgcolor="#fcfcfc"
+          id="chart"
+          minWidth={490}
+          display="flex"
+          flexDirection="column"
+          borderRadius="15px"
+        >
+          <Typography fontSize={18} fontWeight={600} color="#11142d">
+            Student Referrals
+          </Typography>
+
+          <Box>
+            {renderProgressBars()}
+          </Box>
+
+        </Box>
+
       </Stack>
 
       <Box
@@ -79,19 +207,20 @@ const Home = () => {
         mt="25px"
       >
         <Typography fontSize="18px" fontWeight={600} color="#11142d">
-          Latest Children
+          Latest Students
         </Typography>
 
         <Box mt={2.5} sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-          {latestChildren.map((child) => (
-            <ChildCard
-              key={child._id}
-              id={child._id}
-              name={child.name}
-              levelOfNeed={child.levelOfNeed}
-              grade={child.grade}
-              donations={child.donations}
-              photo={child.photo}
+          {latestStudents.map((student) => (
+            <StudentCard
+              key={student._id}
+              id={student._id}
+              name={student.name}
+              grade={student.grade}
+              paymentCode={student.paymentCode}
+              photo={student.photo}
+              gender={student.gender}
+              residence={student.residence}
             />
           ))}
         </Box>

@@ -14,6 +14,8 @@ export interface FormValues {
 export interface PrefectCardProps {
   id?: BaseKey | undefined;
   name: string;
+  gender: string;
+  residence: string;
   title: string;
   grade: string;
   photo: string;

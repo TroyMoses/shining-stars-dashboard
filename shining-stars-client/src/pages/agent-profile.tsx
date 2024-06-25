@@ -24,7 +24,7 @@ const AgentProfile = () => {
       name={myProfile.name}
       email={myProfile.email}
       avatar={myProfile.avatar}
-      children={myProfile.allChildren}
+      students={myProfile.allStudents}
     />
   );
 };

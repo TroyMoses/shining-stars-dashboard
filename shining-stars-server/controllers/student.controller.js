@@ -21,12 +21,22 @@ const getAllStudents = async (req, res) => {
     _sort,
     name_like = "",
     grade = "",
+    gender = "",
+    residence = "",
   } = req.query;
 
   const query = {};
 
   if (grade !== "") {
     query.grade = grade;
+  }
+
+  if (gender !== "") {
+    query.gender = gender;
+  }
+
+  if (residence !== "") {
+    query.residence = residence;
   }
 
   if (name_like) {
@@ -65,7 +75,7 @@ const getStudentDetail = async (req, res) => {
 
 const createStudent = async (req, res) => {
   try {
-    const { name, grade, paymentCode, photo, email } =
+    const { name, gender, grade, residence, paymentCode, photo, email } =
       req.body;
 
     const session = await mongoose.startSession();
@@ -79,7 +89,9 @@ const createStudent = async (req, res) => {
 
     const newStudent = await Student.create({
       name,
+      gender,
       grade,
+      residence,
       paymentCode,
       photo: photoUrl.url,
       creator: user._id,
@@ -99,7 +111,7 @@ const createStudent = async (req, res) => {
 const updateStudent = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, grade, paymentCode, photo } =
+    const { name, gender, grade, residence, paymentCode, photo } =
       req.body;
 
     const photoUrl = await cloudinary.uploader.upload(photo);
@@ -108,7 +120,9 @@ const updateStudent = async (req, res) => {
       { _id: id },
       {
         name,
+        gender,
         grade,
+        residence,
         paymentCode,
         photo: photoUrl.url || photo,
       },

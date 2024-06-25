@@ -24,7 +24,7 @@ const AdminForm = ({
   return (
     <Box>
       <Typography fontSize={25} fontWeight={700} color="#11142d">
-        {type} an Admin
+        {type} an Administrator
       </Typography>
 
       <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
@@ -47,14 +47,21 @@ const AdminForm = ({
                 color: "#11142d",
               }}
             >
-              Enter Admin title
+              Enter Administrator title
             </FormHelperText>
-            <TextField
-              fullWidth
+            <TextareaAutosize
+              minRows={1}
               required
-              id="outlined-basic"
               color="info"
-              variant="outlined"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
               {...register("title", { required: true })}
             />
           </FormControl>
@@ -68,14 +75,21 @@ const AdminForm = ({
                 color: "#11142d",
               }}
             >
-              Enter Admin name
+              Enter Administrator name
             </FormHelperText>
-            <TextField
-              fullWidth
+            <TextareaAutosize
+              minRows={1}
               required
-              id="outlined-basic"
               color="info"
-              variant="outlined"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
               {...register("name", { required: true })}
             />
           </FormControl>
@@ -145,7 +159,7 @@ const AdminForm = ({
                 fontWeight={500}
                 my="10px"
               >
-                Admin Photo
+                Administrator Photo
               </Typography>
 
               <Button

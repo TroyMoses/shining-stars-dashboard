@@ -104,6 +104,7 @@ const AllSliders = () => {
             title={slider.title}
             description={slider.description}
             photo={slider.photo}
+            type="sliders"
           />
         ))}
       </Box>

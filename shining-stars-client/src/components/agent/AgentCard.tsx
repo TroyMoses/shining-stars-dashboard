@@ -1,7 +1,9 @@
 import EmailOutlined from "@mui/icons-material/EmailOutlined";
-import LocationCity from "@mui/icons-material/LocationCity";
-import Phone from "@mui/icons-material/Phone";
-import Place from "@mui/icons-material/Place";
+import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
+import NewsPaperOutlined from "@mui/icons-material/NewspaperOutlined";
+import SupervisorAccountOutlined from "@mui/icons-material/SupervisorAccountOutlined";
+import CalendarMonthOutlined from "@mui/icons-material/CalendarMonthOutlined";
+import ViewCarouselOutlined from "@mui/icons-material/ViewCarouselOutlined";
 import { useGetIdentity } from "@refinedev/core";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -30,7 +32,13 @@ const AgentCard = ({
   name,
   email,
   avatar,
-  noOfChildren,
+  noOfStudents,
+  noOfPrefects,
+  noOfAdmins,
+  noOfStaffs,
+  noOfSliders,
+  noOfEvents,
+  noOfNews,
 }: AgentCardProp) => {
   const { data: currentUser } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
@@ -79,7 +87,7 @@ const AgentCard = ({
             {name}
           </Typography>
           <Typography fontSize={14} color="#808191">
-            Real-Estate Agent
+            Dashboard Admin
           </Typography>
         </Stack>
         <Stack
@@ -93,14 +101,41 @@ const AgentCard = ({
             icon={<EmailOutlined sx={{ color: "#808191" }} />}
             name={email}
           />
-          <InfoBar icon={<Place sx={{ color: "#808191" }} />} name="London" />
+        </Stack>
+        <Stack
+          direction="row"
+          flexWrap="wrap"
+          justifyContent="space-between"
+          alignItems="center"
+          gap={2}
+        >
           <InfoBar
-            icon={<Phone sx={{ color: "#808191" }} />}
-            name="+502-3231-4141"
+            icon={<PeopleAltOutlined sx={{ color: "#808191" }} />}
+            name={`Added ${noOfStudents} Students`}
           />
           <InfoBar
-            icon={<LocationCity sx={{ color: "#808191" }} />}
-            name={`${noOfChildren} Children`}
+            icon={<PeopleAltOutlined sx={{ color: "#808191" }} />}
+            name={`Added ${noOfPrefects} Prefects`}
+          />
+          <InfoBar
+            icon={<SupervisorAccountOutlined sx={{ color: "#808191" }} />}
+            name={`Added ${noOfAdmins} Administrators`}
+          />
+          <InfoBar
+            icon={<PeopleAltOutlined sx={{ color: "#808191" }} />}
+            name={`Added ${noOfStaffs} Staffs`}
+          />
+          <InfoBar
+            icon={<ViewCarouselOutlined sx={{ color: "#808191" }} />}
+            name={`Added ${noOfSliders} Sliders`}
+          />
+          <InfoBar
+            icon={<CalendarMonthOutlined sx={{ color: "#808191" }} />}
+            name={`Added ${noOfEvents} Events`}
+          />
+          <InfoBar
+            icon={<NewsPaperOutlined sx={{ color: "#808191" }} />}
+            name={`Added ${noOfNews} News`}
           />
         </Stack>
       </Stack>

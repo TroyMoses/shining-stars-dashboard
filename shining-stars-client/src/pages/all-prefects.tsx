@@ -38,6 +38,12 @@ const AllPrefects = () => {
       grade:
         logicalFilters.find((item) => item.field === "grade")?.value ||
         "",
+        gender:
+        logicalFilters.find((item) => item.field === "gender")?.value ||
+        "",
+        residence:
+        logicalFilters.find((item) => item.field === "residence")?.value ||
+        "",
     };
   }, [filters]);
 
@@ -63,7 +69,7 @@ const AllPrefects = () => {
           >
             <Box
               display="flex"
-              gap={2}
+              gap={5}
               flexWrap="wrap"
               mb={{ xs: "20px", sm: 0 }}
             >
@@ -105,24 +111,89 @@ const AllPrefects = () => {
                   );
                 }}
               >
-                <MenuItem value="">All</MenuItem>
+                <MenuItem value="">Filter By Class</MenuItem>
                 {[
-                  "Baby Class",
-                  "Middle Class",
-                  "Top Class",
-                  "Primary One",
-                  "Primary Two",
-                  "Primary Three",
-                  "Primary Four",
-                  "Primary Five",
-                  "Primary Six",
-                  "Primary Seven",
+                  "Baby-Class",
+                  "Middle-Class",
+                  "Top-Class",
+                  "Primary-One",
+                  "Primary-Two",
+                  "Primary-Three",
+                  "Primary-Four",
+                  "Primary-Five",
+                  "Primary-Six",
+                  "Primary-Seven",
                 ].map((type) => (
                   <MenuItem key={type} value={type.toLowerCase()}>
                     {type}
                   </MenuItem>
                 ))}
               </Select>
+
+              <Select
+                variant="outlined"
+                color="info"
+                displayEmpty
+                required
+                inputProps={{ "aria-label": "Without label" }}
+                defaultValue=""
+                value={currentFilterValues.gender}
+                onChange={(e) => {
+                  setFilters(
+                    [
+                      {
+                        field: "gender",
+                        operator: "eq",
+                        value: e.target.value,
+                      },
+                    ],
+                    "replace",
+                  );
+                }}
+              >
+                <MenuItem value="">Filter By Gender</MenuItem>
+                {[
+                  "Male",
+                  "Female",
+                ].map((type) => (
+                  <MenuItem key={type} value={type.toLowerCase()}>
+                    {type}
+                  </MenuItem>
+                ))}
+              </Select>
+
+              <Select
+                variant="outlined"
+                color="info"
+                displayEmpty
+                required
+                inputProps={{ "aria-label": "Without label" }}
+                defaultValue=""
+                value={currentFilterValues.residence}
+                onChange={(e) => {
+                  setFilters(
+                    [
+                      {
+                        field: "residence",
+                        operator: "eq",
+                        value: e.target.value,
+                      },
+                    ],
+                    "replace",
+                  );
+                }}
+              >
+                <MenuItem value="">Filter By Residence</MenuItem>
+                {[
+                  "Boarding",
+                  "Day",
+                ].map((type) => (
+                  <MenuItem key={type} value={type.toLowerCase()}>
+                    {type}
+                  </MenuItem>
+                ))}
+              </Select>
+
             </Box>
           </Box>
         </Stack>
@@ -147,6 +218,8 @@ const AllPrefects = () => {
             title={student.title}
             grade={student.grade}
             photo={student.photo}
+            gender={student.gender}
+            residence={student.residence}
           />
         ))}
       </Box>

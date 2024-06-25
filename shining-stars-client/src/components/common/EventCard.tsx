@@ -1,4 +1,5 @@
 import Place from "@mui/icons-material/Place";
+import CalendarMonthOutlined from "@mui/icons-material/CalendarMonthOutlined";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -42,43 +43,61 @@ const EventCard = ({
       <CardContent
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
           gap: "10px",
           paddingX: "5px",
         }}
       >
         <Stack direction="column" gap={1}>
-          <Typography fontSize={16} fontWeight={500} color="#11142d">
-            {activity}
+          <Typography fontSize={16} fontWeight={500} color="#808191">
+            {activity.toUpperCase()}
           </Typography>
-          <Stack direction="row" gap={0.5} alignItems="flex-start">
-            <Place
-              sx={{
-                fontSize: 18,
-                color: "#11142d",
-                marginTop: 0.5,
-              }}
-            />
-            <Typography fontSize={14} color="#808191">
-              {date}
-            </Typography>
+
+          <Stack
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              gap: "10px",
+              marginBottom: "8px",
+            }}
+          >
+            <Stack direction="row" gap={0.5} alignItems="flex-start">
+              <Place
+                sx={{
+                  fontSize: 18,
+                  color: "#808191",
+                  marginTop: 0.5,
+                }}
+              />
+              <Typography fontSize={14} color="#808191">
+                {place}
+              </Typography>
+            </Stack>
+
+            <Stack direction="row" gap={0.5} alignItems="flex-start">
+              <CalendarMonthOutlined
+                sx={{
+                  fontSize: 18,
+                  color: "#808191",
+                  marginTop: 0.5,
+                }}
+              />
+              <Typography fontSize={14} color="#808191">
+                {date}
+              </Typography>
+            </Stack>
           </Stack>
+          <Box>
+            <Typography fontSize={12} fontWeight={600} color="#808191">
+              DESCRIPTION
+            </Typography>
+            <Typography fontSize={12} fontWeight={600} color="#808191">
+              {description}
+            </Typography>
+          </Box>
         </Stack>
-        <Box
-          px={1.5}
-          py={0.5}
-          borderRadius={1}
-          bgcolor="#dadefa"
-          height="fit-content"
-        >
-          <Typography fontSize={12} fontWeight={600} color="#475be8">
-            {place}
-          </Typography>
-          <Typography fontSize={12} fontWeight={600} color="#475be8">
-            {description}
-          </Typography>
-        </Box>
       </CardContent>
     </Card>
   );

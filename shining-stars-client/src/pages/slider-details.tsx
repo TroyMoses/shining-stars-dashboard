@@ -64,7 +64,7 @@ const SliderDetails = () => {
       width="fit-content"
     >
       <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Details
+        Slider Details
       </Typography>
 
       <Box
@@ -98,7 +98,7 @@ const SliderDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
-                  {sliderDetails.title}
+                  {sliderDetails.title.toUpperCase()}
                 </Typography>
               </Box>
             </Stack>

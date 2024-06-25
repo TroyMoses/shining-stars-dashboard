@@ -47,8 +47,8 @@ const AllAdmins = () => {
         <Stack direction="column" width="100%">
           <Typography fontSize={25} fontWeight={700} color="#11142d">
             {!allAdmins.length
-              ? "There are no admins"
-              : "All Admins"}
+              ? "There are no administrators"
+              : "All Administrators"}
           </Typography>
           <Box
             mb={2}
@@ -88,7 +88,7 @@ const AllAdmins = () => {
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <CustomButton
-          title="Add Admin"
+          title="Add Administrator"
           handleClick={() => navigate("/admins/create")}
           backgroundColor="#475be8"
           color="#fcfcfc"
