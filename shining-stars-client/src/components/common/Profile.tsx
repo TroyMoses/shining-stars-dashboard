@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Pagination from "@mui/material/Pagination";
 import Email from "@mui/icons-material/Email";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -7,8 +5,6 @@ import Typography from "@mui/material/Typography";
 
 import type { ProfileProps, StudentProps } from "interfaces/common";
 import StudentCard from "./StudentCard";
-
-const [currentPage, setCurrentPage] = useState(1);
 
 function checkImage(url: any) {
   const img = new Image();
@@ -116,7 +112,7 @@ const Profile = ({ type, name, avatar, email, students }: ProfileProps) => (
             gap: 2.5,
           }}
         >
-          {students?.slice((currentPage - 1) * 6, currentPage * 6).map((student: StudentProps) => (
+          {students?.map((student: StudentProps) => (
             <StudentCard
               key={student._id}
               id={student._id}
@@ -129,19 +125,6 @@ const Profile = ({ type, name, avatar, email, students }: ProfileProps) => (
             />
           ))}
         </Box>
-
-        {students.length > 6 && (
-            <Stack mt={2} direction="row" justifyContent="center">
-              <Pagination
-                count={Math.ceil(students.length / 6)}
-                page={currentPage}
-                onChange={(event, newPage) => {
-                  setCurrentPage(newPage);
-                }}
-                color="primary"
-              />
-            </Stack>
-          )}
 
       </Box>
     )}
