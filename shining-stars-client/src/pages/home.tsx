@@ -3,19 +3,16 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
-import {
-  PieChart,
-  StudentReferrals,
-  TotalFees,
-  StudentCard,
-} from "components";
+import { PieChart, StudentReferrals, TotalFees, StudentCard } from "components";
+import { studentReferralsInfo } from "constants/index";
+
 
 const Home = () => {
   const { data, isLoading, isError } = useList({
     resource: "students",
     config: {
       pagination: {
-        pageSize: 4,
+        pageSize: 6,
       },
     },
   });
@@ -24,7 +21,7 @@ const Home = () => {
     resource: "admins",
     config: {
       pagination: {
-        pageSize: 4,
+        pageSize: 6,
       },
     },
   });
@@ -33,7 +30,7 @@ const Home = () => {
     resource: "staffs",
     config: {
       pagination: {
-        pageSize: 4,
+        pageSize: 6,
       },
     },
   });
@@ -42,7 +39,7 @@ const Home = () => {
     resource: "prefects",
     config: {
       pagination: {
-        pageSize: 4,
+        pageSize: 6,
       },
     },
   });
@@ -54,9 +51,94 @@ const Home = () => {
   const noOfStaffs = staffsData?.data?.data?.length;
   const noOfPrefects = prefectsData?.data?.data?.length;
 
+  // Male students filter
+  const maleStudents = latestStudents.filter(
+    (student) => student.gender === "male"
+  );
+  const numberOfMaleStudents = maleStudents.length;
+  const malePercentage = Math.round(
+    (numberOfMaleStudents / noOfStudents) * 100
+  );
+
+  // Female students filter
+  const femaleStudents = latestStudents.filter(
+    (student) => student.gender === "female"
+  );
+  const numberOfFemaleStudents = femaleStudents.length;
+  const femalePercentage = Math.round(
+    (numberOfFemaleStudents / noOfStudents) * 100
+  );
+
+  // Day students filter
+  const dayStudents = latestStudents.filter(
+    (student) => student.residence === "day"
+  );
+  const numberOfDayStudents = dayStudents.length;
+  const dayPercentage = Math.round((numberOfDayStudents / noOfStudents) * 100);
+
+  // Boarding students filter
+  const boardingStudents = latestStudents.filter(
+    (student) => student.residence === "boarding"
+  );
+  const numberOfBoardingStudents = boardingStudents.length;
+  const boardingPercentage = Math.round(
+    (numberOfBoardingStudents / noOfStudents) * 100
+  );
 
   if (isLoading) return <Typography>Loading...</Typography>;
   if (isError) return <Typography>Something went wrong!</Typography>;
+
+  interface ProgressBarProps {
+    title: string;
+    percentage: number;
+    color: string;
+  }
+
+  const ProgressBar = ({ title, percentage, color }: ProgressBarProps) => (
+    <Box width="100%">
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Typography fontSize={16} fontWeight={500} color="#11142d">
+          {title}
+        </Typography>
+        <Typography fontSize={16} fontWeight={500} color="#11142d">
+          {percentage}%
+        </Typography>
+      </Stack>
+      <Box
+        mt={2}
+        position="relative"
+        width="100%"
+        height="8px"
+        borderRadius={1}
+        bgcolor="#e4e8ef"
+      >
+        <Box
+          width={`${percentage}%`}
+          bgcolor={color}
+          position="absolute"
+          height="100%"
+          borderRadius={1}
+        />
+      </Box>
+    </Box>
+  );
+
+  const percentages = [malePercentage, femalePercentage, dayPercentage, boardingPercentage];
+
+  const renderProgressBars = () => {
+    return percentages.map((percentage, index) => {
+      const barData = studentReferralsInfo[index]; 
+      return (
+        <Stack key={barData.title} my="20px" direction="column" gap={4}>
+          <ProgressBar
+            title={barData.title}
+            percentage={percentage}
+            color={barData.color}
+          />
+        </Stack>
+      );
+    });
+  };
 
   return (
     <Box>
@@ -91,11 +173,27 @@ const Home = () => {
         />
       </Box>
 
-      <Stack
-        mt="25px"
-        width="100%"
-      >
-        <StudentReferrals />
+      <Stack mt="25px" width="100%">
+        {/* <StudentReferrals /> */}
+        <Box
+          p={4}
+          bgcolor="#fcfcfc"
+          id="chart"
+          minWidth={490}
+          display="flex"
+          flexDirection="column"
+          borderRadius="15px"
+        >
+          <Typography fontSize={18} fontWeight={600} color="#11142d">
+            Student Referrals
+          </Typography>
+
+          <Box>
+            {renderProgressBars()}
+          </Box>
+
+        </Box>
+
       </Stack>
 
       <Box

@@ -11,6 +11,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({ title, percentage, color }: ProgressBarProps) => (
+
   <Box width="100%">
     <Stack direction="row" alignItems="center" justifyContent="space-between">
       <Typography fontSize={16} fontWeight={500} color="#11142d">
@@ -56,8 +57,40 @@ const StudentReferrals = () => {
 
       <Stack my="20px" direction="column" gap={4}>
         {studentReferralsInfo.map((bar) => (
+          // <Box width="100%">
+          //   <Stack
+          //     direction="row"
+          //     alignItems="center"
+          //     justifyContent="space-between"
+          //   >
+          //     <Typography fontSize={16} fontWeight={500} color="#11142d">
+          //       Title
+          //     </Typography>
+          //     <Typography fontSize={16} fontWeight={500} color="#11142d">
+          //       Percentage%
+          //     </Typography>
+          //   </Stack>
+          //   <Box
+          //     mt={2}
+          //     position="relative"
+          //     width="100%"
+          //     height="8px"
+          //     borderRadius={1}
+          //     bgcolor="#e4e8ef"
+          //   >
+          //     <Box
+          //       // width={`${percentage}%`}
+          //       // bgcolor={color}
+          //       position="absolute"
+          //       height="100%"
+          //       borderRadius={1}
+          //     />
+          //   </Box>
+          // </Box>
           <ProgressBar key={bar.title} {...bar} />
         ))}
+
+        
       </Stack>
     </Box>
   );
