@@ -85,14 +85,14 @@ const StudentForm = ({
                 required
                 sx={{
                   flex: 1,
-                  '& .MuiSelect-select': { 
-                    color: '#919191',  
+                  "& .MuiSelect-select": {
+                    color: "#919191",
                   },
-                  '& .MuiFormLabel-root': { 
-                    color: '#919191',
+                  "& .MuiFormLabel-root": {
+                    color: "#919191",
                   },
-                  '& .MuiInputLabel-outlined': { 
-                    color: '#919191',
+                  "& .MuiInputLabel-outlined": {
+                    color: "#919191",
                   },
                 }}
                 {...register("gender", {
@@ -135,14 +135,14 @@ const StudentForm = ({
                 required
                 sx={{
                   flex: 1,
-                  '& .MuiSelect-select': { 
-                    color: '#919191',  
+                  "& .MuiSelect-select": {
+                    color: "#919191",
                   },
-                  '& .MuiFormLabel-root': { 
-                    color: '#919191',
+                  "& .MuiFormLabel-root": {
+                    color: "#919191",
                   },
-                  '& .MuiInputLabel-outlined': { 
-                    color: '#919191',
+                  "& .MuiInputLabel-outlined": {
+                    color: "#919191",
                   },
                 }}
                 {...register("gender", {
@@ -171,65 +171,64 @@ const StudentForm = ({
                 Enter Student Payment Code
               </FormHelperText>
               <TextareaAutosize
-              minRows={1}
-              required
-              color="info"
-              style={{
-                width: "100%",
-                background: "transparent",
-                fontSize: "16px",
-                borderColor: "rgba(0,0,0,0.23)",
-                borderRadius: 6,
-                padding: 10,
-                color: "#919191",
-              }}
-              {...register("paymentCode", { required: true })}
-            />
+                minRows={1}
+                required
+                color="info"
+                style={{
+                  width: "100%",
+                  background: "transparent",
+                  fontSize: "16px",
+                  borderColor: "rgba(0,0,0,0.23)",
+                  borderRadius: 6,
+                  padding: 10,
+                  color: "#919191",
+                }}
+                {...register("paymentCode", { required: true })}
+              />
             </FormControl>
           </Stack>
 
           <FormControl sx={{ flex: 1 }}>
-              <FormHelperText
-                sx={{
-                  fontWeight: 500,
-                  margin: "10px 0",
-                  fontSize: 16,
-                  color: "#11142d",
-                }}
-              >
-                Select Gender
-              </FormHelperText>
-              <Select
-                variant="outlined"
-                color="info"
-                displayEmpty
-                required
-                sx={{
-                  flex: 1,
-                  '& .MuiSelect-select': { 
-                    color: '#919191',  
-                  },
-                  '& .MuiFormLabel-root': { 
-                    color: '#919191',
-                  },
-                  '& .MuiInputLabel-outlined': { 
-                    color: '#919191',
-                  },
-                }}
-                {...register("gender", {
-                  required: true,
-                })}
-                inputProps={{ "aria-label": "Without label" }}
-                defaultValue="male"
-                {...register("gender", {
-                  required: true,
-                })}
-              >
-                <MenuItem value="male">Male</MenuItem>
-                <MenuItem value="female">Female</MenuItem>
-              </Select>
-            </FormControl>
-
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: "10px 0",
+                fontSize: 16,
+                color: "#11142d",
+              }}
+            >
+              Select Gender
+            </FormHelperText>
+            <Select
+              variant="outlined"
+              color="info"
+              displayEmpty
+              required
+              sx={{
+                flex: 1,
+                "& .MuiSelect-select": {
+                  color: "#919191",
+                },
+                "& .MuiFormLabel-root": {
+                  color: "#919191",
+                },
+                "& .MuiInputLabel-outlined": {
+                  color: "#919191",
+                },
+              }}
+              {...register("gender", {
+                required: true,
+              })}
+              inputProps={{ "aria-label": "Without label" }}
+              defaultValue="male"
+              {...register("gender", {
+                required: true,
+              })}
+            >
+              <MenuItem value="male">Male</MenuItem>
+              <MenuItem value="female">Female</MenuItem>
+            </Select>
+          </FormControl>
 
           <Stack direction="column" gap={1} justifyContent="center" mb={2}>
             <Stack direction="row" gap={2}>
