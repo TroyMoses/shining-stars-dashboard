@@ -20,6 +20,7 @@ export interface ProfileProps {
 export interface StudentProps {
   _id: string;
   name: string;
+  stid: string;
   grade: string;
   gender: string;
   residence: string

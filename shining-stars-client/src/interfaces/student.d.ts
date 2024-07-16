@@ -7,6 +7,7 @@ export interface FormFieldProp {
 
 export interface FormValues {
   name: string;
+  stid: string;
   paymentCode: string;
   grade: string;
 }
@@ -14,6 +15,7 @@ export interface FormValues {
 export interface StudentCardProps {
   id?: BaseKey | undefined;
   name: string;
+  stid: string;
   grade: string;
   gender: string;
   residence: string;

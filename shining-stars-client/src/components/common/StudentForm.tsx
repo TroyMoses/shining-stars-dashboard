@@ -66,6 +66,34 @@ const StudentForm = ({
             />
           </FormControl>
 
+          <FormControl>
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: "10px 0",
+                fontSize: 16,
+                color: "#11142d",
+              }}
+            >
+              Enter Student ID
+            </FormHelperText>
+            <TextareaAutosize
+              minRows={1}
+              required
+              color="info"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
+              {...register("stid", { required: true })}
+            />
+          </FormControl>
+
           <Stack direction="row" gap={4}>
             <FormControl sx={{ flex: 1 }}>
               <FormHelperText

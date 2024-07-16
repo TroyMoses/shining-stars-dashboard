@@ -90,6 +90,23 @@ const AllStudents = () => {
                   ]);
                 }}
               />
+              <TextField
+                variant="outlined"
+                color="info"
+                placeholder="Search by ID"
+                value={currentFilterValues.name}
+                onChange={(e) => {
+                  setFilters([
+                    {
+                      field: "stid",
+                      operator: "contains",
+                      value: e.currentTarget.value
+                        ? e.currentTarget.value
+                        : undefined,
+                    },
+                  ]);
+                }}
+              />
               <Select
                 variant="outlined"
                 color="info"
@@ -215,6 +232,7 @@ const AllStudents = () => {
             key={student._id}
             id={student._id}
             name={student.name}
+            stid={student.stid}
             grade={student.grade}
             paymentCode={student.paymentCode}
             photo={student.photo}

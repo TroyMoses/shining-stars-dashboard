@@ -216,6 +216,7 @@ const Home = () => {
               key={student._id}
               id={student._id}
               name={student.name}
+              stid={student.stid}
               grade={student.grade}
               paymentCode={student.paymentCode}
               photo={student.photo}
