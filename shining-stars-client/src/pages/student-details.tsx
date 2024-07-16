@@ -51,7 +51,7 @@ const StudentDetails = () => {
           onSuccess: () => {
             navigate("/students");
           },
-        },
+        }
       );
     }
   };
@@ -83,7 +83,6 @@ const StudentDetails = () => {
           />
 
           <Box mt="15px">
-
             <Stack
               direction="row"
               flexWrap="wrap"
@@ -101,7 +100,6 @@ const StudentDetails = () => {
                   {studentDetails.name.toUpperCase()}
                 </Typography>
                 <Stack mt={0.5} direction="row" alignItems="center" gap={0.5}>
-                  
                   <Typography fontSize={14} color="#808191">
                     {studentDetails.grade.toUpperCase()}
                   </Typography>
@@ -125,6 +123,16 @@ const StudentDetails = () => {
               </Box>
             </Stack>
 
+            <Box>
+              <Typography
+                fontSize={22}
+                fontWeight={600}
+                mt="10px"
+                color="#11142D"
+              >
+                ID: {studentDetails.stid.toUpperCase()}
+              </Typography>
+            </Box>
           </Box>
         </Box>
 
@@ -216,7 +224,6 @@ const StudentDetails = () => {
               />
             </Stack>
           </Stack>
-
         </Box>
       </Box>
     </Box>
