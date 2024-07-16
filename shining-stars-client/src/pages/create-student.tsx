@@ -17,7 +17,9 @@ const CreateStudent = () => {
     handleSubmit,
   } = useForm();
 
-  const handleImageChange = (file: File) => {
+  const handleImageChange = (file: File | null) => {
+    if (!file) return;
+
     const reader = (readFile: File) =>
       new Promise<string>((resolve, reject) => {
         const fileReader = new FileReader();
@@ -31,7 +33,8 @@ const CreateStudent = () => {
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-    // if (!studentImage.name) return alert("Please select an image");
+    if (!studentImage.name) return alert("Please select an image");
+    // const imageData = studentImage.url ? studentImage.url : null;
 
     await onFinish({
       ...data,
