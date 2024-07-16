@@ -87,7 +87,7 @@ const StudentCard = ({
             bgcolor="#dadefa"
             height="fit-content"
           >
-            ID: {stid.toUpperCase()}
+            ID: {stid}
           </Typography>
 
         </Stack>

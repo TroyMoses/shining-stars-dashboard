@@ -130,7 +130,7 @@ const StudentDetails = () => {
                 mt="10px"
                 color="#11142D"
               >
-                ID: {studentDetails.stid.toUpperCase()}
+                ID: {studentDetails.stid}
               </Typography>
             </Box>
           </Box>

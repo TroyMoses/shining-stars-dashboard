@@ -35,6 +35,7 @@ const AllStudents = () => {
 
     return {
       name: logicalFilters.find((item) => item.field === "name")?.value || "",
+      stid: logicalFilters.find((item) => item.field === "stid")?.value || "",
       grade:
         logicalFilters.find((item) => item.field === "grade")?.value ||
         "",
@@ -94,7 +95,7 @@ const AllStudents = () => {
                 variant="outlined"
                 color="info"
                 placeholder="Search by ID"
-                value={currentFilterValues.name}
+                value={currentFilterValues.stid}
                 onChange={(e) => {
                   setFilters([
                     {
