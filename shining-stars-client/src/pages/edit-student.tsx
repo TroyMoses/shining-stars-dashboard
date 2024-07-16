@@ -30,7 +30,7 @@ const EditStudent = () => {
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-    // if (!studentImage.name) return alert("Please upload a student image");
+    if (!studentImage.name) return alert("Please upload a student image");
 
     await onFinish({
       ...data,

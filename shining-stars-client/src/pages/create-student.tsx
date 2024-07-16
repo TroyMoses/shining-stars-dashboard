@@ -33,12 +33,12 @@ const CreateStudent = () => {
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-    // if (!studentImage.name) return alert("Please select an image");
-    const imageData = studentImage.url ? studentImage.url : null;
+    if (!studentImage.name) return alert("Please select an image");
+    // const imageData = studentImage.url ? studentImage.url : null;
 
     await onFinish({
       ...data,
-      photo: imageData,
+      photo: studentImage.url,
       email: user.email,
     });
   };
