@@ -40,7 +40,7 @@ const Prints = () => {
         <Typography variant="h6" style={{ fontSize: '1.1rem' }} fontWeight={700}>
           "Arise and shine"
         </Typography>
-        <Typography variant="h6" fontWeight={400} mb={2}>
+        <Typography variant="h6" fontWeight={400} mb={1}>
           <span style={{ fontWeight: 700 }}>Email:</span> <span style={{ textDecoration: 'underline' }}>shiningstarsprimary2022@gmail.com</span>
         </Typography>
 
@@ -62,37 +62,37 @@ const Prints = () => {
         </Typography>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Pupil's Name: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "500px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Admission No: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "300px" }} />
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Date of Birth: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Age: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Gender: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
         </Box>
 
         {/* for the class row */}
         <Box display="flex" justifyContent="space-between" mt={2}>
-        <Typography variant="h6" fontWeight={300}>
+        <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
           Class: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
         </Typography>
 
         <Box display="flex" alignItems="center">
-          <Typography variant="h6" fontWeight={300} mr={1}>
+          <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1.1rem' }}>
             Day
           </Typography>
           <Box
@@ -106,7 +106,7 @@ const Prints = () => {
         </Box>
 
         <Box display="flex" alignItems="center">
-          <Typography variant="h6" fontWeight={300} mr={1}>
+          <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1.1rem' }}>
             Boarding
           </Typography>
           <Box
@@ -119,14 +119,14 @@ const Prints = () => {
           />
         </Box>
 
-        <Typography variant="h6" fontWeight={300}>
+        <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
           Term: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
         </Typography>
       </Box>
       
             {/* for the Emis No */}
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Emis No. (LIN): <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "900px" }} />
           </Typography>
         </Box>
@@ -140,35 +140,35 @@ const Prints = () => {
           CONTACT INFORMATION
         </Typography>
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Parent's/Guardian's Name: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "800px" }} />
           </Typography>
         </Box>
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Telephone Number: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "400px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Relationship with the Pupil: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Address: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Village: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             LC1: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
         </Box>
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             NIN No: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "900px" }} />
           </Typography>
         </Box>
@@ -181,35 +181,35 @@ const Prints = () => {
         </Typography>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Name: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "600px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Gender: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Telephone Number: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "300px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Relationship with the pupil: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Address: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Village: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
 
-          <Typography variant="h6" fontWeight={300}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             LC1: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
           </Typography>
         </Box>
@@ -220,17 +220,17 @@ const Prints = () => {
         <Typography variant="h6" fontWeight={700} textAlign="center">
           MEDICAL INFORMATION
         </Typography>
-        <Typography variant="body1" mt={1} mb={2}>
+        <Typography variant="body1" mt={1} mb={2} style={{ fontSize: '1.1rem' }}>
           Does your child have any medical issue(s) of which we need to be aware of?
         </Typography>
         <Typography variant="body1" fontWeight={300}>
             If YES please explain: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "900px" }} />
         </Typography>
-        <Typography variant="body1" fontWeight={300}>
+        <Typography variant="body1" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "1000px" }} />
         </Typography>
 
-        <Typography variant="body1" fontWeight={300}>
+        <Typography variant="body1" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             I <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "300px" }} /> hereby certify to the best of my knowledge that the above information is true and accurate.
         </Typography>
       </Box>
@@ -247,20 +247,20 @@ const Prints = () => {
         </Typography>
       </Box>
       <Box display="flex" justifyContent="space-between" mt={2}>
-        <Typography variant="h6" fontWeight={300}>
+        <Typography variant="h6" fontWeight={800} style={{ fontSize: '1.2rem' }}>
           PARENT'S/GUARDIAN'S SIGNATURE 
         </Typography>
 
-        <Typography variant="h6" fontWeight={300}>
+        <Typography variant="h6" fontWeight={800} style={{ fontSize: '1.2rem' }}>
           DATE 
         </Typography>
       </Box>
 
-      <Typography variant="h6" fontWeight={700} textAlign="center">
+      <Typography variant="h6" fontWeight={700} textAlign="center" mt={4}>
       LOCATED ALONG GAYAZA-ZIROBWE ROAD BUSIKA TOWN COUNCIL
       </Typography>
 
-      <Typography variant="h6" fontWeight={400} textAlign="center" mt={4}>
+      <Typography variant="h6" fontWeight={400} textAlign="center" mt={2}>
       "A CENTRE FOR GUARANTEED EXCELLENCE"
       </Typography>
 
