@@ -19,14 +19,15 @@ const Prints = () => {
   return (
     <Box>
       {/* Admission Form */}
-      <Box display="flex" alignItems="center" justifyContent="center" textAlign="center" mb={1}>
+      <Box display="flex"  mb={1}>
+      {/* <Box> */}
         {/* Logo (adjust size as needed) */}
         <Box mr={2}>
           <img src={log} alt="Shining" style={{ width: "100px", height: "100px" }} />
         </Box>
 
       {/* Text content */}
-      <Box>
+      <Box justifyContent="center" textAlign="center">
         <Typography variant="h5" fontWeight={700}>
           SHINING STARS NURSERY AND PRIMARY SCHOOL - VVUMBA
         </Typography>
@@ -44,14 +45,15 @@ const Prints = () => {
         <Typography variant="h6" fontWeight={400} mb={2}>
           Email: shiningstarsprimary2022@gmail.com
         </Typography>
-
-        <Box
+      </Box>
+    </Box>
+    <Box justifyContent="center" textAlign="center">
+       <Box
           mb={2}
           sx={{
             borderBottom: "double 4px black",
           }}
         />
-      </Box>
     </Box>
       
       {/* Contact Information for Parent */}
