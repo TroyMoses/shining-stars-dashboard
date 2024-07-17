@@ -25,6 +25,8 @@ export interface StudentProps {
   gender: string;
   residence: string
   paymentCode: string;
+  parent_name: string;
+  parent_email: string;
   photo: string;
   creator: string;
 }

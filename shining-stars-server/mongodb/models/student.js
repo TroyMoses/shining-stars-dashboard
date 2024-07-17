@@ -7,6 +7,8 @@ const StudentSchema = new mongoose.Schema({
   grade: { type: String, required: true },
   residence: { type: String, required: true },
   paymentCode: { type: Number, required: true },
+  parent_name: { type: String, required: true },
+  parent_email: { type: String, required: true },
   photo: { type: String },
   creator: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
