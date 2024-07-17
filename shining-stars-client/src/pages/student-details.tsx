@@ -133,6 +133,28 @@ const StudentDetails = () => {
                 ID: {studentDetails.stid}
               </Typography>
             </Box>
+            
+            <Box>
+              <Typography
+                fontSize={22}
+                fontWeight={600}
+                mt="10px"
+                color="#11142D"
+              >
+                Parent Name: {studentDetails.parent_name}
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography
+                fontSize={22}
+                fontWeight={600}
+                mt="10px"
+                color="#11142D"
+              >
+                Parent Email: {studentDetails.parent_email}
+              </Typography>
+            </Box>
           </Box>
         </Box>
 

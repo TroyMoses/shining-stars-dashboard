@@ -9,6 +9,8 @@ export interface FormValues {
   name: string;
   stid: string;
   paymentCode: string;
+  parent_name: string;
+  parent_email: string;
   grade: string;
 }
 
@@ -20,5 +22,7 @@ export interface StudentCardProps {
   gender: string;
   residence: string;
   paymentCode: string;
+  parent_name: string;
+  parent_email: string;
   photo: string;
 }

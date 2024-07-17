@@ -258,6 +258,62 @@ const StudentForm = ({
             </Select>
           </FormControl>
 
+          <FormControl>
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: "10px 0",
+                fontSize: 16,
+                color: "#11142d",
+              }}
+            >
+              Enter Student Prent Name
+            </FormHelperText>
+            <TextareaAutosize
+              minRows={1}
+              required
+              color="info"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
+              {...register("parent_name", { required: true })}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: "10px 0",
+                fontSize: 16,
+                color: "#11142d",
+              }}
+            >
+              Enter Student Parent Email
+            </FormHelperText>
+            <TextareaAutosize
+              minRows={1}
+              required
+              color="info"
+              style={{
+                width: "100%",
+                background: "transparent",
+                fontSize: "16px",
+                borderColor: "rgba(0,0,0,0.23)",
+                borderRadius: 6,
+                padding: 10,
+                color: "#919191",
+              }}
+              {...register("parent_email", { required: true })}
+            />
+          </FormControl>
+
           <Stack direction="column" gap={1} justifyContent="center" mb={2}>
             <Stack direction="row" gap={2}>
               <Typography

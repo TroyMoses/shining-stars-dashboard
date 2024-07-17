@@ -67,9 +67,7 @@ const getAllStudents = async (req, res) => {
 
 const getStudentDetail = async (req, res) => {
   const { id } = req.params;
-  const studentExists = await Student.findOne({ _id: id }).populate(
-    "creator",
-  );
+  const studentExists = await Student.findOne({ _id: id }).populate("creator");
 
   if (studentExists) {
     res.status(200).json(studentExists);
@@ -80,8 +78,18 @@ const getStudentDetail = async (req, res) => {
 
 const createStudent = async (req, res) => {
   try {
-    const { name, stid, gender, grade, residence, paymentCode, photo, email } =
-      req.body;
+    const {
+      name,
+      stid,
+      gender,
+      grade,
+      residence,
+      paymentCode,
+      parent_name,
+      parent_email,
+      photo,
+      email,
+    } = req.body;
 
     const session = await mongoose.startSession();
     session.startTransaction();
@@ -99,6 +107,8 @@ const createStudent = async (req, res) => {
       grade,
       residence,
       paymentCode,
+      parent_name,
+      parent_email,
       photo: photoUrl.url,
       creator: user._id,
     });
@@ -117,8 +127,17 @@ const createStudent = async (req, res) => {
 const updateStudent = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, stid, gender, grade, residence, paymentCode, photo } =
-      req.body;
+    const {
+      name,
+      stid,
+      gender,
+      grade,
+      residence,
+      paymentCode,
+      parent_name,
+      parent_email,
+      photo,
+    } = req.body;
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
@@ -131,8 +150,10 @@ const updateStudent = async (req, res) => {
         grade,
         residence,
         paymentCode,
+        parent_name,
+        parent_email,
         photo: photoUrl.url || photo,
-      },
+      }
     );
 
     res.status(200).json({ message: "Student updated successfully" });
@@ -146,7 +167,7 @@ const deleteStudent = async (req, res) => {
     const { id } = req.params;
 
     const studentToDelete = await Student.findById({ _id: id }).populate(
-      "creator",
+      "creator"
     );
 
     if (!studentToDelete) throw new Error("Student not found");
