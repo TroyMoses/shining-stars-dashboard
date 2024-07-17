@@ -160,7 +160,7 @@ const Prints = () => {
       </Box>
 
       {/* Next of Kin */}
-      <Box mb={4} textAlign="center">
+      <Box mb={1} textAlign="center">
         <Typography variant="h6" fontWeight={700}>
           NEXT OF KIN
         </Typography>
@@ -185,54 +185,70 @@ const Prints = () => {
           </Typography>
         </Box>
 
-        <Typography variant="body2" mt={1} mb={2}>
-          NOK789
-        </Typography>
-        <Box
-          mb={2}
-          sx={{
-            borderBottom: "double 4px black",
-          }}
-        />
-        <Typography variant="h6" fontWeight={700} mt={3}>
-          Next of Kin
-        </Typography>
-        <Box
-          mt={2}
-          mb={4}
-          sx={{
-            borderBottom: "1px dotted black",
-            pb: 2,
-          }}
-        />
+        <Box display="flex" justifyContent="space-between" mt={2}>
+          <Typography variant="h6" fontWeight={300}>
+            Address: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
+          </Typography>
+
+          <Typography variant="h6" fontWeight={300}>
+            Village: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
+          </Typography>
+
+          <Typography variant="h6" fontWeight={300}>
+            LC1: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
+          </Typography>
+        </Box>
       </Box>
 
       {/* Medical Information */}
-      <Box mb={4} textAlign="center">
-        <Typography variant="h4" fontWeight={700}>
-          Medical Information
+      <Box mb={4} >
+        <Typography variant="h6" fontWeight={700} textAlign="center">
+          MEDICAL INFORMATION
         </Typography>
-        <Typography variant="body2" mt={1} mb={2}>
-          MI101
+        <Typography variant="body1" mt={1} mb={2}>
+          Does your child have any medical issue(s) of which we need to be aware of?
         </Typography>
-        <Box
-          mb={2}
-          sx={{
-            borderBottom: "double 4px black",
-          }}
-        />
-        <Typography variant="h6" fontWeight={700} mt={3}>
-          Medical Information
+        <Typography variant="body1" fontWeight={300}>
+            If YES please explain: <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "900px" }} />
         </Typography>
-        <Box
-          mt={2}
-          mb={4}
-          sx={{
-            borderBottom: "1px dotted black",
-            pb: 2,
-          }}
-        />
+        <Typography variant="body1" fontWeight={300}>
+            <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "1000px" }} />
+        </Typography>
+
+        <Typography variant="body1" fontWeight={300}>
+            I <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "300px" }} /> hereby certify to the best of my knowledge that the above information is true and accurate.
+        </Typography>
       </Box>
+
+      {/* signtures */}
+
+      <Box display="flex" justifyContent="space-between" mt={2}>
+        <Typography variant="h6" fontWeight={300}>
+         <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "300px" }} />
+        </Typography>
+
+        <Typography variant="h6" fontWeight={300}>
+          <span style={{ borderBottom: "1px dotted black", display: "inline-block", width: "200px" }} />
+        </Typography>
+      </Box>
+      <Box display="flex" justifyContent="space-between" mt={2}>
+        <Typography variant="h6" fontWeight={300}>
+          PARENT'S/GUARDIAN'S SIGNATURE 
+        </Typography>
+
+        <Typography variant="h6" fontWeight={300}>
+          DATE 
+        </Typography>
+      </Box>
+
+      <Typography variant="h6" fontWeight={700} textAlign="center">
+      LOCATED ALONG GAYAZA-ZIROBWE ROAD BUSIKA TOWN COUNCIL
+      </Typography>
+
+      <Typography variant="h6" fontWeight={400} textAlign="center" mt={4}>
+      "A CENTRE FOR GUARANTEED EXCELLENCE"
+      </Typography>
+
 
     </Box>
   );
