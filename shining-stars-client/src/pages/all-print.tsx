@@ -29,15 +29,15 @@ const Prints = () => {
         <Typography variant="h5" fontWeight={700}>
           SHINING STARS NURSERY AND PRIMARY SCHOOL - VVUMBA
         </Typography>
-        <Typography variant="h6" fontWeight={400}>
+        <Typography variant="h6" fontWeight={700} style={{ fontSize: '1.1rem', textDecoration: 'underline' }}>
           Mixed day and boarding
         </Typography>
 
-        <Typography variant="h6" fontWeight={400}>
+        <Typography variant="h6" fontWeight={700}>
           TEL: 0773297951, 0753753179, 0772413164
         </Typography>
 
-        <Typography variant="h6" fontWeight={300}>
+        <Typography variant="h6" style={{ fontSize: '1.1rem' }} fontWeight={700}>
           "Arise and shine"
         </Typography>
         <Typography variant="h6" fontWeight={400} mb={2}>
