@@ -32,6 +32,7 @@ import SliderDetails from "./slider-details";
 import EditSlider from "./edit-slider";
 
 import AllNews from "./all-news";
+import Prints from "./all-print";
 import CreateNew from "./create-new";
 import NewDetails from "./new-details";
 import EditNew from "./edit-new";
@@ -68,6 +69,7 @@ export {
   SliderDetails,
   EditSlider,
   AllNews,
+  Prints,
   CreateNew,
   NewDetails,
   EditNew,
