@@ -236,6 +236,8 @@ const AllStudents = () => {
             stid={student.stid}
             grade={student.grade}
             paymentCode={student.paymentCode}
+            parent_name={student.parent_name}
+            parent_email={student.parent_email}
             photo={student.photo}
             gender={student.gender}
             residence={student.residence}

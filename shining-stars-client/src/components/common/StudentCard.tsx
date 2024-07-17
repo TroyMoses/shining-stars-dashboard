@@ -16,6 +16,8 @@ const StudentCard = ({
   grade,
   residence,
   paymentCode,
+  parent_name,
+  parent_email,
   photo,
 }: StudentCardProps) => {
   return (
