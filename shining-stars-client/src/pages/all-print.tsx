@@ -3,29 +3,42 @@ import { useTable } from "@refinedev/core";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
+import log from "../logo.jpeg"
 
 const Prints = () => {
+  const handlePrint = () => {
+    window.print();
+  };
+  
   return (
     <Box>
       {/* Admission Form */}
-      <Box mb={1} textAlign="center">
+      <Box display="flex" alignItems="center" justifyContent="center" textAlign="center" mb={1}>
+        {/* Logo (adjust size as needed) */}
+        <Box mr={2}>
+          <img src={log} alt="Shining" style={{ width: "100px", height: "100px" }} />
+        </Box>
+
+      {/* Text content */}
+      <Box>
         <Typography variant="h5" fontWeight={700}>
           SHINING STARS NURSERY AND PRIMARY SCHOOL - VVUMBA
         </Typography>
         <Typography variant="h6" fontWeight={400}>
-          Mixed day  and boarding
+          Mixed day and boarding
         </Typography>
 
         <Typography variant="h6" fontWeight={400}>
           TEL: 0773297951, 0753753179, 0772413164
         </Typography>
 
-        <Typography variant="h6" fontWeight={300} >
+        <Typography variant="h6" fontWeight={300}>
           "Arise and shine"
         </Typography>
         <Typography variant="h6" fontWeight={400} mb={2}>
@@ -39,6 +52,7 @@ const Prints = () => {
           }}
         />
       </Box>
+    </Box>
       
       {/* Contact Information for Parent */}
       <Box mb={1} >
@@ -249,6 +263,12 @@ const Prints = () => {
       "A CENTRE FOR GUARANTEED EXCELLENCE"
       </Typography>
 
+      {/* Print Button */}
+      <Box mt={4} textAlign="center">
+        <Button variant="contained" color="primary" onClick={handlePrint}>
+          Print Form
+        </Button>
+      </Box>
 
     </Box>
   );
