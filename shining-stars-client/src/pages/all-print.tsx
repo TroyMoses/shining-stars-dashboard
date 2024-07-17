@@ -19,9 +19,7 @@ const Prints = () => {
   return (
     <Box>
       {/* Admission Form */}
-      <Box display="flex"  mb={1}>
-      {/* <Box> */}
-        {/* Logo (adjust size as needed) */}
+      <Box display="flex" justifyContent="center" textAlign="center" mb={1}>
         <Box mr={2}>
           <img src={log} alt="Shining" style={{ width: "100px", height: "100px" }} />
         </Box>
