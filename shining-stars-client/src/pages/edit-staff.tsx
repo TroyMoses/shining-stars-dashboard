@@ -12,7 +12,7 @@ const EditStaff = () => {
   const {
     refineCore: { onFinish, formLoading },
     register,
-    handleSubmit,
+    handleSubmit ,
   } = useForm();
 
   const handleImageChange = (file: File) => {
