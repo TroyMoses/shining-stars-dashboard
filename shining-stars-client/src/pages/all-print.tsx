@@ -41,8 +41,9 @@ const Prints = () => {
           "Arise and shine"
         </Typography>
         <Typography variant="h6" fontWeight={400} mb={2}>
-          Email: shiningstarsprimary2022@gmail.com
+          <span style={{ fontWeight: 700 }}>Email:</span> <span style={{ textDecoration: 'underline' }}>shiningstarsprimary2022@gmail.com</span>
         </Typography>
+
       </Box>
     </Box>
     <Box justifyContent="center" textAlign="center">
