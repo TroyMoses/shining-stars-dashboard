@@ -1,6 +1,7 @@
 import Event from "../mongodb/models/event.js";
 import User from "../mongodb/models/user.js";
 import Student from "../mongodb/models/student.js";
+import nodemailer from "nodemailer";
 
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
@@ -77,6 +78,22 @@ const createEvent = async (req, res) => {
     await user.save({ session });
 
     await session.commitTransaction();
+
+    // Fetch all students to get parent emails
+
+    const students = await Student.find({});
+    const parentEmails = students.map((student) => student.parent_email);
+
+    // Set up nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
     res.status(200).json({ message: "Event created successfully" });
   } catch (error) {
