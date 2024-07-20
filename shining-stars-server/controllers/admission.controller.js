@@ -1,4 +1,4 @@
-import Admin from "../mongodb/models/admin.js";
+import Admission from "../mongodb/models/admission.js";
 import User from "../mongodb/models/user.js";
 
 import mongoose from "mongoose";
@@ -13,7 +13,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const getAllAdmins = async (req, res) => {
+const getAllAdmissions = async (req, res) => {
   const {
     _end,
     _order,
@@ -34,9 +34,9 @@ const getAllAdmins = async (req, res) => {
   }
 
   try {
-    const count = await Admin.countDocuments({ query });
+    const count = await Admission.countDocuments({ query });
 
-    const admins = await Admin.find(query)
+    const admissions = await Admission.find(query)
       .limit(_end)
       .skip(_start)
       .sort({ [_sort]: _order });
@@ -44,27 +44,27 @@ const getAllAdmins = async (req, res) => {
     res.header("x-total-count", count);
     res.header("Access-Control-Expose-Headers", "x-total-count");
 
-    res.status(200).json(admins);
+    res.status(200).json(admissions);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const getAdminDetail = async (req, res) => {
+const getAdmissionDetail = async (req, res) => {
   const { id } = req.params;
-  const adminExists = await Admin.findOne({ _id: id }).populate(
+  const admissionExists = await Admission.findOne({ _id: id }).populate(
     "creator"
   );
 
-  if (adminExists) {
-    res.status(200).json(adminExists);
+  if (admissionExists) {
+    res.status(200).json(admissionExists);
   } else {
-    res.status(404).json({ message: "Admin not found" });
+    res.status(404).json({ message: "Admission not found" });
   }
 };
 
 
 export {
-  getAllAdmins,
-  getAdminDetail,
+  getAllAdmissions,
+  getAdmissionDetail,
 };
