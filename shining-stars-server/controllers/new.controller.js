@@ -6,6 +6,8 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import { v2 as cloudinary } from "cloudinary";
 
+import nodemailer from "nodemailer";
+
 dotenv.config();
 
 cloudinary.config({
