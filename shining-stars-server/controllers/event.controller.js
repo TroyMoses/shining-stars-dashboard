@@ -1,5 +1,6 @@
 import Event from "../mongodb/models/event.js";
 import User from "../mongodb/models/user.js";
+import Student from "../mongodb/models/student.js";
 
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
