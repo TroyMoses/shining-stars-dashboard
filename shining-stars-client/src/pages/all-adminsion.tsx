@@ -12,18 +12,6 @@ import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import log from "../logo.jpeg";
 
-interface Admission {
-  name: string;
-  admission_no: string;
-  date_of_birth: string;
-  age: number;
-  gender: string;
-  grade: string;
-  residence: string;
-  term: string;
-  emis_no: string;
-}
-
 const Adminsion = () => {
 
   return (
