@@ -87,9 +87,6 @@ const createEvent = async (req, res) => {
       .map(student => student.parent_email)
       .filter(email => email);
 
-    console.log(students);
-    console.log(parentEmails);
-
     // Set up nodemailer transporter
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
