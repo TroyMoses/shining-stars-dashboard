@@ -95,6 +95,29 @@ const createEvent = async (req, res) => {
       },
     });
 
+    // Email content
+    const emailContent = `
+      <p>Dear Parent,</p>
+      <p>We are excited to announce a new event for your child:</p>
+      <p><strong>Activity:</strong> ${activity}</p>
+      <p><strong>Description:</strong> ${description}</p>
+      <p><strong>Date:</strong> ${date}</p>
+      <p>We hope to see your child there!</p>
+      <p>Best regards,<br />Shining Stars</p>
+    `;
+
+    // Send email to all parents
+    await Promise.all(
+      parentEmails.map(parentEmail =>
+        transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: parentEmail,
+          subject: `New Event: ${activity}`,
+          html: emailContent,
+        })
+      )
+    );
+
     res.status(200).json({ message: "Event created successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
