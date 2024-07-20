@@ -1,12 +1,11 @@
 import New from "../mongodb/models/new.js";
 import User from "../mongodb/models/user.js";
 import Student from "../mongodb/models/student.js";
+import nodemailer from "nodemailer";
 
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import { v2 as cloudinary } from "cloudinary";
-
-import nodemailer from "nodemailer";
 
 dotenv.config();
 
@@ -78,6 +77,47 @@ const createNew = async (req, res) => {
 
     await session.commitTransaction();
 
+    // Fetch all students to get parent emails
+    const students = await Student.find({});
+
+    // Filter out students without parent_email
+    const parentEmails = students
+      .map((student) => student.parent_email)
+      .filter((email) => email);
+
+    // Set up nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    // Email content
+    const emailContent = `
+      <p>Dear Parent,</p>
+      <p>We are excited to share the latest news with you:</p>
+      <p><strong>Title:</strong> ${title}</p>
+      <p><strong>Content:</strong> ${description}</p>
+      <p>We hope you find this news informative and engaging!</p>
+      <p>Best regards,<br />Shining Stars</p>
+    `;
+
+    // Send email to all parents
+    await Promise.all(
+      parentEmails.map((parentEmail) =>
+        transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: parentEmail,
+          subject: `Latest News: ${title}`,
+          html: emailContent,
+        })
+      )
+    );
+
     res.status(200).json({ message: "New created successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -110,9 +150,7 @@ const deleteNew = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const newToDelete = await New.findById({ _id: id }).populate(
-      "creator"
-    );
+    const newToDelete = await New.findById({ _id: id }).populate("creator");
 
     if (!newToDelete) throw new Error("New not found");
 
@@ -131,10 +169,4 @@ const deleteNew = async (req, res) => {
   }
 };
 
-export {
-  getAllNews,
-  getNewDetail,
-  createNew,
-  updateNew,
-  deleteNew,
-};
+export { getAllNews, getNewDetail, createNew, updateNew, deleteNew };

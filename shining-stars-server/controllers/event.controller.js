@@ -80,9 +80,12 @@ const createEvent = async (req, res) => {
     await session.commitTransaction();
 
     // Fetch all students to get parent emails
-
     const students = await Student.find({});
-    const parentEmails = students.map((student) => student.parent_email);
+
+    // Filter out students without parent_email
+    const parentEmails = students
+      .map(student => student.parent_email)
+      .filter(email => email);
 
     // Set up nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -98,11 +101,11 @@ const createEvent = async (req, res) => {
     // Email content
     const emailContent = `
       <p>Dear Parent,</p>
-      <p>We are excited to announce a new event for your child:</p>
+      <p>We are excited to announce a new event due to take place:</p>
       <p><strong>Activity:</strong> ${activity}</p>
       <p><strong>Description:</strong> ${description}</p>
       <p><strong>Date:</strong> ${date}</p>
-      <p>We hope to see your child there!</p>
+      <p>We hope to see you or your child there!</p>
       <p>Best regards,<br />Shining Stars</p>
     `;
 
