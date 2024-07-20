@@ -12,6 +12,18 @@ import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import log from "../logo.jpeg";
 
+interface Admission {
+  name: string;
+  admission_no: string;
+  date_of_birth: string;
+  age: number;
+  gender: string;
+  grade: string;
+  residence: string;
+  term: string;
+  emis_no: string;
+}
+
 const Adminsion = () => {
 
   return (
@@ -72,15 +84,15 @@ const Adminsion = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Pupil's Name:</TableCell>
-              <TableCell>Admission No:</TableCell>
-              <TableCell>Date Of Birth:</TableCell>
-              <TableCell>Age:</TableCell>
-              <TableCell>Gender:</TableCell>
-              <TableCell>Class:</TableCell>
-              <TableCell>Term:</TableCell>
-              <TableCell>Residence:</TableCell>
-              <TableCell>Emis No(LIN):</TableCell>
+              <TableCell>Pupil's Name</TableCell>
+              <TableCell>Admission No</TableCell>
+              <TableCell>Date Of Birth</TableCell>
+              <TableCell>Age</TableCell>
+              <TableCell>Gender</TableCell>
+              <TableCell>Class</TableCell>
+              <TableCell>Term</TableCell>
+              <TableCell>Residence</TableCell>
+              <TableCell>Emis No(LIN)</TableCell>
               <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
