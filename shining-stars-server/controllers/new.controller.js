@@ -1,9 +1,12 @@
 import New from "../mongodb/models/new.js";
 import User from "../mongodb/models/user.js";
+import Student from "../mongodb/models/student.js";
 
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import { v2 as cloudinary } from "cloudinary";
+
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
