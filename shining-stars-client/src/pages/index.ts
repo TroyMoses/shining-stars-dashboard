@@ -33,7 +33,7 @@ import EditSlider from "./edit-slider";
 
 import AllNews from "./all-news";
 import Prints from "./all-print";
-import Adminsion from "./all-adminsion";
+import Admission from "./all-admissions";
 import CreateNew from "./create-new";
 import NewDetails from "./new-details";
 import EditNew from "./edit-new";
@@ -70,7 +70,7 @@ export {
   SliderDetails,
   EditSlider,
   AllNews,
-  Adminsion,
+  Admission,
   Prints,
   CreateNew,
   NewDetails,

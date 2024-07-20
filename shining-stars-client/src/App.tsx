@@ -54,7 +54,7 @@ import {
   SliderDetails,
   EditSlider,
   AllNews,
-  Adminsion,
+  Admission,
   Prints,
   CreateNew,
   NewDetails,
@@ -216,7 +216,7 @@ function App() {
             },
             {
               name: "Adminsions",
-              list: Adminsion,
+              list: Admission,
               show: NewDetails,
               create: CreateNew,
               edit: EditNew,

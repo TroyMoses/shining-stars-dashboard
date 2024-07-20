@@ -9,9 +9,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
-import {  AdminCard, CustomButton } from "components";
+import {  AdmissionCard, CustomButton } from "components";
 
-const AllAdmins = () => {
+const AllAdmissions = () => {
   const navigate = useNavigate();
 
   const {
@@ -26,7 +26,7 @@ const AllAdmins = () => {
     setFilters,
   } = useTable();
 
-  const allAdmins = data?.data ?? [];
+  const allAdmissions = data?.data ?? [];
 
   const currentFilterValues = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
@@ -46,9 +46,9 @@ const AllAdmins = () => {
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
         <Stack direction="column" width="100%">
           <Typography fontSize={25} fontWeight={700} color="#11142d">
-            {!allAdmins.length
-              ? "There are no administrators"
-              : "All Administrators"}
+            {!allAdmissions.length
+              ? "There are no admissions"
+              : "All Admissions"}
           </Typography>
           <Box
             mb={2}
@@ -88,7 +88,7 @@ const AllAdmins = () => {
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <CustomButton
-          title="Add Administrator"
+          title="Add Admission"
           handleClick={() => navigate("/admins/create")}
           backgroundColor="#475be8"
           color="#fcfcfc"
@@ -97,20 +97,40 @@ const AllAdmins = () => {
       </Stack>
 
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        {allAdmins?.map((admin) => (
-          <AdminCard
-            key={admin._id}
-            id={admin._id}
-            title={admin.title}
-            name={admin.name}
-            message={admin.message}
-            description={admin.description}
-            photo={admin.photo}
+        {allAdmissions?.map((admission) => (
+          <AdmissionCard
+            key={admission._id}
+            id={admission._id}
+            name={admission.name}
+            admission_no={admission.admission_no}
+            date_of_birth={admission.date_of_birth}
+            age={admission.age}
+            gender={admission.age}
+      grade={admission.grade}
+      residence={admission.residence}
+      term={admission.term}
+      emis_no={admission.emis_no}
+      parent_name={admission.parent_name}
+      parent_email={admission.parent_email}
+      parent_telephone={admission.parent_telephone}
+      parent_relationship_with_pupil={admission.parent_relationship_with_pupil}
+      parent_address={admission.parent_address}
+      parent_village={admission.parent_village}
+      parent_lc={admission.parent_lc}
+      parent_nin={admission.parent_nin}
+      next_of_kin_name={admission.next_of_kin_name}
+      next_of_kin_gender={admission.next_of_kin_gender}
+      next_of_kin_telephone={admission.next_of_kin_telephone}
+      next_of_kin_relationship_with_pupil={admission.next_of_kin_relationship_with_pupil}
+      next_of_kin_address={admission.next_of_kin_address}
+      next_of_kin_village={admission.next_of_kin_village}
+      next_of_kin_lc={admission.next_of_kin_lc}
+      child_medical_info={admission.child_medical_info}
           />
         ))}
       </Box>
 
-      {allAdmins.length > 0 && (
+      {allAdmissions.length > 0 && (
         <Box display="flex" gap={2} mt={3} flexWrap="wrap">
           <CustomButton
             title="Previous"
@@ -159,4 +179,4 @@ const AllAdmins = () => {
   );
 };
 
-export default AllAdmins;
+export default AllAdmissions;
