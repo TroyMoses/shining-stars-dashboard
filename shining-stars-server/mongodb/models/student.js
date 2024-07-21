@@ -9,7 +9,6 @@ const StudentSchema = new mongoose.Schema({
   paymentCode: { type: Number, required: true },
   parent_name: { type: String, required: true },
   parent_email: { type: String, required: true },
-  photo: { type: String },
   creator: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
