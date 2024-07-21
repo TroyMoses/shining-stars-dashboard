@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   avatar: { type: String, required: true },
   allStudents: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }],
   allAdmins: [{ type: mongoose.Schema.Types.ObjectId, ref: "Admin" }],
+  allAdmissions: [{ type: mongoose.Schema.Types.ObjectId, ref: "Admission" }],
   allStaffs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Staff" }],
   allPrefects: [{ type: mongoose.Schema.Types.ObjectId, ref: "Prefect" }],
   allSliders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Slider" }],

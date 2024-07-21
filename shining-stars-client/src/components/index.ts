@@ -3,6 +3,7 @@ import Profile from "./common/Profile";
 
 import StudentCard from "./common/StudentCard";
 import AdminCard from "./common/AdminCard";
+import AdmissionCard from "./common/AdmissionCard";
 import StaffCard from "./common/StaffCard";
 import PrefectCard from "./common/PrefectCard";
 import EventCard from "./common/EventCard";
@@ -25,6 +26,7 @@ export {
   Profile,
   StudentCard,
   AdminCard,
+  AdmissionCard,
   StaffCard,
   PrefectCard,
   EventCard,
