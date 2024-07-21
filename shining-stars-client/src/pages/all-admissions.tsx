@@ -1,18 +1,20 @@
 import Add from "@mui/icons-material/Add";
 import { useTable } from "@refinedev/core";
 import Box from "@mui/material/Box";
-import {Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer, TablePagination, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import log from "../logo.jpeg";
+import Stack from "@mui/material/Stack";
+import Print from '@mui/icons-material/Print';
+import Delete from '@mui/icons-material/Delete';
+import { CustomButton } from "components";
 
 interface Admission {
+  _id: string;
   name: string;
   admission_no: string;
   date_of_birth: string;
@@ -25,7 +27,6 @@ interface Admission {
 }
 
 const Admissions = () => {
-
   const navigate = useNavigate();
 
   const {
@@ -56,103 +57,98 @@ const Admissions = () => {
   if (isError) return <Typography>Error...</Typography>;
 
   return (
-    <Box display="flex" justifyContent="center" mb={1}>
-      {allAdmissions?.map((admission) => (
-        <Typography 
-        key={admission._id}
-        fontSize={20}
-        fontWeight={500}
-        color="#808191"
-        height="fit-content"
-      >
-        Name:{admission.name}
-        Admission No: {admission.admission_no}
-        Date Of Birth{admission.date_of_birth}
-        Age: {admission.age}
-        Gender: {admission.gender}
-        Class: {admission.grade}
-        Residence: {admission.residence}
-        Term: {admission.term}
-        Emis No: {admission.emis_no}
-      </Typography>
-      ))}
+    <Box>
+      <Box display="flex" justifyContent="space-between" mb={2}>
+        <TablePagination
+          component="div"
+          count={pageCount * 10}
+          page={current - 1}
+          onPageChange={(event, newPage) => setCurrent(newPage + 1)}
+          rowsPerPage={10}
+          onRowsPerPageChange={(event) => setPageSize(parseInt(event.target.value, 10))}
+        />
+        <TextField
+          label="Search by Name"
+          variant="outlined"
+          value={currentFilterValues.name}
+          onChange={(e) => {
+            setFilters([
+              {
+                field: "name",
+                operator: "contains",
+                value: e.target.value,
+              },
+            ]);
+          }}
+        />
+      </Box>
+
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow style={{ backgroundColor: '#3f51b5' }}>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Pupil's Name</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Admission No</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Date Of Birth</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Age</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Gender</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Class</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Term</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Residence</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Emis No(LIN)</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {allAdmissions.map((admission, index) => (
+              <TableRow
+              key={admission._id}
+              hover
+              style={{
+                backgroundColor: index % 2 === 0 ? '#e3f2fd' : '#bbdefb',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#90caf9'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#e3f2fd' : '#bbdefb'}
+            >
+              <TableCell align="center">{admission.name}</TableCell>
+              <TableCell align="center">{admission.admission_no}</TableCell>
+              <TableCell align="center">{admission.date_of_birth}</TableCell>
+              <TableCell align="center">{admission.age}</TableCell>
+              <TableCell align="center">{admission.gender}</TableCell>
+              <TableCell align="center">{admission.grade}</TableCell>
+              <TableCell align="center">{admission.term}</TableCell>
+              <TableCell align="center">{admission.residence}</TableCell>
+              <TableCell align="center">{admission.emis_no}</TableCell>
+              <TableCell align="center">
+                <Stack direction="row" spacing={1} justifyContent="center">
+                  
+                  <CustomButton
+                    title="PRINT"
+                    handleClick={() => navigate(`/print?id=${admission._id}`)}
+                    backgroundColor="#4caf50"
+                    color="#fcfcfc"
+                    icon={<Print />}
+                  />
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: '#f44336', color: 'white' }}
+                    startIcon={<Delete />}
+                    onClick={() => navigate(`/admissions?id=${admission._id}`)}
+                  >
+                    DELETE
+                  </Button>
+                </Stack>
+              </TableCell>
+
+            </TableRow>
+            
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
-    // <Box>
-    //   {/* Admission Form */}
-    //   <Box display="flex" justifyContent="center" textAlign="center" mb={1}>
-    //     <Box mr={2}>
-    //       <img
-    //         src={log}
-    //         alt="Shining"
-    //         style={{ width: "100px", height: "100px" }}
-    //       />
-    //     </Box>
-
-    //     {/* Text content */}
-    //     <Box justifyContent="center" textAlign="center">
-    //       <Typography variant="h5" fontWeight={700}>
-    //         SHINING STARS NURSERY AND PRIMARY SCHOOL - VVUMBA
-    //       </Typography>
-    //       <Typography
-    //         variant="h6"
-    //         fontWeight={700}
-    //         style={{ fontSize: "1.1rem", textDecoration: "underline" }}
-    //       >
-    //         Mixed day and boarding
-    //       </Typography>
-
-    //       <Typography variant="h6" fontWeight={700}>
-    //         TEL: 0773297951, 0753753179, 0772413164
-    //       </Typography>
-
-    //       <Typography
-    //         variant="h6"
-    //         style={{ fontSize: "1.1rem" }}
-    //         fontWeight={700}
-    //       >
-    //         "Arise and shine"
-    //       </Typography>
-    //       <Typography variant="h6" fontWeight={400} mb={1}>
-    //         <span style={{ fontWeight: 700 }}>Email:</span>{" "}
-    //         <span style={{ textDecoration: "underline" }}>
-    //           shiningstarsprimary2022@gmail.com
-    //         </span>
-    //       </Typography>
-    //     </Box>
-    //   </Box>
-    //   <Box justifyContent="center" textAlign="center">
-    //     <Box
-    //       mb={2}
-    //       sx={{
-    //         borderBottom: "double 4px black",
-    //       }}
-    //     />
-    //   </Box>
-
-    //   {/* Table */}
-    //   <Box display="flex" justifyContent="center">
-    //     <Table>
-    //       <TableHead>
-    //         <TableRow>
-    //           <TableCell>Pupil's Name</TableCell>
-    //           <TableCell>Admission No</TableCell>
-    //           <TableCell>Date Of Birth</TableCell>
-    //           <TableCell>Age</TableCell>
-    //           <TableCell>Gender</TableCell>
-    //           <TableCell>Class</TableCell>
-    //           <TableCell>Term</TableCell>
-    //           <TableCell>Residence</TableCell>
-    //           <TableCell>Emis No(LIN)</TableCell>
-    //           <TableCell>Action</TableCell>
-    //         </TableRow>
-    //       </TableHead>
-    //       <TableBody>
-    //         {/* Add rows here as needed */}
-    //       </TableBody>
-    //     </Table>
-    //   </Box>
-
-    // </Box>
   );
 };
 

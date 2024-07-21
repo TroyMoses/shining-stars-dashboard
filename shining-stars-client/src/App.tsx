@@ -7,6 +7,7 @@ import ViewCarouselOutlined from "@mui/icons-material/ViewCarouselOutlined";
 import Logout from "@mui/icons-material/Logout";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
+import SchoolOutlined from '@mui/icons-material/SchoolOutlined';
 import {
   type LegacyAuthProvider as AuthProvider,
   Refine,
@@ -215,16 +216,13 @@ function App() {
               icon: <NewsPaperOutlined />,
             },
             {
-              name: "Admissions",
+              name: "admissions",
               list: Admissions,
-              icon: <NewsPaperOutlined />,
+              icon: <SchoolOutlined />,
             },
             {
-              name: "Print",
+              name: "print",
               list: Prints,
-              show: NewDetails,
-              create: CreateNew,
-              edit: EditNew,
               icon: <NewsPaperOutlined />,
             },
             {

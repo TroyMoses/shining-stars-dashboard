@@ -1,174 +1,96 @@
-import Add from "@mui/icons-material/Add";
-import { useTable } from "@refinedev/core";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import { useNavigate } from "react-router-dom";
-import { useMemo } from "react";
-import log from "../logo.jpeg";
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useList } from '@refinedev/core';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Print from '@mui/icons-material/Print';
+import log from '../logo.jpeg';
 
 const Prints = () => {
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
+
+  const { data, isLoading, isError } = useList({
+    resource: 'admissions',
+    config: {
+      pagination: {
+        pageSize: 6,
+      },
+    },
+  });
+
+  const admissions = data?.data ?? [];
+
+  const admission = admissions.find((admission) => admission._id === id);
+
   const handlePrint = () => {
     window.print();
   };
 
+  if (isLoading) return <Typography>Loading...</Typography>;
+  if (isError) return <Typography>Error loading data...</Typography>;
+
+  if (!admission) return <Typography>No admission found with this ID.</Typography>;
+
   return (
     <Box>
-      {/* Admission Form */}
       <Box display="flex" justifyContent="center" textAlign="center" mb={1}>
         <Box mr={2}>
-          <img
-            src={log}
-            alt="Shining"
-            style={{ width: "100px", height: "100px" }}
-          />
+          <img src={log} alt="Shining" style={{ width: '100px', height: '100px' }} />
         </Box>
-
-        {/* Text content */}
         <Box justifyContent="center" textAlign="center">
           <Typography variant="h5" fontWeight={700}>
             SHINING STARS NURSERY AND PRIMARY SCHOOL - VVUMBA
           </Typography>
-          <Typography
-            variant="h6"
-            fontWeight={700}
-            style={{ fontSize: "1.1rem", textDecoration: "underline" }}
-          >
+          <Typography variant="h6" fontWeight={700} style={{ fontSize: '1.1rem', textDecoration: 'underline' }}>
             Mixed day and boarding
           </Typography>
-
           <Typography variant="h6" fontWeight={700}>
             TEL: 0773297951, 0753753179, 0772413164
           </Typography>
-
-          <Typography
-            variant="h6"
-            style={{ fontSize: "1.1rem" }}
-            fontWeight={700}
-          >
+          <Typography variant="h6" style={{ fontSize: '1.1rem' }} fontWeight={700}>
             "Arise and shine"
           </Typography>
           <Typography variant="h6" fontWeight={400} mb={1}>
-            <span style={{ fontWeight: 700 }}>Email:</span>{" "}
-            <span style={{ textDecoration: "underline" }}>
-              shiningstarsprimary2022@gmail.com
-            </span>
+            <span style={{ fontWeight: 700 }}>Email:</span>{' '}
+            <span style={{ textDecoration: 'underline' }}>shiningstarsprimary2022@gmail.com</span>
           </Typography>
         </Box>
       </Box>
       <Box justifyContent="center" textAlign="center">
-        <Box
-          mb={2}
-          sx={{
-            borderBottom: "double 4px black",
-          }}
-        />
+        <Box mb={2} sx={{ borderBottom: 'double 4px black' }} />
       </Box>
 
-      {/* Contact Information for Parent */}
       <Box mb={1}>
         <Typography variant="h6" fontWeight={700} textAlign="center">
           ADMISSION FORM
         </Typography>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Pupil's Name:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "500px",
-              }}
-            />
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+            Pupil's Name: {admission.name}
           </Typography>
-
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Admission No:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "300px",
-              }}
-            />
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+            Admission No: {admission.admission_no}
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Date of Birth:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+            Date of Birth: {admission.date_of_birth}
           </Typography>
-
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Age:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+            Age: {admission.age}
           </Typography>
-
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Gender:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+            Gender: {admission.gender}
           </Typography>
         </Box>
 
-        {/* for the class row */}
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Class:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+            Class: {admission.grade}
           </Typography>
 
           <Box display="flex" alignItems="center">
@@ -209,37 +131,14 @@ const Prints = () => {
             />
           </Box>
 
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Term:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+            Term: {admission.term}
           </Typography>
         </Box>
 
-        {/* for the Emis No */}
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Emis No. (LIN):{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "900px",
-              }}
-            />
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+            Emis No. (LIN): {admission.emis_no}
           </Typography>
         </Box>
       </Box>
