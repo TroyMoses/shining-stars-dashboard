@@ -159,6 +159,11 @@ function App() {
           catchAll={<ErrorComponent />}
           resources={[
             {
+              name: "admissions",
+              list: Admissions,
+              icon: <SchoolOutlined />,
+            },
+            {
               name: "admins",
               options: { label: "Administrators " },
               list: AllAdmins,
@@ -216,16 +221,6 @@ function App() {
               icon: <NewsPaperOutlined />,
             },
             {
-              name: "admissions",
-              list: Admissions,
-              icon: <SchoolOutlined />,
-            },
-            {
-              name: "print",
-              list: Prints,
-              icon: <NewsPaperOutlined />,
-            },
-            {
               name: "agents",
               list: Agents,
               show: AgentProfile,
@@ -236,6 +231,11 @@ function App() {
               options: { label: "My Profile " },
               list: MyProfile,
               icon: <AccountCircleOutlined />,
+            },
+            {
+              name: "print",
+              list: Prints,
+              icon: <NewsPaperOutlined />,
             },
             {
               name: "login",
