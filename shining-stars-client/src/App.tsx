@@ -54,7 +54,7 @@ import {
   SliderDetails,
   EditSlider,
   AllNews,
-  Admission,
+  Admissions,
   Prints,
   CreateNew,
   NewDetails,
@@ -215,11 +215,8 @@ function App() {
               icon: <NewsPaperOutlined />,
             },
             {
-              name: "Adminsions",
-              list: Admission,
-              show: NewDetails,
-              create: CreateNew,
-              edit: EditNew,
+              name: "Admissions",
+              list: Admissions,
               icon: <NewsPaperOutlined />,
             },
             {

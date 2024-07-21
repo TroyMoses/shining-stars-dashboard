@@ -1,17 +1,31 @@
 import Add from "@mui/icons-material/Add";
 import { useTable } from "@refinedev/core";
 import Box from "@mui/material/Box";
+import {Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
+import log from "../logo.jpeg";
 
-import {  AdmissionCard, CustomButton } from "components";
+interface Admission {
+  name: string;
+  admission_no: string;
+  date_of_birth: string;
+  age: number;
+  gender: string;
+  grade: string;
+  residence: string;
+  term: string;
+  emis_no: string;
+}
 
-const AllAdmissions = () => {
+const Admissions = () => {
+
   const navigate = useNavigate();
 
   const {
@@ -42,141 +56,104 @@ const AllAdmissions = () => {
   if (isError) return <Typography>Error...</Typography>;
 
   return (
-    <Box>
-      <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        <Stack direction="column" width="100%">
-          <Typography fontSize={25} fontWeight={700} color="#11142d">
-            {!allAdmissions.length
-              ? "There are no admissions"
-              : "All Admissions"}
-          </Typography>
-          <Box
-            mb={2}
-            mt={3}
-            display="flex"
-            width="84%"
-            justifyContent="space-between"
-            flexWrap="wrap"
-          >
-            <Box
-              display="flex"
-              gap={2}
-              flexWrap="wrap"
-              mb={{ xs: "20px", sm: 0 }}
-            >
-              <TextField
-                variant="outlined"
-                color="info"
-                placeholder="Search by name"
-                value={currentFilterValues.name}
-                onChange={(e) => {
-                  setFilters([
-                    {
-                      field: "name",
-                      operator: "contains",
-                      value: e.currentTarget.value
-                        ? e.currentTarget.value
-                        : undefined,
-                    },
-                  ]);
-                }}
-              />
-            </Box>
-          </Box>
-        </Stack>
-      </Box>
-
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
-        <CustomButton
-          title="Add Admission"
-          handleClick={() => navigate("/admins/create")}
-          backgroundColor="#475be8"
-          color="#fcfcfc"
-          icon={<Add />}
-        />
-      </Stack>
-
-      <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        {allAdmissions?.map((admission) => (
-          <AdmissionCard
-            key={admission._id}
-            id={admission._id}
-            name={admission.name}
-            admission_no={admission.admission_no}
-            date_of_birth={admission.date_of_birth}
-            age={admission.age}
-            gender={admission.age}
-      grade={admission.grade}
-      residence={admission.residence}
-      term={admission.term}
-      emis_no={admission.emis_no}
-      parent_name={admission.parent_name}
-      parent_email={admission.parent_email}
-      parent_telephone={admission.parent_telephone}
-      parent_relationship_with_pupil={admission.parent_relationship_with_pupil}
-      parent_address={admission.parent_address}
-      parent_village={admission.parent_village}
-      parent_lc={admission.parent_lc}
-      parent_nin={admission.parent_nin}
-      next_of_kin_name={admission.next_of_kin_name}
-      next_of_kin_gender={admission.next_of_kin_gender}
-      next_of_kin_telephone={admission.next_of_kin_telephone}
-      next_of_kin_relationship_with_pupil={admission.next_of_kin_relationship_with_pupil}
-      next_of_kin_address={admission.next_of_kin_address}
-      next_of_kin_village={admission.next_of_kin_village}
-      next_of_kin_lc={admission.next_of_kin_lc}
-      child_medical_info={admission.child_medical_info}
-          />
-        ))}
-      </Box>
-
-      {allAdmissions.length > 0 && (
-        <Box display="flex" gap={2} mt={3} flexWrap="wrap">
-          <CustomButton
-            title="Previous"
-            handleClick={() => setCurrent((prev) => prev - 1)}
-            backgroundColor="#475be8"
-            color="#fcfcfc"
-            disabled={!(current > 1)}
-          />
-          <Box
-            display={{ xs: "hidden", sm: "flex" }}
-            alignItems="center"
-            gap="5px"
-          >
-            Page{" "}
-            <strong>
-              {current} of {pageCount}
-            </strong>
-          </Box>
-          <CustomButton
-            title="Next"
-            handleClick={() => setCurrent((prev) => prev + 1)}
-            backgroundColor="#475be8"
-            color="#fcfcfc"
-            disabled={current === pageCount}
-          />
-          <Select
-            variant="outlined"
-            color="info"
-            displayEmpty
-            required
-            inputProps={{ "aria-label": "Without label" }}
-            defaultValue={10}
-            onChange={(e) =>
-              setPageSize(e.target.value ? Number(e.target.value) : 10)
-            }
-          >
-            {[10, 20, 30, 40, 50].map((size) => (
-              <MenuItem key={size} value={size}>
-                Show {size}
-              </MenuItem>
-            ))}
-          </Select>
-        </Box>
-      )}
+    <Box display="flex" justifyContent="center" mb={1}>
+      {allAdmissions?.map((admission) => (
+        <Typography 
+        key={admission._id}
+        fontSize={20}
+        fontWeight={500}
+        color="#808191"
+        height="fit-content"
+      >
+        Name:{admission.name}
+        Admission No: {admission.admission_no}
+        Date Of Birth{admission.date_of_birth}
+        Age: {admission.age}
+        Gender: {admission.gender}
+        Class: {admission.grade}
+        Residence: {admission.residence}
+        Term: {admission.term}
+        Emis No: {admission.emis_no}
+      </Typography>
+      ))}
     </Box>
+    // <Box>
+    //   {/* Admission Form */}
+    //   <Box display="flex" justifyContent="center" textAlign="center" mb={1}>
+    //     <Box mr={2}>
+    //       <img
+    //         src={log}
+    //         alt="Shining"
+    //         style={{ width: "100px", height: "100px" }}
+    //       />
+    //     </Box>
+
+    //     {/* Text content */}
+    //     <Box justifyContent="center" textAlign="center">
+    //       <Typography variant="h5" fontWeight={700}>
+    //         SHINING STARS NURSERY AND PRIMARY SCHOOL - VVUMBA
+    //       </Typography>
+    //       <Typography
+    //         variant="h6"
+    //         fontWeight={700}
+    //         style={{ fontSize: "1.1rem", textDecoration: "underline" }}
+    //       >
+    //         Mixed day and boarding
+    //       </Typography>
+
+    //       <Typography variant="h6" fontWeight={700}>
+    //         TEL: 0773297951, 0753753179, 0772413164
+    //       </Typography>
+
+    //       <Typography
+    //         variant="h6"
+    //         style={{ fontSize: "1.1rem" }}
+    //         fontWeight={700}
+    //       >
+    //         "Arise and shine"
+    //       </Typography>
+    //       <Typography variant="h6" fontWeight={400} mb={1}>
+    //         <span style={{ fontWeight: 700 }}>Email:</span>{" "}
+    //         <span style={{ textDecoration: "underline" }}>
+    //           shiningstarsprimary2022@gmail.com
+    //         </span>
+    //       </Typography>
+    //     </Box>
+    //   </Box>
+    //   <Box justifyContent="center" textAlign="center">
+    //     <Box
+    //       mb={2}
+    //       sx={{
+    //         borderBottom: "double 4px black",
+    //       }}
+    //     />
+    //   </Box>
+
+    //   {/* Table */}
+    //   <Box display="flex" justifyContent="center">
+    //     <Table>
+    //       <TableHead>
+    //         <TableRow>
+    //           <TableCell>Pupil's Name</TableCell>
+    //           <TableCell>Admission No</TableCell>
+    //           <TableCell>Date Of Birth</TableCell>
+    //           <TableCell>Age</TableCell>
+    //           <TableCell>Gender</TableCell>
+    //           <TableCell>Class</TableCell>
+    //           <TableCell>Term</TableCell>
+    //           <TableCell>Residence</TableCell>
+    //           <TableCell>Emis No(LIN)</TableCell>
+    //           <TableCell>Action</TableCell>
+    //         </TableRow>
+    //       </TableHead>
+    //       <TableBody>
+    //         {/* Add rows here as needed */}
+    //       </TableBody>
+    //     </Table>
+    //   </Box>
+
+    // </Box>
   );
 };
 
-export default AllAdmissions;
+export default Admissions;

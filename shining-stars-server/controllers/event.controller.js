@@ -1,5 +1,7 @@
 import Event from "../mongodb/models/event.js";
 import User from "../mongodb/models/user.js";
+import Student from "../mongodb/models/student.js";
+import nodemailer from "nodemailer";
 
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
@@ -76,6 +78,48 @@ const createEvent = async (req, res) => {
     await user.save({ session });
 
     await session.commitTransaction();
+
+    // Fetch all students to get parent emails
+    const students = await Student.find({});
+
+    // Filter out students without parent_email
+    const parentEmails = students
+      .map(student => student.parent_email)
+      .filter(email => email);
+
+    // Set up nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    // Email content
+    const emailContent = `
+      <p>Dear Parent,</p>
+      <p>We are excited to announce a new event due to take place:</p>
+      <p><strong>Activity:</strong> ${activity}</p>
+      <p><strong>Description:</strong> ${description}</p>
+      <p><strong>Date:</strong> ${date}</p>
+      <p>We hope to see you or your child there!</p>
+      <p>Best regards,<br />Shining Stars</p>
+    `;
+
+    // Send email to all parents
+    await Promise.all(
+      parentEmails.map(parentEmail =>
+        transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: parentEmail,
+          subject: `New Event: ${activity}`,
+          html: emailContent,
+        })
+      )
+    );
 
     res.status(200).json({ message: "Event created successfully" });
   } catch (error) {
