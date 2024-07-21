@@ -154,14 +154,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Parent's/Guardian's Name:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "800px",
-              }}
-            />
+            Parent's/Guardian's Name: {admission.parent_name}
+            
           </Typography>
         </Box>
         <Box display="flex" justifyContent="space-between" mt={2}>
@@ -170,14 +164,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Telephone Number:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "400px",
-              }}
-            />
+            Telephone Number: {admission.parent_telephone}
+            
           </Typography>
 
           <Typography
@@ -185,14 +173,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Relationship with the Pupil:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            Relationship with the Pupil: {admission.parent_relationship_with_pupil}
+           
           </Typography>
         </Box>
 
@@ -202,14 +184,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Address:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            Address: {admission.parent_address}
+            
           </Typography>
 
           <Typography
@@ -217,14 +193,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Village:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            Village: {admission.parent_village}
+
           </Typography>
 
           <Typography
@@ -232,14 +202,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            LC1:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            LC1: {admission.parent_lc}
+            
           </Typography>
         </Box>
         <Box display="flex" justifyContent="space-between" mt={2}>
@@ -248,14 +212,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            NIN No:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "900px",
-              }}
-            />
+            NIN No: {admission.parent_nin}
+            
           </Typography>
         </Box>
       </Box>
@@ -272,14 +230,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Name:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "600px",
-              }}
-            />
+            Name: {admission.next_of_kin_name}
+            
           </Typography>
 
           <Typography
@@ -287,14 +239,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Gender:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            Gender: {admission.next_of_kin_gender}
+            
           </Typography>
         </Box>
 
@@ -304,14 +250,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Telephone Number:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "300px",
-              }}
-            />
+            Telephone Number: {admission.next_of_kin_telephone}
+            
           </Typography>
 
           <Typography
@@ -319,14 +259,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Relationship with the pupil:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            Relationship with the pupil: {admission.next_of_kin_relationship_with_pupil}
+            
           </Typography>
         </Box>
 
@@ -336,14 +270,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Address:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            Address: {admission.next_of_kin_address}
+            
           </Typography>
 
           <Typography
@@ -351,14 +279,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Village:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            Village: {admission.next_of_kin_village}
+            
           </Typography>
 
           <Typography
@@ -366,14 +288,8 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            LC1:{" "}
-            <span
-              style={{
-                borderBottom: "1px dotted black",
-                display: "inline-block",
-                width: "200px",
-              }}
-            />
+            LC1: {admission.next_of_kin_lc}
+            
           </Typography>
         </Box>
       </Box>
@@ -393,27 +309,21 @@ const Prints = () => {
           of?
         </Typography>
         <Typography variant="body1" fontWeight={300}>
-          If YES please explain:{" "}
-          <span
-            style={{
-              borderBottom: "1px dotted black",
-              display: "inline-block",
-              width: "900px",
-            }}
-          />
+          If YES please explain: {admission.child_medical_info}
+          
         </Typography>
         <Typography
           variant="body1"
           fontWeight={300}
           style={{ fontSize: "1.1rem" }}
         >
-          <span
+          {/* <span
             style={{
               borderBottom: "1px dotted black",
               display: "inline-block",
               width: "1000px",
             }}
-          />
+          /> */}
         </Typography>
 
         <Typography
@@ -421,15 +331,7 @@ const Prints = () => {
           fontWeight={300}
           style={{ fontSize: "1.1rem" }}
         >
-          I{" "}
-          <span
-            style={{
-              borderBottom: "1px dotted black",
-              display: "inline-block",
-              width: "300px",
-            }}
-          />{" "}
-          hereby certify to the best of my knowledge that the above information
+          I {admission.parent_name}  hereby certify to the best of my knowledge that the above information
           is true and accurate.
         </Typography>
       </Box>
@@ -438,13 +340,7 @@ const Prints = () => {
 
       <Box display="flex" justifyContent="space-between" mt={2}>
         <Typography variant="h6" fontWeight={300}>
-          <span
-            style={{
-              borderBottom: "1px dotted black",
-              display: "inline-block",
-              width: "300px",
-            }}
-          />
+        {admission.parent_name}
         </Typography>
 
         <Typography variant="h6" fontWeight={300}>
