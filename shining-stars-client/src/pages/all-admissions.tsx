@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import log from "../logo.jpeg";
+import Stack from "@mui/material/Stack";
 
 interface Admission {
   _id: string;
@@ -83,48 +84,63 @@ const Admissions = () => {
         <Table>
           <TableHead>
             <TableRow style={{ backgroundColor: '#3f51b5' }}>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Pupil's Name</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Admission No</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Date Of Birth</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Age</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Gender</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Class</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Term</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Residence</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Emis No(LIN)</TableCell>
-              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '16px', color: 'white' }}>Action</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Pupil's Name</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Admission No</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Date Of Birth</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Age</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Gender</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Class</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Term</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Residence</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Emis No(LIN)</TableCell>
+              <TableCell align="center" style={{ fontWeight: 'bold', fontSize: '15px', color: 'white' }}>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {allAdmissions.map((admission, index) => (
               <TableRow
-                key={admission._id}
-                hover
-                style={{
-                  backgroundColor: index % 2 === 0 ? '#e3f2fd' : '#bbdefb',
-                  cursor: 'pointer',
-                }}
-              >
-                <TableCell align="center">{admission.name}</TableCell>
-                <TableCell align="center">{admission.admission_no}</TableCell>
-                <TableCell align="center">{admission.date_of_birth}</TableCell>
-                <TableCell align="center">{admission.age}</TableCell>
-                <TableCell align="center">{admission.gender}</TableCell>
-                <TableCell align="center">{admission.grade}</TableCell>
-                <TableCell align="center">{admission.term}</TableCell>
-                <TableCell align="center">{admission.residence}</TableCell>
-                <TableCell align="center">{admission.emis_no}</TableCell>
-                <TableCell align="center">
+              key={admission._id}
+              hover
+              style={{
+                backgroundColor: index % 2 === 0 ? '#e3f2fd' : '#bbdefb',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#90caf9'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#e3f2fd' : '#bbdefb'}
+            >
+              <TableCell align="center">{admission.name}</TableCell>
+              <TableCell align="center">{admission.admission_no}</TableCell>
+              <TableCell align="center">{admission.date_of_birth}</TableCell>
+              <TableCell align="center">{admission.age}</TableCell>
+              <TableCell align="center">{admission.gender}</TableCell>
+              <TableCell align="center">{admission.grade}</TableCell>
+              <TableCell align="center">{admission.term}</TableCell>
+              <TableCell align="center">{admission.residence}</TableCell>
+              <TableCell align="center">{admission.emis_no}</TableCell>
+              <TableCell align="center">
+                <Stack direction="row" spacing={1} justifyContent="center">
                   <Button
                     variant="contained"
-                    color="primary"
+                    sx={{ backgroundColor: '#4caf50', color: 'white' }}
                     startIcon={<Add />}
                     onClick={() => navigate(`/admissions/${admission._id}`)}
                   >
                     PRINT
                   </Button>
-                </TableCell>
-              </TableRow>
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: '#f44336', color: 'white' }}
+                    startIcon={<Add />}
+                    onClick={() => navigate(`/admissions/${admission._id}`)}
+                  >
+                    DELETE
+                  </Button>
+                </Stack>
+              </TableCell>
+
+            </TableRow>
+            
             ))}
           </TableBody>
         </Table>
