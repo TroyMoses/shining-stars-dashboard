@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Print from '@mui/icons-material/Print';
 import log from '../logo.jpeg';
+import CheckIcon from '@mui/icons-material/Check';
 
 const Prints = () => {
   const [searchParams] = useSearchParams();
@@ -94,42 +95,45 @@ const Prints = () => {
           </Typography>
 
           <Box display="flex" alignItems="center">
-            <Typography
-              variant="h6"
-              fontWeight={300}
-              mr={1}
-              style={{ fontSize: "1.1rem" }}
-            >
-              Day
-            </Typography>
-            <Box
-              sx={{
-                width: 45,
-                height: 25,
-                border: "1px solid black",
-                display: "inline-block",
-              }}
-            />
-          </Box>
-
-          <Box display="flex" alignItems="center">
-            <Typography
-              variant="h6"
-              fontWeight={300}
-              mr={1}
-              style={{ fontSize: "1.1rem" }}
-            >
-              Boarding
-            </Typography>
-            <Box
-              sx={{
-                width: 45,
-                height: 25,
-                border: "1px solid black",
-                display: "inline-block",
-              }}
-            />
-          </Box>
+        <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1.1rem' }}>
+          Day
+        </Typography>
+        <Box
+          sx={{
+            width: 45,
+            height: 25,
+            border: '1px solid black',
+            display: 'inline-flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'relative',
+          }}
+        >
+          {admission.residence === 'day' && (
+            <CheckIcon sx={{ color: 'red', fontSize: '3rem', position: 'absolute' }} />
+          )}
+        </Box>
+      </Box>
+      <Box display="flex" alignItems="center" >
+        <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1.1rem' }}>
+          Boarding
+        </Typography>
+        <Box
+          sx={{
+            width: 45,
+            height: 25,
+            border: '1px solid black',
+            display: 'inline-flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'relative',
+          }}
+        >
+          {admission.residence === 'boarding' && (
+            <CheckIcon sx={{ color: 'red', fontSize: '3rem', position: 'absolute' }} />
+          )}
+        </Box>
+      </Box>
 
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Term: {admission.term}
@@ -155,6 +159,15 @@ const Prints = () => {
             style={{ fontSize: "1.1rem" }}
           >
             Parent's/Guardian's Name: {admission.parent_name}
+            
+          </Typography>
+
+          <Typography
+            variant="h6"
+            fontWeight={300}
+            style={{ fontSize: "1.1rem" }}
+          >
+            Parent's/Guardian's Email: {admission.parent_email}
             
           </Typography>
         </Box>
@@ -339,9 +352,13 @@ const Prints = () => {
       {/* signtures */}
 
       <Box display="flex" justifyContent="space-between" mt={2}>
-        <Typography variant="h6" fontWeight={300}>
-        {admission.parent_name}
-        </Typography>
+            <Typography
+        variant="h6"
+        fontWeight={300}
+        style={{ fontFamily: 'Cursive', fontStyle: 'italic' }}
+      >
+        {admission.parent_name.toLowerCase()}
+      </Typography>
 
         <Typography variant="h6" fontWeight={300}>
           <span
