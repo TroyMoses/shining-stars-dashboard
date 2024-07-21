@@ -28,6 +28,6 @@ const AdmissionSchema = new mongoose.Schema({
   child_medical_info: { type: String, required: true },
 });
 
-const AdmissionModel = mongoose.model("Admission", AdmissionSchema);
+const AdmissionModel = mongoose.model("ChildAdmission", AdmissionSchema);
 
 export default AdmissionModel;
