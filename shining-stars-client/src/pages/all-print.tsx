@@ -41,20 +41,32 @@ const Prints = () => {
           <img src={log} alt="Shining" style={{ width: '100px', height: '100px' }} />
         </Box>
         <Box justifyContent="center" textAlign="center">
-          <Typography variant="h5" fontWeight={700}>
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: 900, color: 'black', textAlign: 'center' }} // Inline styles for boldness and color
+        >
             SHINING STARS NURSERY AND PRIMARY SCHOOL - VVUMBA
           </Typography>
-          <Typography variant="h6" fontWeight={700} style={{ fontSize: '1.1rem', textDecoration: 'underline' }}>
+          <Typography
+          variant="h6"
+          sx={{ fontWeight: 900, color: 'black', textAlign: 'center' , textDecoration: 'underline' , fontSize: '1rem' }} // Inline styles for boldness and color
+        >
             Mixed day and boarding
           </Typography>
-          <Typography variant="h6" fontWeight={700}>
+          <Typography
+          variant="h6"
+          sx={{ fontWeight: 900, color: 'black', textAlign: 'center'  , fontSize: '1rem'}} // Inline styles for boldness and color
+        >
             TEL: 0773297951, 0753753179, 0772413164
           </Typography>
-          <Typography variant="h6" style={{ fontSize: '1.1rem' }} fontWeight={700}>
+          <Typography
+          variant="h6"
+          sx={{ fontWeight: 900, color: 'black', textAlign: 'center'  , fontSize: '1rem'}} // Inline styles for boldness and color
+        >
             "Arise and shine"
           </Typography>
           <Typography variant="h6" fontWeight={400} mb={1}>
-            <span style={{ fontWeight: 700 }}>Email:</span>{' '}
+            <span style={{ fontWeight: 900, color: 'black'  , fontSize: '1rem'}}>Email:</span>{' '}
             <span style={{ textDecoration: 'underline' }}>shiningstarsprimary2022@gmail.com</span>
           </Typography>
         </Box>
@@ -64,7 +76,10 @@ const Prints = () => {
       </Box>
 
       <Box mb={1}>
-        <Typography variant="h6" fontWeight={700} textAlign="center">
+      <Typography
+          variant="h6"
+          sx={{ fontWeight: 900, color: 'black', textAlign: 'center' , fontSize: '1rem'}} // Inline styles for boldness and color
+        >
           ADMISSION FORM
         </Typography>
 
@@ -149,7 +164,10 @@ const Prints = () => {
 
       {/* Contact Information */}
       <Box mb={1} textAlign="center">
-        <Typography variant="h5" fontWeight={700}>
+      <Typography
+          variant="h6"
+          sx={{ fontWeight: 900, color: 'black', textAlign: 'center'  , fontSize: '1rem' }} // Inline styles for boldness and color
+        >
           CONTACT INFORMATION
         </Typography>
         <Box display="flex" justifyContent="space-between" mt={2}>
@@ -167,7 +185,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Parent's/Guardian's Email:</span> {admission.parent_email}
+                    <span style={{ fontWeight: 900 }}>  Email:</span> {admission.parent_email}
             
           </Typography>
         </Box>
@@ -233,7 +251,10 @@ const Prints = () => {
 
       {/* Next of Kin */}
       <Box mb={1} textAlign="center">
-        <Typography variant="h6" fontWeight={700}>
+      <Typography
+          variant="h6"
+          sx={{ fontWeight: 900, color: 'black', textAlign: 'center'  , fontSize: '1rem' }} // Inline styles for boldness and color
+        >
           NEXT OF KIN
         </Typography>
 
@@ -309,7 +330,10 @@ const Prints = () => {
 
       {/* Medical Information */}
       <Box mb={4}>
-        <Typography variant="h6" fontWeight={700} textAlign="center">
+      <Typography
+          variant="h6"
+          sx={{ fontWeight: 900, color: 'black', textAlign: 'center'  , fontSize: '1rem' }} // Inline styles for boldness and color
+        >
           MEDICAL INFORMATION
         </Typography>
         <Typography
@@ -371,28 +395,29 @@ const Prints = () => {
         </Typography>
       </Box>
       <Box display="flex" justifyContent="space-between" mt={2}>
-        <Typography
+      <Typography
           variant="h6"
-          fontWeight={800}
-          style={{ fontSize: "1.2rem" }}
+          sx={{ fontWeight: 500, color: 'black'  , fontSize: '1rem'}} // Inline styles for boldness and color
         >
           PARENT'S/GUARDIAN'S SIGNATURE
         </Typography>
 
         <Typography
           variant="h6"
-          fontWeight={800}
-          style={{ fontSize: "1.2rem" }}
+          sx={{ fontWeight: 500, color: 'black'  , fontSize: '1rem'}} // Inline styles for boldness and color
         >
           DATE
         </Typography>
       </Box>
 
-      <Typography variant="h6" fontWeight={700} textAlign="center" mt={4}>
+      <Typography
+          variant="h6" mt={3}
+          sx={{ fontWeight: 700, color: 'black', textAlign: 'center'  , fontSize: '1rem'}} // Inline styles for boldness and color
+        >
         LOCATED ALONG GAYAZA-ZIROBWE ROAD BUSIKA TOWN COUNCIL
       </Typography>
 
-      <Typography variant="h6" fontWeight={400} textAlign="center" mt={2}>
+      <Typography variant="h6" fontWeight={400}  fontSize= "1rem" textAlign="center" mt={2}>
         "A CENTRE FOR GUARANTEED EXCELLENCE"
       </Typography>
 

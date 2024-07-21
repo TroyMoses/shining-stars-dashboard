@@ -124,13 +124,21 @@ const Admissions = () => {
               <TableCell align="center">
                 <Stack direction="row" spacing={1} justifyContent="center">
                   
-                  <CustomButton
+                  {/* <CustomButton
                     title="PRINT"
                     handleClick={() => navigate(`/print?id=${admission._id}`)}
                     backgroundColor="#4caf50"
                     color="#fcfcfc"
                     icon={<Print />}
-                  />
+                  /> */}
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: '#4caf50', color: 'white' }}
+                    startIcon={<Print />}
+                    onClick={() => navigate(`/print?id=${admission._id}`)}
+                  >
+                    PRINT
+                  </Button>
                   <Button
                     variant="contained"
                     sx={{ backgroundColor: '#f44336', color: 'white' }}
