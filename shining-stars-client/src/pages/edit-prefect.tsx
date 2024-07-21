@@ -9,32 +9,16 @@ const EditPrefect = () => {
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
   });
-  const [prefectImage, setPrefectImage] = useState({ name: "", url: "" });
   const {
     refineCore: { onFinish, formLoading },
     register,
     handleSubmit,
   } = useForm();
 
-  const handleImageChange = (file: File) => {
-    const reader = (readFile: File) =>
-      new Promise<string>((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.onload = () => resolve(fileReader.result as string);
-        fileReader.readAsDataURL(readFile);
-      });
-
-    reader(file).then((result: string) =>
-    setPrefectImage({ name: file?.name, url: result }),
-    );
-  };
-
   const onFinishHandler = async (data: FieldValues) => {
-    if (!prefectImage.name) return alert("Please upload a prefect image");
 
     await onFinish({
       ...data,
-      photo: prefectImage.url,
       email: user.email,
     });
   };
@@ -46,9 +30,7 @@ const EditPrefect = () => {
       onFinish={onFinish}
       formLoading={formLoading}
       handleSubmit={handleSubmit}
-      handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
-      prefectImage={prefectImage}
     />
   );
 };
