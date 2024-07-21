@@ -9,7 +9,7 @@ const AdmissionSchema = new mongoose.Schema({
   grade: { type: String, required: true },
   residence: { type: String, required: true },
   term: { type: String, required: true },
-  emis_no: { type: String, required: true },
+  emis_no: { type: String },
   parent_name: { type: String, required: true },
   parent_email: { type: String, required: true },
   parent_telephone: { type: String, required: true },

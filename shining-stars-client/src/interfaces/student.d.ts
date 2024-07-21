@@ -24,5 +24,4 @@ export interface StudentCardProps {
   paymentCode: string;
   parent_name: string;
   parent_email: string;
-  photo: string;
 }

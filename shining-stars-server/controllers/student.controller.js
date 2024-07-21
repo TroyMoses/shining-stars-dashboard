@@ -87,7 +87,6 @@ const createStudent = async (req, res) => {
       paymentCode,
       parent_name,
       parent_email,
-      photo,
       email,
     } = req.body;
 
@@ -98,8 +97,6 @@ const createStudent = async (req, res) => {
 
     if (!user) throw new Error("User not found");
 
-    const photoUrl = await cloudinary.uploader.upload(photo);
-
     const newStudent = await Student.create({
       name,
       stid,
@@ -109,7 +106,6 @@ const createStudent = async (req, res) => {
       paymentCode,
       parent_name,
       parent_email,
-      photo: photoUrl.url,
       creator: user._id,
     });
 
@@ -136,10 +132,7 @@ const updateStudent = async (req, res) => {
       paymentCode,
       parent_name,
       parent_email,
-      photo,
     } = req.body;
-
-    const photoUrl = await cloudinary.uploader.upload(photo);
 
     await Student.findByIdAndUpdate(
       { _id: id },
@@ -152,7 +145,6 @@ const updateStudent = async (req, res) => {
         paymentCode,
         parent_name,
         parent_email,
-        photo: photoUrl.url || photo,
       }
     );
 
