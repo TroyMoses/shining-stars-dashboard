@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import log from "../logo.jpeg";
 import Stack from "@mui/material/Stack";
+import Print from '@mui/icons-material/Print';
+import Delete from '@mui/icons-material/Delete';
+import { CustomButton } from "components";
 
 interface Admission {
   _id: string;
@@ -120,18 +123,18 @@ const Admissions = () => {
               <TableCell align="center">{admission.emis_no}</TableCell>
               <TableCell align="center">
                 <Stack direction="row" spacing={1} justifyContent="center">
-                  <Button
-                    variant="contained"
-                    sx={{ backgroundColor: '#4caf50', color: 'white' }}
-                    startIcon={<Add />}
-                    onClick={() => navigate(`/admissions/${admission._id}`)}
-                  >
-                    PRINT
-                  </Button>
+                  
+                  <CustomButton
+                    title="PRINT"
+                    handleClick={() => navigate("/print")}
+                    backgroundColor="#4caf50"
+                    color="#fcfcfc"
+                    icon={<Print />}
+                  />
                   <Button
                     variant="contained"
                     sx={{ backgroundColor: '#f44336', color: 'white' }}
-                    startIcon={<Add />}
+                    startIcon={<Delete />}
                     onClick={() => navigate(`/admissions/${admission._id}`)}
                   >
                     DELETE
