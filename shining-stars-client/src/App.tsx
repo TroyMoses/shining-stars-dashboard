@@ -54,6 +54,7 @@ import {
   SliderDetails,
   EditSlider,
   AllNews,
+  Adminsion,
   Prints,
   CreateNew,
   NewDetails,
@@ -208,6 +209,14 @@ function App() {
             {
               name: "news",
               list: AllNews,
+              show: NewDetails,
+              create: CreateNew,
+              edit: EditNew,
+              icon: <NewsPaperOutlined />,
+            },
+            {
+              name: "Adminsions",
+              list: Adminsion,
               show: NewDetails,
               create: CreateNew,
               edit: EditNew,
