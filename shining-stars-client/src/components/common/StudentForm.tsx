@@ -16,10 +16,8 @@ const StudentForm = ({
   type,
   register,
   handleSubmit,
-  handleImageChange,
   formLoading,
   onFinishHandler,
-  studentImage,
 }: StudentFormProps) => {
   return (
     <Box>
@@ -313,46 +311,6 @@ const StudentForm = ({
               {...register("parent_email", { required: true })}
             />
           </FormControl>
-
-          <Stack direction="column" gap={1} justifyContent="center" mb={2}>
-            <Stack direction="row" gap={2}>
-              <Typography
-                color="#11142d"
-                fontSize={16}
-                fontWeight={500}
-                my="10px"
-              >
-                Student Photo
-              </Typography>
-
-              <Button
-                component="label"
-                sx={{
-                  width: "fit-content",
-                  color: "#2ed480",
-                  textTransform: "capitalize",
-                  fontSize: 16,
-                }}
-              >
-                Upload *
-                <input
-                  hidden
-                  accept="image/*"
-                  type="file"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    handleImageChange(e.target.files![0]);
-                  }}
-                />
-              </Button>
-            </Stack>
-            <Typography
-              fontSize={14}
-              color="#808191"
-              sx={{ wordBreak: "break-all" }}
-            >
-              {studentImage?.name}
-            </Typography>
-          </Stack>
 
           <CustomButton
             type="submit"

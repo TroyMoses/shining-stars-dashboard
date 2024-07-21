@@ -16,10 +16,8 @@ const PrefectForm = ({
   type,
   register,
   handleSubmit,
-  handleImageChange,
   formLoading,
   onFinishHandler,
-  prefectImage,
 }: PrefectFormProps) => {
   return (
     <Box>
@@ -218,46 +216,6 @@ const PrefectForm = ({
                 <MenuItem value="day">Day</MenuItem>
               </Select>
             </FormControl>
-          </Stack>
-
-          <Stack direction="column" gap={1} justifyContent="center" mb={2}>
-            <Stack direction="row" gap={2}>
-              <Typography
-                color="#11142d"
-                fontSize={16}
-                fontWeight={500}
-                my="10px"
-              >
-                Prefect Photo
-              </Typography>
-
-              <Button
-                component="label"
-                sx={{
-                  width: "fit-content",
-                  color: "#2ed480",
-                  textTransform: "capitalize",
-                  fontSize: 16,
-                }}
-              >
-                Upload *
-                <input
-                  hidden
-                  accept="image/*"
-                  type="file"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    handleImageChange(e.target.files![0]);
-                  }}
-                />
-              </Button>
-            </Stack>
-            <Typography
-              fontSize={14}
-              color="#808191"
-              sx={{ wordBreak: "break-all" }}
-            >
-              {prefectImage?.name}
-            </Typography>
           </Stack>
 
           <CustomButton
