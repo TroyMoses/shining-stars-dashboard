@@ -48,24 +48,20 @@ const createContact = async (req, res) => {
     `;
 
     // Send email to school email
-    await Promise.all(
-      transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
-        subject: `New Contact message`,
-        html: emailContent1,
-      })
-    );
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
+      subject: `New Contact message`,
+      html: emailContent1,
+    });
 
     // Send email to contact
-    await Promise.all(
-        transporter.sendMail({
-          from: process.env.EMAIL_USER,
-          to: email,
-          subject: `New Contact message from ${email}`,
-          html: emailContent2,
-        })
-      );
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: `New Contact message from ${email}`,
+      html: emailContent2,
+    });
 
     res.status(200).json({ message: "Contact created successfully" });
   } catch (error) {
