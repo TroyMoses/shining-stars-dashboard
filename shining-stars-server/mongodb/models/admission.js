@@ -25,7 +25,7 @@ const AdmissionSchema = new mongoose.Schema({
   next_of_kin_address: { type: String, required: true },
   next_of_kin_village: { type: String, required: true },
   next_of_kin_lc: { type: String, required: true },
-  child_medical_info: { type: String, required: true },
+  child_medical_info: { type: String },
 });
 
 const AdmissionModel = mongoose.model("ChildAdmission", AdmissionSchema);
