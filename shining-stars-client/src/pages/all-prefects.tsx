@@ -217,7 +217,6 @@ const AllPrefects = () => {
             name={student.name}
             title={student.title}
             grade={student.grade}
-            photo={student.photo}
             gender={student.gender}
             residence={student.residence}
           />

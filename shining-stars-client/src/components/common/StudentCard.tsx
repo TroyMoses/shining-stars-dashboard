@@ -18,7 +18,6 @@ const StudentCard = ({
   paymentCode,
   parent_name,
   parent_email,
-  photo,
 }: StudentCardProps) => {
   return (
     <Card
@@ -34,14 +33,6 @@ const StudentCard = ({
       }}
       elevation={0}
     >
-      <CardMedia
-        component="img"
-        width="100%"
-        height={210}
-        image={photo}
-        alt="card image"
-        sx={{ borderRadius: "10px" }}
-      />
       <CardContent
         sx={{
           display: "flex",
