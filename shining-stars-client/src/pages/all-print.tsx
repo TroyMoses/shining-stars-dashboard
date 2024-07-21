@@ -1,6 +1,6 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useShow } from '@refinedev/core';
+import { useSearchParams } from 'react-router-dom';
+import { useList } from '@refinedev/core';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -8,21 +8,30 @@ import Print from '@mui/icons-material/Print';
 import log from '../logo.jpeg';
 
 const Prints = () => {
-  const { id } = useParams();
-  const { queryResult } = useShow({
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
+
+  const { data, isLoading, isError } = useList({
     resource: 'admissions',
-    id,
+    config: {
+      pagination: {
+        pageSize: 6,
+      },
+    },
   });
 
-  const { data, isLoading, isError } = queryResult;
-  const admission = data?.data;
+  const admissions = data?.data ?? [];
+
+  const admission = admissions.find((admission) => admission._id === id);
 
   const handlePrint = () => {
     window.print();
   };
 
   if (isLoading) return <Typography>Loading...</Typography>;
-  if (isError || !admission) return <Typography>Error loading data...</Typography>;
+  if (isError) return <Typography>Error loading data...</Typography>;
+
+  if (!admission) return <Typography>No admission found with this ID.</Typography>;
 
   return (
     <Box>
@@ -121,7 +130,7 @@ const Prints = () => {
               }}
             />
           </Box>
-          
+
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
             Term: {admission.term}
           </Typography>

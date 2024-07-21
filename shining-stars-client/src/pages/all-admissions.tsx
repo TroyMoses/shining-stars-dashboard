@@ -126,7 +126,7 @@ const Admissions = () => {
                   
                   <CustomButton
                     title="PRINT"
-                    handleClick={() => navigate(`/print/${admission._id}`)}
+                    handleClick={() => navigate(`/print?id=${admission._id}`)}
                     backgroundColor="#4caf50"
                     color="#fcfcfc"
                     icon={<Print />}
@@ -135,7 +135,7 @@ const Admissions = () => {
                     variant="contained"
                     sx={{ backgroundColor: '#f44336', color: 'white' }}
                     startIcon={<Delete />}
-                    onClick={() => navigate(`/admissions/${admission._id}`)}
+                    onClick={() => navigate(`/admissions?id=${admission._id}`)}
                   >
                     DELETE
                   </Button>

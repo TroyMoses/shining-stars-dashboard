@@ -216,12 +216,12 @@ function App() {
               icon: <NewsPaperOutlined />,
             },
             {
-              name: "Admissions",
+              name: "admissions",
               list: Admissions,
               icon: <SchoolOutlined />,
             },
             {
-              name: "Print",
+              name: "print",
               list: Prints,
               icon: <NewsPaperOutlined />,
             },
