@@ -18,5 +18,4 @@ export interface PrefectCardProps {
   residence: string;
   title: string;
   grade: string;
-  photo: string;
 }
