@@ -126,7 +126,7 @@ const Admissions = () => {
                   
                   <CustomButton
                     title="PRINT"
-                    handleClick={() => navigate("/print")}
+                    handleClick={() => navigate(`/print/${admission._id}`)}
                     backgroundColor="#4caf50"
                     color="#fcfcfc"
                     icon={<Print />}
