@@ -84,33 +84,33 @@ const Prints = () => {
         </Typography>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
           <span style={{ fontWeight: 900 }}>Pupil's Name: </span> {admission.name}
           </Typography>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
                     <span style={{ fontWeight: 900 }}>  Admission No:</span> {admission.admission_no}
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
                     <span style={{ fontWeight: 900 }}>  Date of Birth:</span> {admission.date_of_birth}
           </Typography>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
                     <span style={{ fontWeight: 900 }}>  Age:</span> {admission.age}
           </Typography>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
                     <span style={{ fontWeight: 900 }}>  Gender:</span>{admission.gender}
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
                     <span style={{ fontWeight: 900 }}>  Class:</span>{admission.grade}
           </Typography>
 
           <Box display="flex" alignItems="center">
-        <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1.1rem' }}>
+        <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1rem' }}>
                   <span style={{ fontWeight: 900 }}>  Day</span>
         </Typography>
         <Box
@@ -130,7 +130,7 @@ const Prints = () => {
         </Box>
       </Box>
       <Box display="flex" alignItems="center" >
-        <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1.1rem' }}>
+        <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1rem' }}>
                   <span style={{ fontWeight: 900 }}>  Boarding</span>
         </Typography>
         <Box
@@ -150,13 +150,13 @@ const Prints = () => {
         </Box>
       </Box>
 
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
                     <span style={{ fontWeight: 900 }}>  Term:</span> {admission.term}
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
                     <span style={{ fontWeight: 900 }}>  Emis No. (LIN):</span> {admission.emis_no}
           </Typography>
         </Box>
@@ -174,7 +174,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Parent's/Guardian's Name:</span> {admission.parent_name}
             
@@ -183,7 +183,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Email:</span> {admission.parent_email}
             
@@ -193,7 +193,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Telephone Number:</span> {admission.parent_telephone}
             
@@ -202,7 +202,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Relationship with the Pupil:</span> {admission.parent_relationship_with_pupil}
            
@@ -213,7 +213,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Address:</span> {admission.parent_address}
             
@@ -222,7 +222,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Village:</span> {admission.parent_village}
 
@@ -231,7 +231,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  LC1:</span> {admission.parent_lc}
             
@@ -241,7 +241,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  NIN No:</span> {admission.parent_nin}
             
@@ -262,7 +262,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Name:</span> {admission.next_of_kin_name}
             
@@ -271,7 +271,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Gender:</span> {admission.next_of_kin_gender}
             
@@ -282,7 +282,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Telephone Number:</span> {admission.next_of_kin_telephone}
             
@@ -291,7 +291,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Relationship with the pupil:</span> {admission.next_of_kin_relationship_with_pupil}
             
@@ -302,7 +302,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Address:</span> {admission.next_of_kin_address}
             
@@ -311,7 +311,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  Village:</span> {admission.next_of_kin_village}
             
@@ -320,7 +320,7 @@ const Prints = () => {
           <Typography
             variant="h6"
             fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
+            style={{ fontSize: "1rem" }}
           >
                     <span style={{ fontWeight: 900 }}>  LC1:</span> {admission.next_of_kin_lc}
             
@@ -340,12 +340,12 @@ const Prints = () => {
           variant="body1"
           mt={1}
           mb={2}
-          style={{ fontSize: "1.1rem" }}
+          style={{ fontSize: "1rem" }}
         >
                    <span style={{ fontWeight: 900 }}> Does your child have any medical issue(s) of which we need to be aware
           of? </span>
         </Typography>
-        <Typography variant="body1" fontWeight={300}>
+        <Typography variant="body1">
         <span style={{ fontWeight: 900 }}>  If YES please explain: </span> {admission.child_medical_info}
           
         </Typography>
@@ -366,7 +366,7 @@ const Prints = () => {
         <Typography
           variant="body1"
           fontWeight={300}
-          style={{ fontSize: "1.1rem" }}
+          style={{ fontSize: "1rem" }}
         >
                    <span style={{ fontWeight: 900 }}> I </span> {admission.parent_name}           <span style={{ fontWeight: 900 }}> hereby certify to the best of my knowledge that the above information
           is true and accurate. </span>
@@ -379,6 +379,7 @@ const Prints = () => {
             <Typography
         variant="h6"
         fontWeight={300}
+        fontSize= "1rem"
         style={{ fontFamily: 'Cursive', fontStyle: 'italic' }}
       >
         {admission.parent_name.toLowerCase()}
