@@ -70,33 +70,33 @@ const Prints = () => {
 
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
-            Pupil's Name: {admission.name}
+          <span style={{ fontWeight: 900 }}>Pupil's Name: </span> {admission.name}
           </Typography>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
-            Admission No: {admission.admission_no}
-          </Typography>
-        </Box>
-
-        <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
-            Date of Birth: {admission.date_of_birth}
-          </Typography>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
-            Age: {admission.age}
-          </Typography>
-          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
-            Gender: {admission.gender}
+                    <span style={{ fontWeight: 900 }}>  Admission No:</span> {admission.admission_no}
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
-            Class: {admission.grade}
+                    <span style={{ fontWeight: 900 }}>  Date of Birth:</span> {admission.date_of_birth}
+          </Typography>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+                    <span style={{ fontWeight: 900 }}>  Age:</span> {admission.age}
+          </Typography>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+                    <span style={{ fontWeight: 900 }}>  Gender:</span>{admission.gender}
+          </Typography>
+        </Box>
+
+        <Box display="flex" justifyContent="space-between" mt={2}>
+          <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
+                    <span style={{ fontWeight: 900 }}>  Class:</span>{admission.grade}
           </Typography>
 
           <Box display="flex" alignItems="center">
         <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1.1rem' }}>
-          Day
+                  <span style={{ fontWeight: 900 }}>  Day</span>
         </Typography>
         <Box
           sx={{
@@ -116,7 +116,7 @@ const Prints = () => {
       </Box>
       <Box display="flex" alignItems="center" >
         <Typography variant="h6" fontWeight={300} mr={1} style={{ fontSize: '1.1rem' }}>
-          Boarding
+                  <span style={{ fontWeight: 900 }}>  Boarding</span>
         </Typography>
         <Box
           sx={{
@@ -136,13 +136,13 @@ const Prints = () => {
       </Box>
 
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
-            Term: {admission.term}
+                    <span style={{ fontWeight: 900 }}>  Term:</span> {admission.term}
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1.1rem' }}>
-            Emis No. (LIN): {admission.emis_no}
+                    <span style={{ fontWeight: 900 }}>  Emis No. (LIN):</span> {admission.emis_no}
           </Typography>
         </Box>
       </Box>
@@ -158,7 +158,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Parent's/Guardian's Name: {admission.parent_name}
+                    <span style={{ fontWeight: 900 }}>  Parent's/Guardian's Name:</span> {admission.parent_name}
             
           </Typography>
 
@@ -167,7 +167,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Parent's/Guardian's Email: {admission.parent_email}
+                    <span style={{ fontWeight: 900 }}>  Parent's/Guardian's Email:</span> {admission.parent_email}
             
           </Typography>
         </Box>
@@ -177,7 +177,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Telephone Number: {admission.parent_telephone}
+                    <span style={{ fontWeight: 900 }}>  Telephone Number:</span> {admission.parent_telephone}
             
           </Typography>
 
@@ -186,7 +186,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Relationship with the Pupil: {admission.parent_relationship_with_pupil}
+                    <span style={{ fontWeight: 900 }}>  Relationship with the Pupil:</span> {admission.parent_relationship_with_pupil}
            
           </Typography>
         </Box>
@@ -197,7 +197,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Address: {admission.parent_address}
+                    <span style={{ fontWeight: 900 }}>  Address:</span> {admission.parent_address}
             
           </Typography>
 
@@ -206,7 +206,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Village: {admission.parent_village}
+                    <span style={{ fontWeight: 900 }}>  Village:</span> {admission.parent_village}
 
           </Typography>
 
@@ -215,7 +215,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            LC1: {admission.parent_lc}
+                    <span style={{ fontWeight: 900 }}>  LC1:</span> {admission.parent_lc}
             
           </Typography>
         </Box>
@@ -225,7 +225,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            NIN No: {admission.parent_nin}
+                    <span style={{ fontWeight: 900 }}>  NIN No:</span> {admission.parent_nin}
             
           </Typography>
         </Box>
@@ -243,7 +243,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Name: {admission.next_of_kin_name}
+                    <span style={{ fontWeight: 900 }}>  Name:</span> {admission.next_of_kin_name}
             
           </Typography>
 
@@ -252,27 +252,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Gender: {admission.next_of_kin_gender}
-            
-          </Typography>
-        </Box>
-
-        <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Telephone Number: {admission.next_of_kin_telephone}
-            
-          </Typography>
-
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1.1rem" }}
-          >
-            Relationship with the pupil: {admission.next_of_kin_relationship_with_pupil}
+                    <span style={{ fontWeight: 900 }}>  Gender:</span> {admission.next_of_kin_gender}
             
           </Typography>
         </Box>
@@ -283,7 +263,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Address: {admission.next_of_kin_address}
+                    <span style={{ fontWeight: 900 }}>  Telephone Number:</span> {admission.next_of_kin_telephone}
             
           </Typography>
 
@@ -292,7 +272,18 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            Village: {admission.next_of_kin_village}
+                    <span style={{ fontWeight: 900 }}>  Relationship with the pupil:</span> {admission.next_of_kin_relationship_with_pupil}
+            
+          </Typography>
+        </Box>
+
+        <Box display="flex" justifyContent="space-between" mt={2}>
+          <Typography
+            variant="h6"
+            fontWeight={300}
+            style={{ fontSize: "1.1rem" }}
+          >
+                    <span style={{ fontWeight: 900 }}>  Address:</span> {admission.next_of_kin_address}
             
           </Typography>
 
@@ -301,7 +292,16 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1.1rem" }}
           >
-            LC1: {admission.next_of_kin_lc}
+                    <span style={{ fontWeight: 900 }}>  Village:</span> {admission.next_of_kin_village}
+            
+          </Typography>
+
+          <Typography
+            variant="h6"
+            fontWeight={300}
+            style={{ fontSize: "1.1rem" }}
+          >
+                    <span style={{ fontWeight: 900 }}>  LC1:</span> {admission.next_of_kin_lc}
             
           </Typography>
         </Box>
@@ -318,11 +318,11 @@ const Prints = () => {
           mb={2}
           style={{ fontSize: "1.1rem" }}
         >
-          Does your child have any medical issue(s) of which we need to be aware
-          of?
+                   <span style={{ fontWeight: 900 }}> Does your child have any medical issue(s) of which we need to be aware
+          of? </span>
         </Typography>
         <Typography variant="body1" fontWeight={300}>
-          If YES please explain: {admission.child_medical_info}
+        <span style={{ fontWeight: 900 }}>  If YES please explain: </span> {admission.child_medical_info}
           
         </Typography>
         <Typography
@@ -344,8 +344,8 @@ const Prints = () => {
           fontWeight={300}
           style={{ fontSize: "1.1rem" }}
         >
-          I {admission.parent_name}  hereby certify to the best of my knowledge that the above information
-          is true and accurate.
+                   <span style={{ fontWeight: 900 }}> I </span> {admission.parent_name}           <span style={{ fontWeight: 900 }}> hereby certify to the best of my knowledge that the above information
+          is true and accurate. </span>
         </Typography>
       </Box>
 
