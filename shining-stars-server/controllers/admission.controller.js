@@ -6,13 +6,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const getAllAdmissions = async (req, res) => {
-  const {
-    _end,
-    _order,
-    _start,
-    _sort,
-    name_like = "",
-  } = req.query;
+  const { _end, _order, _start, _sort, name_like = "" } = req.query;
 
   const query = {};
 
@@ -39,7 +33,8 @@ const getAllAdmissions = async (req, res) => {
 
 const createAdmission = async (req, res) => {
   try {
-    const { name,
+    const {
+      name,
       admission_no,
       date_of_birth,
       age,
@@ -63,7 +58,8 @@ const createAdmission = async (req, res) => {
       next_of_kin_address,
       next_of_kin_village,
       next_of_kin_lc,
-      child_medical_info } = req.body;
+      child_medical_info,
+    } = req.body;
 
     const session = await mongoose.startSession();
     session.startTransaction();
@@ -111,41 +107,59 @@ const createAdmission = async (req, res) => {
 
     // School email content
     const emailContent1 = `
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Subject:</strong> ${subject}</p>
-      <p><strong>Message:</strong> ${message}</p>
-    `;
+    <p>Name: ${name}</p>
+    <p>Admission Number: ${admission_no}</p>
+    <p>Date Of Birth: ${date_of_birth}</p>
+    <p>Age: ${age}</p>
+    <p>Gender: ${gender}</p>
+    <p>Class: ${grade}</p>
+    <p>Residence: ${residence}</p>
+    <p>Term: ${term}</p>
+    <p>Emis No: ${emis_no}</p>
+    <p>Parent/Guardian Name: ${parent_name}</p>
+    <p>Parent/Guardian Email: ${parent_email}</p>
+    <p>Parent/Guardian Telephone: ${parent_telephone}</p>
+    <p>Parent/Guardian Relationship with pupil: ${parent_relationship_with_pupil}</p>
+    <p>Parent/Guardian Address: ${parent_address}</p>
+    <p>Parent/Guardian Village: ${parent_village}</p>
+    <p>Parent/Guardian LC1: ${parent_lc}</p>
+    <p>Parent/Guardian NIN No: ${parent_nin}</p>
+    <p>Next Of Kin Name: ${next_of_kin_name}</p>
+    <p>Next Of Kin Gender: ${next_of_kin_gender}</p>
+    <p>Next Of Kin Telephone: ${next_of_kin_telephone}</p>
+    <p>Next Of Kin Relationship with pupil: ${next_of_kin_relationship_with_pupil}</p>
+    <p>Next Of Kin Address: ${next_of_kin_address}</p>
+    <p>Next Of Kin Village: ${next_of_kin_village}</p>
+    <p>Next Of Kin LC1: ${next_of_kin_lc}</p>
+    <p>Child Medical Information (Issues): ${child_medical_info}</p>
+`;
 
     // Contact email content
     const emailContent2 = `
-      <p>Dear Client,</p>
-      <p>We thank you so much for contacting us.
-      We promise to get back to you as soon as possible.</p>
-      <p>Best regards,<br />Shining Stars</p>
+    <p>Thank you so much, ${parent_name} for admitting your child into our school. 
+    We promise to provide the best and quality education that your child deserves.</p>
     `;
 
     // Send email to school email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
-      subject: `New Contact message`,
+      subject: `New Admission for child, ${name}`,
       html: emailContent1,
     });
 
-    // Send email to contact
+    // Send email to parent
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: email,
-      subject: `New Contact message from ${email}`,
+      to: parent_email,
+      subject: `Admission Received`,
       html: emailContent2,
     });
 
-    res.status(200).json({ message: "Contact created successfully" });
+    res.status(200).json({ message: "Admission created successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-export {
-  getAllAdmissions,
-};
+export { getAllAdmissions, createAdmission };
