@@ -32,7 +32,7 @@ app.use("/api/v1/news", newsRouter);
 app.use("/api/v1/prefects", prefectRouter);
 app.use("/api/v1/sliders", sliderRouter);
 app.use("/api/v1/staffs", staffRouter);
-app.use("api/v1/contact", contactRouter);
+app.use("/api/v1/contact", contactRouter);
 
 
 const startServer = async () => {
