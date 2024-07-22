@@ -90,22 +90,6 @@ const Admissions = () => {
     }
   };
 
-  // const handleDeleteAdmission = () => {
-  //   const response = confirm("Are you sure you want to delete this admission?");
-  //   if (response) {
-  //     mutate(
-  //       {
-  //         resource: "admissions",
-  //         id: id as string,
-  //       },
-  //       {
-  //         onSuccess: () => {
-  //           navigate("/admissions");
-  //         },
-  //       },
-  //     );
-  //   }
-  // };
 
   if (isLoading) return <Typography>Loading...</Typography>;
   if (isError) return <Typography>Error...</Typography>;
