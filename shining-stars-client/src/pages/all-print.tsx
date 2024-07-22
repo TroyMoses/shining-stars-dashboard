@@ -36,9 +36,7 @@ const Prints = () => {
 
   return (
     <Box className="printable-content -mt-10">
-    {/* <Box
-      
-    > */}
+    
       <Box display="flex" justifyContent="center" textAlign="center" mb={1}>
         <Box mr={2}>
           <img src={log} alt="Shining" style={{ width: '100px', height: '100px' }} />
