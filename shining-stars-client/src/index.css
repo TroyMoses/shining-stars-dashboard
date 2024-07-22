@@ -41,3 +41,23 @@ a {
       height: auto;
   }
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  header, footer {
+    display: none;
+  }
+  
+  .printable-content, .printable-content * {
+    visibility: visible;
+  }
+  .printable-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
