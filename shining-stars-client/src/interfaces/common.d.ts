@@ -88,7 +88,9 @@ export interface PrefectFormProps {
   ) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>;
   formLoading: boolean;
   handleSubmit: FormEventHandler<HTMLFormElement> | undefined;
+  handleImageChange: (file) => void;
   onFinishHandler: (data: FieldValues) => Promise<void> | void;
+  prefectImage: { name: string; url: string };
 }
 
 export interface AdminFormProps {

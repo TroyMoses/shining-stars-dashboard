@@ -219,6 +219,7 @@ const AllPrefects = () => {
             grade={student.grade}
             gender={student.gender}
             residence={student.residence}
+            photo={student.photo}
           />
         ))}
       </Box>

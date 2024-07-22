@@ -52,10 +52,9 @@ const Admissions = () => {
     setSorter,
     filters,
     setFilters,
-  } = useTable<Admission>();  // Specify the type here
+  } = useTable<Admission>();  
 
   const { mutate: deleteAdmission } = useDelete();  
-  // const { mutate } = useDelete();
   const { id } = useParams();
 
   const allAdmissions = data?.data ?? [];
