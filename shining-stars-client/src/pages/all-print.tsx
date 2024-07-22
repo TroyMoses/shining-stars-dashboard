@@ -94,19 +94,19 @@ const Prints = () => {
 
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
-                    <span style={{ fontWeight: 900 }}>  Date of Birth:</span> {admission.date_of_birth}
+                    <span style={{ fontWeight: 900 }}>  Date of Birth:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.date_of_birth} </span>
           </Typography>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
-                    <span style={{ fontWeight: 900 }}>  Age:</span> {admission.age}
+                    <span style={{ fontWeight: 900 }}>  Age:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.age} </span>
           </Typography>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
-                    <span style={{ fontWeight: 900 }}>  Gender:</span>{admission.gender}
+                    <span style={{ fontWeight: 900 }}>  Gender:  </span><span style={{ borderBottom: '2px dotted black', paddingRight: '8rem' }}>  {admission.gender} </span>
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
-                    <span style={{ fontWeight: 900 }}>  Class:</span>{admission.grade}
+                    <span style={{ fontWeight: 900 }}>  Class:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.grade}</span>
           </Typography>
 
           <Box display="flex" alignItems="center">
@@ -151,13 +151,13 @@ const Prints = () => {
       </Box>
 
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
-                    <span style={{ fontWeight: 900 }}>  Term:</span> {admission.term}
+                    <span style={{ fontWeight: 900 }}>  Term:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.term}</span>
           </Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
-                    <span style={{ fontWeight: 900 }}>  Emis No. (LIN):</span> {admission.emis_no}
+                    <span style={{ fontWeight: 900 }}>  Emis No. (LIN):</span>  <span style={{ borderBottom: '2px dotted black', paddingRight: '33rem' }}>{admission.emis_no}</span>
           </Typography>
         </Box>
       </Box>
@@ -170,13 +170,48 @@ const Prints = () => {
         >
           CONTACT INFORMATION
         </Typography>
+        <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
+            <Box display="flex" alignItems="center" flex="1 1 auto" mr={2}>
+              <Typography
+                variant="h6"
+                fontWeight={300}
+                style={{ fontSize: "0.9rem" }}
+              >
+                <span style={{ fontWeight: 900 }}>Parent's/Guardian's Name:</span>
+              </Typography>
+              <Typography
+                variant="h6"
+                fontWeight={300}
+                style={{ fontSize: "1rem", borderBottom: '2px dotted black', paddingRight: '8rem'}}
+              >
+                {admission.parent_name}
+              </Typography>
+            </Box>
+            <Box display="flex" alignItems="center" flex="2 1 0">
+              <Typography
+                variant="h6"
+                fontWeight={300}
+                style={{ fontSize: "1rem" }}
+              >
+                <span style={{ fontWeight: 900 }}>Email:</span>
+              </Typography>
+              <Typography
+                variant="h6"
+                fontWeight={300}
+                style={{ fontSize: "1rem", borderBottom: '2px dotted black', paddingRight: '2rem', marginLeft: '0.5rem' }}
+              >
+                {admission.parent_email}
+              </Typography>
+            </Box>
+          </Box>
+
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Typography
             variant="h6"
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Parent's/Guardian's Name:</span> {admission.parent_name}
+                    <span style={{ fontWeight: 900 }}>  Telephone Number:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '5rem' }}>{admission.parent_telephone}</span>
             
           </Typography>
 
@@ -185,26 +220,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Email:</span> {admission.parent_email}
-            
-          </Typography>
-        </Box>
-        <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1rem" }}
-          >
-                    <span style={{ fontWeight: 900 }}>  Telephone Number:</span> {admission.parent_telephone}
-            
-          </Typography>
-
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1rem" }}
-          >
-                    <span style={{ fontWeight: 900 }}>  Relationship with the Pupil:</span> {admission.parent_relationship_with_pupil}
+                    <span style={{ fontWeight: 900 }}>  Relationship with the Pupil:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '5rem' }}>{admission.parent_relationship_with_pupil}</span>
            
           </Typography>
         </Box>
