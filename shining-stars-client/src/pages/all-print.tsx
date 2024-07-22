@@ -35,7 +35,7 @@ const Prints = () => {
   if (!admission) return <Typography>No admission found with this ID.</Typography>;
 
   return (
-    <Box >
+    <Box className="printable-content">
     {/* <Box
       
     > */}
@@ -436,9 +436,14 @@ const Prints = () => {
       </Typography>
       {/* </Box> */}
       {/* Print Button */}
-      <Box mt={4} textAlign="center">
-        <Button variant="contained" color="primary" onClick={handlePrint}>
-          Print Form
+      <Box mt={4} textAlign="center" className="text-center mt-4 print:hidden">
+        <Button
+          onClick={handlePrint}
+          variant="contained"
+          color="primary"
+          startIcon={<Print />}
+        >
+          Print
         </Button>
       </Box>
     </Box>
