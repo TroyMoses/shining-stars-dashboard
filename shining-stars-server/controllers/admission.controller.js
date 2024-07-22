@@ -31,6 +31,17 @@ const getAllAdmissions = async (req, res) => {
   }
 };
 
+const getAdmissionDetail = async (req, res) => {
+  const { id } = req.params;
+  const admissionExists = await Admission.findOne({ _id: id })
+
+  if (admissionExists) {
+    res.status(200).json(admissionExists);
+  } else {
+    res.status(404).json({ message: "Admission not found" });
+  }
+};
+
 const createAdmission = async (req, res) => {
   try {
     const {
@@ -162,4 +173,25 @@ const createAdmission = async (req, res) => {
   }
 };
 
-export { getAllAdmissions, createAdmission };
+const deleteAdmission = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const admissionToDelete = await Admission.findById({ _id: id })
+
+    if (!admissionToDelete) throw new Error("Admission not found");
+
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    admissionToDelete.remove({ session });
+
+    await session.commitTransaction();
+
+    res.status(200).json({ message: "Admission deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export { getAllAdmissions, getAdmissionDetail, createAdmission, deleteAdmission };
