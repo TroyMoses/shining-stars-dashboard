@@ -397,8 +397,13 @@ const Prints = () => {
         <span style={{ borderBottom: '2px dotted black', paddingRight: '10rem' }}>{admission.parent_name.toLowerCase()}</span>
       </Typography>
 
-        <Typography variant="h6" fontWeight={300}>
-        <span style={{ borderBottom: '2px dotted black', paddingRight: '10rem' }}></span>
+      <Typography
+        variant="h6"
+        fontWeight={300}
+        fontSize= "0.8rem"
+        style={{ fontFamily: 'Cursive', fontStyle: 'italic' }}
+      >
+        <span style={{ borderBottom: '2px dotted black', paddingRight: '5rem' }}>{admission.createdAt}</span>
         </Typography>
       </Box>
       <Box display="flex" justifyContent="space-between" >
