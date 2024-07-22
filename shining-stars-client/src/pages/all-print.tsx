@@ -35,7 +35,7 @@ const Prints = () => {
   if (!admission) return <Typography>No admission found with this ID.</Typography>;
 
   return (
-    <Box className="printable-content">
+    <Box className="printable-content -mt-10">
     {/* <Box
       
     > */}
@@ -348,7 +348,7 @@ const Prints = () => {
       </Box>
 
       {/* Medical Information */}
-      <Box mb={4}>
+      <Box mb={1}>
       <Typography
           variant="h6"
           sx={{ fontWeight: 900, color: 'black', textAlign: 'center'  , fontSize: '0.9rem' }} // Inline styles for boldness and color
@@ -394,11 +394,11 @@ const Prints = () => {
 
       {/* signtures */}
 
-      <Box display="flex" justifyContent="space-between" mt={2}>
+      <Box display="flex" justifyContent="space-between" >
             <Typography
         variant="h6"
         fontWeight={300}
-        fontSize= "1rem"
+        fontSize= "0.8rem"
         style={{ fontFamily: 'Cursive', fontStyle: 'italic' }}
       >
         <span style={{ borderBottom: '2px dotted black', paddingRight: '10rem' }}>{admission.parent_name.toLowerCase()}</span>
@@ -408,7 +408,7 @@ const Prints = () => {
         <span style={{ borderBottom: '2px dotted black', paddingRight: '10rem' }}></span>
         </Typography>
       </Box>
-      <Box display="flex" justifyContent="space-between" mt={2}>
+      <Box display="flex" justifyContent="space-between" >
       <Typography
           variant="h6"
           sx={{ fontWeight: 500, color: 'black'  , fontSize: '0.9rem'}} // Inline styles for boldness and color
@@ -431,12 +431,21 @@ const Prints = () => {
         LOCATED ALONG GAYAZA-ZIROBWE ROAD BUSIKA TOWN COUNCIL
       </Typography>
 
-      <Typography variant="h6" fontWeight={400}  fontSize= "0.9rem" textAlign="center" mt={1}>
+      <Typography variant="h6" fontWeight={400}  fontSize= "0.9rem" textAlign="center" >
         "A CENTRE FOR GUARANTEED EXCELLENCE"
       </Typography>
       {/* </Box> */}
-      {/* Print Button */}
-      <Box mt={4} textAlign="center" className="text-center mt-4 print:hidden">
+{/* Print Button */}
+<Box
+        mt={4}
+        textAlign="center"
+        className="print:hidden" // Tailwind class for print visibility
+        sx={{
+          '@media print': {
+            display: 'none', // Inline style to ensure the button is hidden in print view
+          },
+        }}
+      >
         <Button
           onClick={handlePrint}
           variant="contained"
