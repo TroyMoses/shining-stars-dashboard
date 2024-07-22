@@ -127,7 +127,7 @@ const Prints = () => {
             position: 'relative',
           }}
         >
-          {admission.residence === 'day' && (
+          {admission.residence === 'Day' && (
             <CheckIcon sx={{ color: 'red', fontSize: '2rem', position: 'absolute' }} />
           )}
         </Box>
@@ -147,7 +147,7 @@ const Prints = () => {
             position: 'relative',
           }}
         >
-          {admission.residence === 'boarding' && (
+          {admission.residence === 'Boarding' && (
             <CheckIcon sx={{ color: 'red', fontSize: '2rem', position: 'absolute' }} />
           )}
         </Box>
