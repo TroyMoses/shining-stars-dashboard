@@ -75,7 +75,7 @@ const getPrefectDetail = async (req, res) => {
 
 const createPrefect = async (req, res) => {
   try {
-    const { name, gender, title, grade, residence, email } =
+    const { name, gender, title, grade, residence, photo, email } =
       req.body;
 
     const session = await mongoose.startSession();
@@ -85,12 +85,15 @@ const createPrefect = async (req, res) => {
 
     if (!user) throw new Error("User not found");
 
+    const photoUrl = await cloudinary.uploader.upload(photo);
+
     const newPrefect = await Prefect.create({
       name,
       gender,
       title,
       grade,
       residence,
+      photo: photoUrl.url,
       creator: user._id,
     });
 
@@ -108,8 +111,10 @@ const createPrefect = async (req, res) => {
 const updatePrefect = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, gender, title, grade, residence } =
+    const { name, gender, title, grade, residence, photo, } =
       req.body;
+
+    const photoUrl = await cloudinary.uploader.upload(photo);
 
     await Prefect.findByIdAndUpdate(
       { _id: id },
@@ -119,6 +124,7 @@ const updatePrefect = async (req, res) => {
         title,
         grade,
         residence,
+        photo: photoUrl.url || photo,
       },
     );
 

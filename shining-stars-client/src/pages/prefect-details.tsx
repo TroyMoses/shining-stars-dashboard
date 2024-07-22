@@ -10,6 +10,12 @@ import Phone from "@mui/icons-material/Phone";
 
 import { CustomButton } from "components";
 
+function checkImage(url: any) {
+  const img = new Image();
+  img.src = url;
+  return img.width !== 0 && img.height !== 0;
+}
+
 const PrefectDetails = () => {
   const navigate = useNavigate();
   const { data: user } = useGetIdentity({
@@ -68,9 +74,15 @@ const PrefectDetails = () => {
         gap={4}
       >
         <Box flex={1} maxWidth={764}>
-
+          <img
+              src={prefectDetails.photo}
+              alt="leader_details-img"
+              height={546}
+              style={{ objectFit: "cover", borderRadius: "10px" }}
+              className="leader_details-img"
+            />
           <Box mt="15px">
-
+            
             <Stack
               direction="row"
               flexWrap="wrap"
@@ -139,7 +151,10 @@ const PrefectDetails = () => {
               textAlign="center"
             >
               <img
-                src={"https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
+                src={
+                  checkImage(prefectDetails.creator.avatar)
+                    ? prefectDetails.creator.avatar
+                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                 }
                 alt="avatar"
                 width={90}
