@@ -85,10 +85,10 @@ const Prints = () => {
 
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
-          <span style={{ fontWeight: 900 }}>Pupil's Name: </span> {admission.name}
+          <span style={{ fontWeight: 900 }}>Pupil's Name: </span> <span style={{ borderBottom: '2px dotted black', paddingRight: '10rem' }}>{admission.name}</span>
           </Typography>
           <Typography variant="h6" fontWeight={300} style={{ fontSize: '1rem' }}>
-                    <span style={{ fontWeight: 900 }}>  Admission No:</span> {admission.admission_no}
+                    <span style={{ fontWeight: 900 }}>  Admission No:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '8rem' }}>{admission.admission_no}</span>
           </Typography>
         </Box>
 
