@@ -15,6 +15,7 @@ const PrefectCard = ({
   title,
   grade,
   residence,
+  photo,
 }: PrefectCardProps) => {
   return (
     <Card
@@ -30,6 +31,14 @@ const PrefectCard = ({
       }}
       elevation={0}
     >
+      <CardMedia
+        component="img"
+        width="100%"
+        height={210}
+        image={photo}
+        alt="card image"
+        sx={{ borderRadius: "10px" }}
+      />
       <CardContent
         sx={{
           display: "flex",
