@@ -1,7 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLogin } from "@refinedev/core";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 import logo from "../assets/logo.jpeg";
 
@@ -43,8 +45,23 @@ export const Login: React.FC = () => {
     return <div ref={divRef} />;
   };
 
+  const [passcode, setPasscode] = useState("");
+  const [isPasscodeValid, setIsPasscodeValid] = useState(false);
+  const [isPasscodeSubmitted, setIsPasscodeSubmitted] = useState(false);
+  const passCode = "123456";
+
+  const handlePasscodeSubmit = () => {
+    if (passcode === passCode) {
+      setIsPasscodeValid(true);
+      setIsPasscodeSubmitted(true);
+    } else {
+      alert("Invalid passcode. Please try again.");
+    }
+  };
+
   return (
-    <Box component="div" sx={{ backgroundColor: "#FCFCFC" }}>
+    <Box component="div" sx={{ backgroundColor: "" }}
+>
       <Container
         component="main"
         maxWidth="xs"
@@ -66,9 +83,32 @@ export const Login: React.FC = () => {
           <div>
             <img src={logo} alt="Shining Stars Logo" width="200px" />
           </div>
-          <Box mt={4}>
-            <GoogleButton />
-          </Box>
+          {!isPasscodeSubmitted && (
+            <Box mt={4} sx={{ width: "100%" }}>
+              <TextField
+                label="Enter Passcode"
+                variant="outlined"
+                fullWidth
+                type="password"
+                value={passcode}
+                onChange={(e) => setPasscode(e.target.value)}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                sx={{ mt: 2 }}
+                onClick={handlePasscodeSubmit}
+              >
+                Submit Passcode
+              </Button>
+            </Box>
+          )}
+          {isPasscodeValid && (
+            <Box mt={4}>
+              <GoogleButton />
+            </Box>
+          )}
         </Box>
       </Container>
     </Box>
