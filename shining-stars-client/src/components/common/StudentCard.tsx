@@ -53,7 +53,7 @@ const StudentCard = ({
             bgcolor="#dadefa"
             height="fit-content"
           >
-            {name.toUpperCase()}
+            Name: {name.toUpperCase()}
           </Typography>
 
           <Box
@@ -64,7 +64,7 @@ const StudentCard = ({
             height="fit-content"
           >
             <Typography fontSize={12} fontWeight={600} color="#475be8">
-              {paymentCode}
+              Code: {paymentCode}
             </Typography>
           </Box>
         </Stack>
@@ -94,15 +94,15 @@ const StudentCard = ({
           }}
         >
           <Typography fontSize={14} color="#808191">
-            {grade.toUpperCase()}
+            Class: {grade.toUpperCase()}
           </Typography>
           <Typography fontSize={14} color="#808191">
-            {residence.toUpperCase()}
+            Residence: {residence.toUpperCase()}
           </Typography>
         </Stack>
 
         <Typography fontSize={14} color="#808191">
-          {gender.toUpperCase()}
+          Gender: {gender.toUpperCase()}
         </Typography>
 
       </CardContent>
