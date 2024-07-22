@@ -231,7 +231,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Address:</span> {admission.parent_address}
+                    <span style={{ fontWeight: 900 }}>  Address:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.parent_address}</span>
             
           </Typography>
 
@@ -240,7 +240,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Village:</span> {admission.parent_village}
+                    <span style={{ fontWeight: 900 }}>  Village:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.parent_village}</span>
 
           </Typography>
 
@@ -249,7 +249,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  LC1:</span> {admission.parent_lc}
+                    <span style={{ fontWeight: 900 }}>  LC1:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.parent_lc}</span>
             
           </Typography>
         </Box>
@@ -259,7 +259,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  NIN No:</span> {admission.parent_nin}
+                    <span style={{ fontWeight: 900 }}>  NIN No:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '33rem' }}> {admission.parent_nin}</span>
             
           </Typography>
         </Box>
@@ -280,7 +280,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Name:</span> {admission.next_of_kin_name}
+                    <span style={{ fontWeight: 900 }}>  Name:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '15rem' }}>{admission.next_of_kin_name}</span>
             
           </Typography>
 
@@ -289,27 +289,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Gender:</span> {admission.next_of_kin_gender}
-            
-          </Typography>
-        </Box>
-
-        <Box display="flex" justifyContent="space-between" mt={2}>
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1rem" }}
-          >
-                    <span style={{ fontWeight: 900 }}>  Telephone Number:</span> {admission.next_of_kin_telephone}
-            
-          </Typography>
-
-          <Typography
-            variant="h6"
-            fontWeight={300}
-            style={{ fontSize: "1rem" }}
-          >
-                    <span style={{ fontWeight: 900 }}>  Relationship with the pupil:</span> {admission.next_of_kin_relationship_with_pupil}
+                    <span style={{ fontWeight: 900 }}>  Gender:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.next_of_kin_gender}</span>
             
           </Typography>
         </Box>
@@ -320,7 +300,7 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Address:</span> {admission.next_of_kin_address}
+                    <span style={{ fontWeight: 900 }}>  Telephone Number:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '9rem' }}>{admission.next_of_kin_telephone}</span>
             
           </Typography>
 
@@ -329,7 +309,18 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  Village:</span> {admission.next_of_kin_village}
+                    <span style={{ fontWeight: 900 }}>  Relationship with the pupil:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.next_of_kin_relationship_with_pupil}</span>
+            
+          </Typography>
+        </Box>
+
+        <Box display="flex" justifyContent="space-between" mt={2}>
+          <Typography
+            variant="h6"
+            fontWeight={300}
+            style={{ fontSize: "1rem" }}
+          >
+                    <span style={{ fontWeight: 900 }}>  Address:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.next_of_kin_address}</span>
             
           </Typography>
 
@@ -338,7 +329,16 @@ const Prints = () => {
             fontWeight={300}
             style={{ fontSize: "1rem" }}
           >
-                    <span style={{ fontWeight: 900 }}>  LC1:</span> {admission.next_of_kin_lc}
+                    <span style={{ fontWeight: 900 }}>  Village:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.next_of_kin_village}</span>
+            
+          </Typography>
+
+          <Typography
+            variant="h6"
+            fontWeight={300}
+            style={{ fontSize: "1rem" }}
+          >
+                    <span style={{ fontWeight: 900 }}>  LC1:</span> <span style={{ borderBottom: '2px dotted black', paddingRight: '6rem' }}>{admission.next_of_kin_lc}</span>
             
           </Typography>
         </Box>
@@ -362,7 +362,7 @@ const Prints = () => {
           of? </span>
         </Typography>
         <Typography variant="body1">
-        <span style={{ fontWeight: 900 }}>  If YES please explain: </span> {admission.child_medical_info}
+        <span style={{ fontWeight: 900 }}>  If YES please explain: </span> <span style={{ borderBottom: '2px dotted black', paddingRight: '30rem' }}>{admission.child_medical_info}</span>
           
         </Typography>
         <Typography
@@ -384,7 +384,7 @@ const Prints = () => {
           fontWeight={300}
           style={{ fontSize: "1rem" }}
         >
-                   <span style={{ fontWeight: 900 }}> I </span> {admission.parent_name}           <span style={{ fontWeight: 900 }}> hereby certify to the best of my knowledge that the above information
+                   <span style={{ fontWeight: 900 }}> I </span> <span style={{ borderBottom: '2px dotted black', paddingRight: '11rem' }}>{admission.parent_name}  </span>         <span style={{ fontWeight: 900 }}> hereby certify to the best of my knowledge that the above information
           is true and accurate. </span>
         </Typography>
       </Box>
