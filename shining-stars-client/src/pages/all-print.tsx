@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useList } from '@refinedev/core';
+import { useList, useTable } from '@refinedev/core';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -14,11 +14,6 @@ const Prints = () => {
 
   const { data, isLoading, isError } = useList({
     resource: 'admissions',
-    config: {
-      pagination: {
-        pageSize: 6,
-      },
-    },
   });
 
   const admissions = data?.data ?? [];
