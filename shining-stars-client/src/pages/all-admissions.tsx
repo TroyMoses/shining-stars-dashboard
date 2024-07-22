@@ -1,12 +1,10 @@
 import React, { useState, useMemo } from "react";
-import Add from "@mui/icons-material/Add";
 import { useTable, useDelete, BaseRecord } from "@refinedev/core";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { useNavigate } from "react-router-dom";
-import log from "../logo.jpeg";
+import { useParams, useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Print from '@mui/icons-material/Print';
 import Delete from '@mui/icons-material/Delete';
@@ -56,7 +54,9 @@ const Admissions = () => {
     setFilters,
   } = useTable<Admission>();  // Specify the type here
 
-  const { mutate: deleteAdmission } = useDelete<Admission>();  // Specify the type here
+  const { mutate: deleteAdmission } = useDelete();  
+  // const { mutate } = useDelete();
+  const { id } = useParams();
 
   const allAdmissions = data?.data ?? [];
 
@@ -75,20 +75,37 @@ const Admissions = () => {
     setOpen(true);
   };
 
-  const handleConfirmDelete = () => {
+  const handleCancelDelete = () => {
+    setOpen(false);
+    setSelectedAdmission(null);
+  };
+
+  const handleDeleteAdmission = () => {
     if (selectedAdmission) {
       deleteAdmission({
         resource: "admissions",
-        id: selectedAdmission._id,
+        id: selectedAdmission._id as string,
       });
       setOpen(false);
     }
   };
 
-  const handleCancelDelete = () => {
-    setOpen(false);
-    setSelectedAdmission(null);
-  };
+  // const handleDeleteAdmission = () => {
+  //   const response = confirm("Are you sure you want to delete this admission?");
+  //   if (response) {
+  //     mutate(
+  //       {
+  //         resource: "admissions",
+  //         id: id as string,
+  //       },
+  //       {
+  //         onSuccess: () => {
+  //           navigate("/admissions");
+  //         },
+  //       },
+  //     );
+  //   }
+  // };
 
   if (isLoading) return <Typography>Loading...</Typography>;
   if (isError) return <Typography>Error...</Typography>;
@@ -197,10 +214,14 @@ const Admissions = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancelDelete} color="primary">
+          <Button 
+            onClick={handleCancelDelete} 
+            color="primary">
             Cancel
           </Button>
-          <Button onClick={handleConfirmDelete} color="primary" autoFocus>
+          <Button 
+            onClick={handleDeleteAdmission} 
+            color="primary" autoFocus>
             Confirm
           </Button>
         </DialogActions>
