@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useList, useTable } from '@refinedev/core';
 import Box from '@mui/material/Box';
@@ -11,12 +11,23 @@ import CheckIcon from '@mui/icons-material/Check';
 const Prints = () => {
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id');
+  const [pageCount, setpageCount] = useState(0);
 
   const { data, isLoading, isError } = useList({
     resource: 'admissions',
+    config: {
+      pagination: {
+        pageSize: pageCount,
+      },
+    },
   });
 
   const admissions = data?.data ?? [];
+
+  useEffect(() => {
+    setpageCount(admissions.length);
+  }, [admissions]);
+  
 
   const admission = admissions.find((admission) => admission._id === id);
 
