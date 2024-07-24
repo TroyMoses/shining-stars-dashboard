@@ -14,6 +14,11 @@ const Prints = () => {
 
   const { data, isLoading, isError } = useList({
     resource: 'admissions',
+    config: {
+      pagination: {
+        pageSize: 12,
+      },
+    },
   });
 
   const admissions = data?.data ?? [];
