@@ -14,6 +14,7 @@ import prefectRouter from "./routes/prefect.routes.js";
 import sliderRouter from "./routes/slider.routes.js";
 import staffRouter from "./routes/staff.routes.js";
 import contactRouter from "./routes/contact.routes.js";
+import newsLetterRouter from "./routes/newsletter.routes.js";
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use("/api/v1/prefects", prefectRouter);
 app.use("/api/v1/sliders", sliderRouter);
 app.use("/api/v1/staffs", staffRouter);
 app.use("/api/v1/contact", contactRouter);
+app.use("/api/v1/newsletter", newsLetterRouter);
 
 
 const startServer = async () => {
