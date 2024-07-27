@@ -1,6 +1,7 @@
 import New from "../mongodb/models/new.js";
 import User from "../mongodb/models/user.js";
 import Student from "../mongodb/models/student.js";
+import newsLetter from "../mongodb/models/newsletter.js";
 import nodemailer from "nodemailer";
 
 import mongoose from "mongoose";
@@ -85,6 +86,10 @@ const createNew = async (req, res) => {
       .map((student) => student.parent_email)
       .filter((email) => email);
 
+    // Fetch all newsletter to get their emails
+    const newsletters = await newsLetter.find({});
+    const newsletterEmails = newsletters.map(newsletter => newsletter.newsemail);
+
     // Set up nodemailer transporter
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -112,6 +117,18 @@ const createNew = async (req, res) => {
         transporter.sendMail({
           from: process.env.EMAIL_USER,
           to: parentEmail,
+          subject: `Latest News: ${title}`,
+          html: emailContent,
+        })
+      )
+    );
+
+    // Send email to all newsletters
+    await Promise.all(
+      newsletterEmails.map(newsletterEmail =>
+        transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: newsletterEmail,
           subject: `Latest News: ${title}`,
           html: emailContent,
         })
