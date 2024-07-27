@@ -39,7 +39,7 @@ const createNewsLetter = async (req, res) => {
     const emailContent2 = `
       <p>Dear Client,</p>
       <p>Thank you so much for subscribing for our newsletter.
-      We promise to give you all the news and events updates.</p>
+      We promise to give you information about all the news and events updates.</p>
       <p>Best regards,<br />Shining Stars</p>
     `;
 
